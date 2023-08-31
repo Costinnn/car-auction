@@ -1,0 +1,25 @@
+.row3 {
+  .category,
+  .brand,
+  .years {
+    position: relative;
+    .dropdown {
+      position: absolute;
+      background-color: gainsboro;
+      padding: 10px;
+      border-radius: 10px;
+      left: 0;
+      top: 40px;
+      max-height: 500px;
+      overflow: hidden;
+      overflow-y: scroll;
+      > li {
+        padding: 5px 0;
+      }
+      > span {
+        display: block;
+        margin: 10px 0;
+      }
+    }
+  }
+}

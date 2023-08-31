@@ -1,0 +1,19 @@
+.search-input {
+  border: 1px solid var(--medium-gray);
+  border-radius: 8px;
+  padding: 8px 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+  margin-top: 20px;
+  > img {
+  }
+  > input {
+    width: 100%;
+    padding: 5px 10px;
+    border: none;
+    outline: none;
+    color: var(--medium-gray);
+  }
+}

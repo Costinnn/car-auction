@@ -1,0 +1,51 @@
+{
+  "navigation": {
+    "row1": {
+      "sign": "Sign Up",
+      "menu": {
+        "title": "Menu",
+        "account": "Account",
+        "auctions": "Auctions",
+        "upcoming": "Upcoming listings",
+        "favorites": "Favorites",
+        "foryou": "Auctions for you"
+      }
+    },
+    "row2": {
+      "auctions": "Auctions",
+      "sell": "Sell a car"
+    },
+    "row3": {
+      "category": {
+        "title": "Category",
+        "all": "All",
+        "atv": "ATV",
+        "coupe": "Coupe",
+        "convertible": "Convertible",
+        "hatchback": "Hatchback",
+        "motorcycle": "Motorcycle",
+        "sedan": "Sedan",
+        "suv": "SUV/Crossover",
+        "truck": "Truck",
+        "van": "Van",
+        "wagon": "Wagon"
+      },
+      "brand": {
+        "title": "Brand"
+      },
+      "years": { "title": "Years", "to": "to" }
+    },
+    "row4": {
+      "new": "Newly listed",
+      "ending": "Ending soon",
+      "trending": "Trending",
+      "ended": "Ended"
+    },
+    "searchinput": "Search for cars (ex. BMW, Mercedes)"
+  },
+  "pages": {
+    "home": {
+      "title": "This title is in english"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "navigation": {
+    "row1": {
+      "sign": "Autentificare",
+      "menu": {
+        "title": "Meniu",
+        "account": "Cont",
+        "auctions": "Licitatii",
+        "upcoming": "Licitatii urmatoare",
+        "favorites": "Favorite",
+        "foryou": "Licitatii pentru tine"
+      }
+    },
+    "row2": {
+      "auctions": "Licitatii",
+      "sell": "Vinde o masina"
+    },
+    "row3": {
+      "category": {
+        "title": "Categorii",
+        "all": "Toate",
+        "atv": "ATV",
+        "coupe": "Coupe",
+        "convertible": "Decapotabila",
+        "hatchback": "Hatchback",
+        "motorcycle": "Motociclete",
+        "sedan": "Berlina",
+        "suv": "SUV/Crossover",
+        "truck": "Pick-up",
+        "van": "Dube",
+        "wagon": "Break"
+      },
+      "brand": {
+        "title": "Marca"
+      },
+      "years": { "title": "Ani", "to": "pana in" }
+    },
+    "row4": {
+      "new": "Nou listate",
+      "ending": "Pe final",
+      "trending": "In tendinte",
+      "ended": "Incheiate"
+    },
+    "searchinput": "Cauta masini (ex. BMW, Mercedes)"
+  },
+  "pages": {
+    "home": {
+      "title": "Acest titlu e in romana"
+    }
+  }
+}
