@@ -32,6 +32,7 @@ const Navigation = ({ language }) => {
           toggleMenu={toggleMenu}
           isMenuOpen={isMenuOpen}
           language={language.row1.menu}
+          languageSearch={language.searchinput}
         />
         <button className="signup button-green">{language.row1.sign}</button>
         <Image

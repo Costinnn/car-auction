@@ -9,73 +9,224 @@ const NavFilter = ({ language }) => {
   const [filters, setFilters] = useState({
     category: { title: language.category.title, option: null },
     brand: { title: language.brand.title, option: null },
-    years: { title: language.years.title, option: null },
+    years: { title: language.years.title, option1: "2000", option2: "2023" },
   });
+  const [isDropdownOpen, setIsDropdownOpen] = useState({
+    category: false,
+    brand: false,
+    years: false,
+  });
+
+  const handleDropdown = (filterName) => {
+    if (isDropdownOpen[filterName] === true) {
+      setIsDropdownOpen({ ...isDropdownOpen, [filterName]: false });
+    }
+    if (isDropdownOpen[filterName] === false) {
+      setIsDropdownOpen({
+        category: false,
+        brand: false,
+        years: false,
+        [filterName]: true,
+      });
+    }
+  };
+
+  const handleDropdownValues = (filterName, value) => {
+    setFilters((prev) => ({
+      ...prev,
+      [filterName]: { title: value, option: value },
+    }));
+    setIsDropdownOpen({ ...isDropdownOpen, [filterName]: false });
+  };
+
+  const handleDropdownSelect = (value1, value2) => {
+    if (!value2) {
+      if (Number(value1) <= Number(filters.years.option2)) {
+        setFilters((prev) => ({
+          ...prev,
+          years: {
+            ...prev.years,
+            title: `${value1} ${language.years.to} ${filters.years.option2}`,
+            option1: value1,
+          },
+        }));
+      } else {
+        setFilters((prev) => ({
+          ...prev,
+          years: {
+            ...prev.years,
+            title: `${filters.years.option2} ${language.years.to} ${filters.years.option2}`,
+            option1: filters.years.option2,
+          },
+        }));
+      }
+    }
+    if (!value1) {
+      if (Number(value2) >= Number(filters.years.option1)) {
+        setFilters((prev) => ({
+          ...prev,
+          years: {
+            ...prev.years,
+            title: `${filters.years.option1} ${language.years.to} ${value2}`,
+            option2: value2,
+          },
+        }));
+      } else {
+        setFilters((prev) => ({
+          ...prev,
+          years: {
+            ...prev.years,
+            title: `${filters.years.option1} ${language.years.to} ${filters.years.option1}`,
+            option2: filters.years.option1,
+          },
+        }));
+      }
+    }
+    setIsDropdownOpen({ ...isDropdownOpen, years: false });
+  };
+  console.log(filters.years);
   return (
     <div className="row3">
+      {/* --CATEGORY-- */}
       <div className="category">
-        <button className="button-empty">
+        <button
+          className="button-empty"
+          onClick={() => {
+            handleDropdown("category");
+          }}
+        >
           {filters.category.option
             ? filters.category.option
             : filters.category.title}
           <Image src={arrowDown} width={10} alt="arrow-down" />
         </button>
-        {/* <ul className="dropdown">
-          <li>{language.category.all}</li>
-          <li>{language.category.atv}</li>
-          <li>{language.category.coupe}</li>
-          <li>{language.category.convertible}</li>
-          <li>{language.category.hatchback}</li>
-          <li>{language.category.motorcycle}</li>
-          <li>{language.category.sedan}</li>
-          <li>{language.category.suv}</li>
-          <li>{language.category.truck}</li>
-          <li>{language.category.van}</li>
-          <li>{language.category.wagon}</li>
-        </ul> */}
+        <ul
+          className={`dropdown ${isDropdownOpen.category ? "open" : "close"}`}
+        >
+          <li onClick={() => handleDropdownValues("category", "all")}>
+            {language.category.all}
+          </li>
+          <li onClick={() => handleDropdownValues("category", "atv")}>
+            {language.category.atv}
+          </li>
+          <li onClick={() => handleDropdownValues("category", "coupe")}>
+            {language.category.coupe}
+          </li>
+          <li onClick={() => handleDropdownValues("category", "convertible")}>
+            {language.category.convertible}
+          </li>
+          <li onClick={() => handleDropdownValues("category", "hatchback")}>
+            {language.category.hatchback}
+          </li>
+          <li onClick={() => handleDropdownValues("category", "motorcycle")}>
+            {language.category.motorcycle}
+          </li>
+          <li onClick={() => handleDropdownValues("category", "sedan")}>
+            {language.category.sedan}
+          </li>
+          <li onClick={() => handleDropdownValues("category", "suv")}>
+            {language.category.suv}
+          </li>
+          <li onClick={() => handleDropdownValues("category", "truck")}>
+            {language.category.truck}
+          </li>
+          <li onClick={() => handleDropdownValues("category", "van")}>
+            {language.category.van}
+          </li>
+          <li onClick={() => handleDropdownValues("category", "wagon")}>
+            {language.category.wagon}
+          </li>
+        </ul>
       </div>
+
+      {/* --BRAND-- */}
       <div className="brand">
-        <button className="button-empty">
+        <button
+          className="button-empty"
+          onClick={() => {
+            handleDropdown("brand");
+          }}
+        >
           {filters.brand.option ? filters.brand.option : filters.brand.title}
           <Image src={arrowDown} width={10} alt="arrow-down" />
         </button>
-        {/* <ul className="dropdown">
-          <li>Audi</li>
-          <li>BMW</li>
-          <li>Chevrolet</li>
-          <li>Citroen</li>
-          <li>Dacia</li>
-          <li>Fiat</li>
-          <li>Ford</li>
-          <li>Honda</li>
-          <li>Hyundai</li>
-          <li>Infiniti</li>
-          <li>Jaguar</li>
-          <li>Jeep</li>
-          <li>Kia</li>
-          <li>Land Rover</li>
-          <li>Lexus</li>
-          <li>Mercedes-Benz</li>
-          <li>Mitsubishi</li>
-          <li>Nissan</li>
-          <li>Opel</li>
-          <li>Peugeot</li>
-          <li>Renault</li>
-          <li>Seat</li>
-          <li>Skoda</li>
-          <li>Toyota</li>
-          <li>Volkswagen</li>
-          <li>Volvo</li>
-        </ul> */}
+        <ul className={`dropdown ${isDropdownOpen.brand ? "open" : "close"}`}>
+          <li onClick={() => handleDropdownValues("brand", "audi")}>Audi</li>
+          <li onClick={() => handleDropdownValues("brand", "bmw")}>BMW</li>
+          <li onClick={() => handleDropdownValues("brand", "chevrolet")}>
+            Chevrolet
+          </li>
+          <li onClick={() => handleDropdownValues("brand", "citroen")}>
+            Citroen
+          </li>
+          <li onClick={() => handleDropdownValues("brand", "dacia")}>Dacia</li>
+          <li onClick={() => handleDropdownValues("brand", "fiat")}>Fiat</li>
+          <li onClick={() => handleDropdownValues("brand", "ford")}>Ford</li>
+          <li onClick={() => handleDropdownValues("brand", "honda")}>Honda</li>
+          <li onClick={() => handleDropdownValues("brand", "hyundai")}>
+            Hyundai
+          </li>
+          <li onClick={() => handleDropdownValues("brand", "infiniti")}>
+            Infiniti
+          </li>
+          <li onClick={() => handleDropdownValues("brand", "jaguar")}>
+            Jaguar
+          </li>
+          <li onClick={() => handleDropdownValues("brand", "jeep")}>Jeep</li>
+          <li onClick={() => handleDropdownValues("brand", "kia")}>Kia</li>
+          <li onClick={() => handleDropdownValues("brand", "landrover")}>
+            Land Rover
+          </li>
+          <li onClick={() => handleDropdownValues("brand", "lexus")}>Lexus</li>
+          <li onClick={() => handleDropdownValues("brand", "mercedes")}>
+            Mercedes-Benz
+          </li>
+          <li onClick={() => handleDropdownValues("brand", "mitshubishi")}>
+            Mitsubishi
+          </li>
+          <li onClick={() => handleDropdownValues("brand", "nissan")}>
+            Nissan
+          </li>
+          <li onClick={() => handleDropdownValues("brand", "opel")}>Opel</li>
+          <li onClick={() => handleDropdownValues("brand", "peugeot")}>
+            Peugeot
+          </li>
+          <li onClick={() => handleDropdownValues("brand", "renault")}>
+            Renault
+          </li>
+          <li onClick={() => handleDropdownValues("brand", "seat")}>Seat</li>
+          <li onClick={() => handleDropdownValues("brand", "skoda")}>Skoda</li>
+          <li onClick={() => handleDropdownValues("brand", "toyota")}>
+            Toyota
+          </li>
+          <li onClick={() => handleDropdownValues("brand", "volkswagen")}>
+            Volkswagen
+          </li>
+          <li onClick={() => handleDropdownValues("brand", "volvo")}>Volvo</li>
+        </ul>
       </div>
+
+      {/* --YEARS-- */}
       <div className="years">
-        <button className="button-empty">
+        <button
+          className="button-empty"
+          onClick={() => {
+            handleDropdown("years");
+          }}
+        >
           {filters.years.title}
           <Image src={arrowDown} width={10} alt="arrow-down" />
         </button>
-        {/* <div className="dropdown">
-          <select>
-            <option value="2000">2000</option>
+        <div className={`dropdown ${isDropdownOpen.years ? "open" : "close"}`}>
+          <select
+            defaultValue={"2000"}
+            onChange={(e) => {
+              handleDropdownSelect(e.target.value, null);
+            }}
+          >
+            <option value="2000" onClick={() => handleDropdownSelect()}>
+              2000
+            </option>
             <option value="2001">2001</option>
             <option value="2002">2002</option>
             <option value="2003">2003</option>
@@ -101,7 +252,12 @@ const NavFilter = ({ language }) => {
             <option value="2023">2023</option>
           </select>
           <span>{language.years.to}</span>
-          <select>
+          <select
+            defaultValue={"2023"}
+            onChange={(e) => {
+              handleDropdownSelect(null, e.target.value);
+            }}
+          >
             <option value="2000">2000</option>
             <option value="2001">2001</option>
             <option value="2002">2002</option>
@@ -127,7 +283,7 @@ const NavFilter = ({ language }) => {
             <option value="2022">2022</option>
             <option value="2023">2023</option>
           </select>
-        </div> */}
+        </div>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@
     position: relative;
     .dropdown {
       position: absolute;
-      background-color: gainsboro;
+      background-color: var(--whiteish);
       padding: 10px;
       border-radius: 10px;
       left: 0;
@@ -15,10 +15,30 @@
       overflow-y: scroll;
       > li {
         padding: 5px 0;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--medium-gray);
       }
       > span {
         display: block;
         margin: 10px 0;
+      }
+    }
+
+    .open {
+      display: block;
+    }
+    .close {
+      display: none;
+    }
+    .button-empty {
+      white-space: nowrap;
+    }
+  }
+  .years {
+    .dropdown {
+      > span {
+        text-align: center;
       }
     }
   }

@@ -33,7 +33,7 @@
       "brand": {
         "title": "Marca"
       },
-      "years": { "title": "Ani", "to": "pana in" }
+      "years": { "title": "Ani", "to": "-" }
     },
     "row4": {
       "new": "Nou listate",

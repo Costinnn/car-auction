@@ -33,7 +33,7 @@
       "brand": {
         "title": "Brand"
       },
-      "years": { "title": "Years", "to": "to" }
+      "years": { "title": "Years", "to": "-" }
     },
     "row4": {
       "new": "Newly listed",

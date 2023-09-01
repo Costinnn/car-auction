@@ -10,7 +10,8 @@ import Link from "next/link";
 
 import "./Menu.css";
 
-const Menu = ({ toggleMenu, isMenuOpen, language }) => {
+const Menu = ({ toggleMenu, isMenuOpen, language,languageSearch }) => {
+
   return (
     <div className={`menu ${isMenuOpen ? "open" : "close"}`}>
       <div className="row1">
@@ -22,7 +23,7 @@ const Menu = ({ toggleMenu, isMenuOpen, language }) => {
           onClick={() => toggleMenu(false)}
         />
       </div>
-      <SearchInput />
+      <SearchInput language={languageSearch}/>
       <ul>
         <li>
           <Link href="/">{language.account}</Link>
