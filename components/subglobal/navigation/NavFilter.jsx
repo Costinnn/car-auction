@@ -84,7 +84,6 @@ const NavFilter = ({ language }) => {
     }
     setIsDropdownOpen({ ...isDropdownOpen, years: false });
   };
-  console.log(filters.years);
   return (
     <div className="row3">
       {/* --CATEGORY-- */}

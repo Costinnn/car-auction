@@ -41,7 +41,27 @@
       "trending": "In tendinte",
       "ended": "Incheiate"
     },
-    "searchinput": "Cauta masini (ex. BMW, Mercedes)"
+    "searchinput": "Cauta masini (ex. BMW, Mercedes)",
+    "modal": {
+      "signin": {
+        "title": "Autentificare",
+        "changemodal1": "Nu ai un cont?",
+        "changemodal2": "Inregistreaza-te aici",
+        "button": "Autentifica-te"
+      },
+      "signup": {
+        "title": "Inregistrare",
+        "changemodal1": "Ai deja un cont?",
+        "changemodal2": "Autentifica-te aici",
+        "button": "Inregistreaza-te"
+      },
+      "match": {
+        "username": "Nume de utilizator",
+        "email": "Email",
+        "password": "Parola",
+        "cpassword": "Confirma parola"
+      }
+    }
   },
   "pages": {
     "home": {

@@ -20,7 +20,7 @@ const Menu = ({ toggleMenu, isMenuOpen, language,languageSearch }) => {
           src={close}
           alt="close"
           width={25}
-          onClick={() => toggleMenu(false)}
+          onClick={() => toggleMenu()}
         />
       </div>
       <SearchInput language={languageSearch}/>

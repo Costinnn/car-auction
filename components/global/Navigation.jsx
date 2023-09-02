@@ -5,6 +5,7 @@ import Link from "next/link";
 
 import NavFilter from "../subglobal/navigation/NavFilter";
 import Menu from "../subglobal/navigation/Menu";
+import SignUpModal from "../subglobal/navigation/SignUpModal";
 
 import logo from "@/assets/global/logo.png";
 import menu from "@/assets/global/menu.png";
@@ -17,12 +18,22 @@ import SearchInput from "@/client-components/navigation/SearchInput";
 const Navigation = ({ language }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchInputOpen, setIsSearchInputOpen] = useState(false);
+  const [isSignModalOpen, setIsSignModalOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
+
+  const toggleSignModal = () => {
+    setIsSignModalOpen((prev) => !prev);
+  };
   return (
     <nav className="navigation section-narrow">
+      <SignUpModal
+        toggleSignModal={toggleSignModal}
+        isSignModalOpen={isSignModalOpen}
+        language={language.modal}
+      />
       <div className="row1">
         <Link href="/">
           <Image src={logo} width={150} alt="logo" priority />
@@ -34,13 +45,13 @@ const Navigation = ({ language }) => {
           language={language.row1.menu}
           languageSearch={language.searchinput}
         />
-        <button className="signup button-green">{language.row1.sign}</button>
-        <Image
-          src={menu}
-          width={28}
-          alt="menu"
-          onClick={() => toggleMenu(true)}
-        />
+        <button
+          className="signup button-green"
+          onClick={() => toggleSignModal()}
+        >
+          {language.row1.sign}
+        </button>
+        <Image src={menu} width={28} alt="menu" onClick={() => toggleMenu()} />
       </div>
       <div className="row2">
         <div>

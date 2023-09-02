@@ -1,7 +1,7 @@
 {
   "navigation": {
     "row1": {
-      "sign": "Sign Up",
+      "sign": "Sign In",
       "menu": {
         "title": "Menu",
         "account": "Account",
@@ -41,7 +41,27 @@
       "trending": "Trending",
       "ended": "Ended"
     },
-    "searchinput": "Search for cars (ex. BMW, Mercedes)"
+    "searchinput": "Search for cars (ex. BMW, Mercedes)",
+    "modal": {
+      "signin": {
+        "title": "Sign in",
+        "changemodal1": "Don't have an account?",
+        "changemodal2": "Sign up here",
+        "button": "Sign in"
+      },
+      "signup": {
+        "title": "Sign up",
+        "changemodal1": "Already have an account?",
+        "changemodal2": "Sign in here",
+        "button": "Sign up"
+      },
+      "match": {
+        "username": "Username",
+        "email": "Email",
+        "password": "Password",
+        "cpassword": "Confirm Password"
+      }
+    }
   },
   "pages": {
     "home": {
