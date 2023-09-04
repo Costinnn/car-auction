@@ -4,6 +4,7 @@
       "sign": "Sign In",
       "menu": {
         "title": "Menu",
+        "changelanguage": "Change language",
         "account": "Account",
         "auctions": "Auctions",
         "upcoming": "Upcoming listings",
@@ -60,6 +61,15 @@
         "email": "Email",
         "password": "Password",
         "cpassword": "Confirm Password"
+      },
+      "account": {
+        "title": "Account",
+        "signout": "Sign out",
+        "mylisting": "My listings",
+        "bidded": "Bidded listings",
+        "saved": "Saved listings",
+        "profile": "Profile",
+        "settings": "Settings"
       }
     }
   },

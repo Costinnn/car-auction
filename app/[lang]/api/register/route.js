@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 export async function POST(request) {
   try {
     const reqData = await request.json();
-    const { email, username, password } = reqData;
+    const { email, name, password } = reqData;
 
     // 1. Search for email in DB
     const existingUser = await prismadb.user.findUnique({
@@ -27,7 +27,7 @@ export async function POST(request) {
     const user = await prismadb.user.create({
       data: {
         email,
-        username,
+        name,
         hashedPassword,
         image: "",
         emailVerified: new Date(),

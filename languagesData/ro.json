@@ -4,6 +4,7 @@
       "sign": "Autentificare",
       "menu": {
         "title": "Meniu",
+        "changelanguage":"Schimba limba",
         "account": "Cont",
         "auctions": "Licitatii",
         "upcoming": "Licitatii urmatoare",
@@ -60,6 +61,15 @@
         "email": "Email",
         "password": "Parola",
         "cpassword": "Confirma parola"
+      },
+      "account": {
+        "title": "Cont",
+        "signout":"Iesi din cont",
+        "mylisting": "Anunturile mele",
+        "bidded": "Licitari",
+        "saved": "Anunturi salvate",
+        "profile": "Profil",
+        "settings": "Setari"
       }
     }
   },

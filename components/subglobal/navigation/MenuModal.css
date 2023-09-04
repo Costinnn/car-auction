@@ -1,9 +1,9 @@
 .navigation {
   .row1 {
     .menu {
-      background-color: white;
+      background-color: var(--whiteish);
       position: fixed;
-      z-index: 5;
+      z-index: 2;
       top: 0;
       left: 0;
       width: 100%;
@@ -13,11 +13,11 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        > span {
+        > h3 {
           font-weight: 600;
           font-size: 25px;
         }
-        > span::before {
+        > h3::before {
           content: "";
           display: inline-block;
           width: 10px;
@@ -29,6 +29,25 @@
         }
         > img {
           margin-right: 10px;
+        }
+      }
+      .row2 {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+        > span {
+          color: var(--medium-gray);
+          font-weight: 600;
+        }
+        > img {
+          padding: 5px;
+          margin-left: 10px;
+        }
+      }
+      .search-input {
+        margin-top: 10px;
+        > input {
+          background-color: var(--whiteish);
         }
       }
       > ul {

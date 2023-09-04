@@ -14,6 +14,7 @@ export const authOptions = {
       },
 
       async authorize(credentials, req) {
+        
         // 1. Verify content of credentials
         if (!credentials.email || !credentials.password) {
           throw new Error("Email and password required");
@@ -65,7 +66,7 @@ export const authOptions = {
   },
   adapter: PrismaAdapter(prismadb),
   pages: {
-    signIn: "/login",
+    signIn: "/",
   },
 };
 

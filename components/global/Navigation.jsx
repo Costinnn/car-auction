@@ -4,21 +4,24 @@ import Image from "next/image";
 import Link from "next/link";
 
 import NavFilter from "../subglobal/navigation/NavFilter";
-import Menu from "../subglobal/navigation/Menu";
+import MenuModal from "../subglobal/navigation/MenuModal";
 import SignUpModal from "../subglobal/navigation/SignUpModal";
+import AccountModal from "../subglobal/navigation/AccountModal";
 
 import logo from "@/assets/global/logo.png";
 import menu from "@/assets/global/menu.png";
 import search from "@/assets/global/search.png";
 import arrowRight from "@/assets/global/arrow-right.png";
+import account from "@/assets/global/user.png";
 
 import "./Navigation.css";
 import SearchInput from "@/client-components/navigation/SearchInput";
 
-const Navigation = ({ language }) => {
+const Navigation = ({ language, session }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchInputOpen, setIsSearchInputOpen] = useState(false);
   const [isSignModalOpen, setIsSignModalOpen] = useState(false);
+  const [isAccountModalOpen, setIsAccountModalOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
@@ -27,6 +30,11 @@ const Navigation = ({ language }) => {
   const toggleSignModal = () => {
     setIsSignModalOpen((prev) => !prev);
   };
+
+  const toggleAccountModal = () => {
+    setIsAccountModalOpen((prev) => !prev);
+  };
+
   return (
     <nav className="navigation section-narrow">
       <SignUpModal
@@ -34,23 +42,39 @@ const Navigation = ({ language }) => {
         isSignModalOpen={isSignModalOpen}
         language={language.modal}
       />
+      <AccountModal
+        toggleAccountModal={toggleAccountModal}
+        isAccountModalOpen={isAccountModalOpen}
+        language={language.modal.account}
+      />
       <div className="row1">
         <Link href="/">
           <Image src={logo} width={150} alt="logo" priority />
         </Link>
 
-        <Menu
+        <MenuModal
           toggleMenu={toggleMenu}
           isMenuOpen={isMenuOpen}
           language={language.row1.menu}
           languageSearch={language.searchinput}
         />
-        <button
-          className="signup button-green"
-          onClick={() => toggleSignModal()}
-        >
-          {language.row1.sign}
-        </button>
+        {session ? (
+          <Image
+            src={account}
+            width={28}
+            alt="menu"
+            className="account"
+            onClick={() => toggleAccountModal()}
+          />
+        ) : (
+          <button
+            className="signup button-green"
+            onClick={() => toggleSignModal()}
+          >
+            {language.row1.sign}
+          </button>
+        )}
+
         <Image src={menu} width={28} alt="menu" onClick={() => toggleMenu()} />
       </div>
       <div className="row2">

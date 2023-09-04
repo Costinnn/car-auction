@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { signIn } from "next-auth/react";
 import axios from "axios";
 
@@ -57,7 +56,7 @@ const SignUpModal = ({ toggleSignModal, isSignModalOpen, language }) => {
           email,
           password,
           redirect: false,
-          callbackUrl: "/",
+          callbackUrl: "/serverpage",
         });
 
         if (res.error) {
@@ -73,13 +72,13 @@ const SignUpModal = ({ toggleSignModal, isSignModalOpen, language }) => {
       try {
         const res = await axios.post(`/api/register`, {
           email,
-          username,
+          name: username,
           password,
         });
-        if (res.ok) {
+        if (res.data.id) {
           console.log(res);
         } else {
-          console.log("Fetch didn't worked",res);
+          console.log("Fetch didn't worked", res);
         }
       } catch (err) {
         console.log(err);

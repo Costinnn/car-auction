@@ -12,10 +12,10 @@
     padding: 5px 10px;
   }
   > .row1 {
-    
-    .signup {
+    .signup,
+    .account {
       margin-left: auto;
-      margin-right: 15px;
+      margin-right: 20px;
     }
   }
   > .row2 {
@@ -31,7 +31,7 @@
       }
       > .sellcar {
         margin-left: auto;
-        margin-right: 15px;
+        margin-right: 20px;
       }
     }
     > .search-input {
