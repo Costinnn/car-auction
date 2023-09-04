@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 
 import { getLanguage } from "@/lib/getLanguage";
 
+import AuthProvider from "@/lib/AuthProvider";
 import Navigation from "@/components/global/Navigation";
 import Footer from "@/components/global/Footer";
 
@@ -27,9 +28,11 @@ export default async function RootLayout({ children, params }) {
   return (
     <html lang={params.lang}>
       <body className={`app ${poppins.variable}`}>
-        <Navigation language={language.navigation} />
-        {children}
-        {/* <Footer /> */}
+        <AuthProvider>
+          <Navigation language={language.navigation} />
+          {children}
+          {/* <Footer /> */}
+        </AuthProvider>
       </body>
     </html>
   );

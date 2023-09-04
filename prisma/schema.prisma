@@ -1,0 +1,109 @@
+datasource db {
+  url      = env("DATABASE_URL")
+  provider = "mongodb"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// authentication
+model Account {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  userId             String   @db.ObjectId
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?  @db.String
+  access_token       String?  @db.String
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?  @db.String
+  session_state      String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  sessionToken String @unique
+  userId String @db.ObjectId
+  expires DateTime
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// own models
+model User {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  username String @unique
+  image String?
+  email String @unique
+  emailVerified DateTime?
+  hashedPassword String
+  createdAt DateTime @default(now())
+  accounts      Account[]
+  sessions      Session[]
+
+  bids Bid[]
+  carPosts CarPost[]
+}
+
+model CarPost{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  images String[]
+  title String
+  brand String
+  model String
+  mileage String
+  vin String
+  engine String
+  drivetrain String
+  transmission String
+  category String
+  titleStatus String
+  location String
+  description String
+  modifications String
+  flaws String
+
+  buyNow String?
+  minimumBid String?
+  currentBid Bid? @relation("currentBid")
+  bids Bid[] @relation("bids")
+  views Int[]
+
+  sellerId String @db.ObjectId
+  seller User @relation(fields: [sellerId], references: [id])
+  sellerType String
+
+  isActive Boolean @default(true)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
+model Bid{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  bidValue Int
+  createdAt DateTime @default(now())
+
+  bidderId String @db.ObjectId
+  bidder User @relation(fields: [bidderId], references: [id])
+
+  carPostId String @db.ObjectId
+  carPost CarPost @relation("bids", fields: [carPostId], references: [id])
+
+  currentCarPostId String @db.ObjectId @unique
+  currentBid CarPost @relation("currentBid", fields: [currentCarPostId], references: [id])
+}

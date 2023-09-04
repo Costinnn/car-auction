@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { signIn } from "next-auth/react";
+import axios from "axios";
 
 import close from "@/assets/global/close.png";
 import eye from "@/assets/global/eye.png";
@@ -46,8 +48,43 @@ const SignUpModal = ({ toggleSignModal, isSignModalOpen, language }) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (isSignIn) {
+      // User want to sign in
+      try {
+        const res = await signIn("credentials", {
+          email,
+          password,
+          redirect: false,
+          callbackUrl: "/",
+        });
+
+        if (res.error) {
+          console.log(res.error);
+        } else {
+          console.log(res);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    } else if (!isSignIn) {
+      // User want to sign up
+      try {
+        const res = await axios.post(`/api/register`, {
+          email,
+          username,
+          password,
+        });
+        if (res.ok) {
+          console.log(res);
+        } else {
+          console.log("Fetch didn't worked",res);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
   };
   return (
     <div className={`signup-modal ${isSignModalOpen ? "open" : "close"}`}>

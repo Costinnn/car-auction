@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+// import { getSession } from "./lib/getSession";
 
 let locales = ["en", "ro"];
 let defaultLocale = "en";
@@ -14,9 +15,6 @@ export function middleware(request) {
   // Redirect if there is no /lang/ in url
   if (pathnameIsMissingLang) {
     const locale = defaultLocale;
-
-    // e.g. incoming request is /products
-    // The new URL is now /en-US/products
     return NextResponse.redirect(
       new URL(`/${locale}/${pathname}`, request.url)
     );
