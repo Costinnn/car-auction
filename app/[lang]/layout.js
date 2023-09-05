@@ -33,7 +33,7 @@ export default async function RootLayout({ children, params }) {
     <html lang={params.lang}>
       <body className={`app ${poppins.variable}`}>
         <AuthProvider>
-          <Navigation language={language.navigation} session={session} />
+          <Navigation language={language.navigation} session={session} langParam={params.lang}/>
           {children}
           {/* <Footer /> */}
         </AuthProvider>

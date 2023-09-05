@@ -1,45 +1,63 @@
-.row3 {
-  .category,
-  .brand,
-  .years {
-    position: relative;
-    .dropdown {
-      position: absolute;
-      background-color: var(--whiteish);
-      padding: 10px;
-      border-radius: 10px;
-      left: 0;
-      top: 40px;
-      max-height: 500px;
-      overflow: hidden;
-      overflow-y: scroll;
-      > li {
-        padding: 5px 0;
-        font-size: 14px;
-        font-weight: 600;
-        color: var(--medium-gray);
+.nav-filter {
+  .row1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    .category,
+    .brand,
+    .years {
+      position: relative;
+      .dropdown {
+        position: absolute;
+        z-index: 2;
+        background-color: var(--whiteish);
+        padding: 10px;
+        border-radius: 10px;
+        left: 0;
+        top: 40px;
+        max-height: 500px;
+        overflow: hidden;
+        overflow-y: scroll;
+        > li {
+          padding: 5px 0;
+          font-size: 14px;
+          font-weight: 600;
+          color: var(--medium-gray);
+        }
+        > span {
+          display: block;
+          margin: 10px 0;
+        }
       }
-      > span {
-        display: block;
-        margin: 10px 0;
-      }
-    }
 
-    .open {
-      display: block;
+      .open {
+        display: block;
+      }
+      .close {
+        display: none;
+      }
+      .button-empty {
+        white-space: nowrap;
+      }
     }
-    .close {
-      display: none;
-    }
-    .button-empty {
-      white-space: nowrap;
+    .years {
+      .dropdown {
+        > span {
+          text-align: center;
+        }
+      }
     }
   }
-  .years {
-    .dropdown {
-      > span {
-        text-align: center;
-      }
+  .row2 {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    justify-content: space-around;
+    > a {
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--medium-gray);
     }
   }
 }

@@ -8,7 +8,7 @@
   --dark-gray: #262626;
   --rust: #ba3f1d;
   --green: #4ad493;
-  --whiteish: #F1F6F7;
+  --whiteish: #f1f6f7;
 }
 
 * {
@@ -20,7 +20,11 @@
 
 .app {
   width: calc(100vw - (100vw - 100%));
-  overflow: hidden;
+  overflow-x: hidden;
+}
+main {
+  /* margin for navigation */
+  margin-top: 104px;
 }
 
 li {

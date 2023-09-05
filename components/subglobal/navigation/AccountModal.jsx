@@ -8,7 +8,12 @@ import close from "@/assets/global/close.png";
 
 import "./AccountModal.css";
 
-const AccountModal = ({ toggleAccountModal, isAccountModalOpen, language }) => {
+const AccountModal = ({
+  toggleAccountModal,
+  isAccountModalOpen,
+  language,
+  langParam,
+}) => {
   return (
     <div className={`account-modal ${isAccountModalOpen ? "open" : "close"}`}>
       <div className="row1">
@@ -23,27 +28,42 @@ const AccountModal = ({ toggleAccountModal, isAccountModalOpen, language }) => {
       </div>
       <ul>
         <li>
-          <Link href="/" onClick={() => toggleAccountModal()}>
-            {language.mylistings}
+          <Link
+            href={`/${langParam}/listings`}
+            onClick={() => toggleAccountModal()}
+          >
+            {language.mylisting}
           </Link>
         </li>
         <li>
-          <Link href="/" onClick={() => toggleAccountModal()}>
+          <Link
+            href={`/${langParam}/listings`}
+            onClick={() => toggleAccountModal()}
+          >
             {language.bidded}
           </Link>
         </li>
         <li>
-          <Link href="/" onClick={() => toggleAccountModal()}>
+          <Link
+            href={`/${langParam}/listings`}
+            onClick={() => toggleAccountModal()}
+          >
             {language.saved}
           </Link>
         </li>
         <li>
-          <Link href="/" onClick={() => toggleAccountModal()}>
+          <Link
+            href={`/${langParam}/account`}
+            onClick={() => toggleAccountModal()}
+          >
             {language.profile}
           </Link>
         </li>
         <li>
-          <Link href="/" onClick={() => toggleAccountModal()}>
+          <Link
+            href={`/${langParam}/account`}
+            onClick={() => toggleAccountModal()}
+          >
             {language.settings}
           </Link>
         </li>

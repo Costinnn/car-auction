@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import NavFilter from "../subglobal/navigation/NavFilter";
 import MenuModal from "../subglobal/navigation/MenuModal";
 import SignUpModal from "../subglobal/navigation/SignUpModal";
 import AccountModal from "../subglobal/navigation/AccountModal";
@@ -17,7 +16,7 @@ import account from "@/assets/global/user.png";
 import "./Navigation.css";
 import SearchInput from "@/client-components/navigation/SearchInput";
 
-const Navigation = ({ language, session }) => {
+const Navigation = ({ language, session, langParam }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchInputOpen, setIsSearchInputOpen] = useState(false);
   const [isSignModalOpen, setIsSignModalOpen] = useState(false);
@@ -46,9 +45,10 @@ const Navigation = ({ language, session }) => {
         toggleAccountModal={toggleAccountModal}
         isAccountModalOpen={isAccountModalOpen}
         language={language.modal.account}
+        langParam={langParam}
       />
       <div className="row1">
-        <Link href="/">
+        <Link href={`/${langParam}`}>
           <Image src={logo} width={150} alt="logo" priority />
         </Link>
 
@@ -57,6 +57,7 @@ const Navigation = ({ language, session }) => {
           isMenuOpen={isMenuOpen}
           language={language.row1.menu}
           languageSearch={language.searchinput}
+          langParam={langParam}
         />
         {session ? (
           <Image
@@ -79,11 +80,11 @@ const Navigation = ({ language, session }) => {
       </div>
       <div className="row2">
         <div>
-          <Link href="/">
+          <Link href={`/${langParam}/news`} className="auctions-link">
             {language.row2.auctions}
             <Image src={arrowRight} width={10} alt="arrow-right" />
           </Link>
-          <button className="sellcar button-blue">{language.row2.sell}</button>
+          <Link href={`/${langParam}/add-post`} className="sellcar button-blue">{language.row2.sell}</Link>
           <Image
             src={search}
             width={28}
@@ -92,13 +93,6 @@ const Navigation = ({ language, session }) => {
           />
         </div>
         {isSearchInputOpen && <SearchInput language={language.searchinput} />}
-      </div>
-      <NavFilter language={language.row3} />
-      <div className="row4">
-        <Link href="/">{language.row4.new}</Link>
-        <Link href="/">{language.row4.ending}</Link>
-        <Link href="/">{language.row4.trending}</Link>
-        <Link href="/">{language.row4.ended}</Link>
       </div>
     </nav>
   );

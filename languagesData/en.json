@@ -16,32 +16,7 @@
       "auctions": "Auctions",
       "sell": "Sell a car"
     },
-    "row3": {
-      "category": {
-        "title": "Category",
-        "all": "All",
-        "atv": "ATV",
-        "coupe": "Coupe",
-        "convertible": "Convertible",
-        "hatchback": "Hatchback",
-        "motorcycle": "Motorcycle",
-        "sedan": "Sedan",
-        "suv": "SUV/Crossover",
-        "truck": "Truck",
-        "van": "Van",
-        "wagon": "Wagon"
-      },
-      "brand": {
-        "title": "Brand"
-      },
-      "years": { "title": "Years", "to": "-" }
-    },
-    "row4": {
-      "new": "Newly listed",
-      "ending": "Ending soon",
-      "trending": "Trending",
-      "ended": "Ended"
-    },
+
     "searchinput": "Search for cars (ex. BMW, Mercedes)",
     "modal": {
       "signin": {
@@ -72,6 +47,26 @@
         "settings": "Settings"
       }
     }
+  },
+  "listingsfilter": {
+    "categorytitle": "Category",
+    "all": "All",
+    "atv": "ATV",
+    "coupe": "Coupe",
+    "convertible": "Convertible",
+    "hatchback": "Hatchback",
+    "motorcycle": "Motorcycle",
+    "sedan": "Sedan",
+    "suv": "SUV/Crossover",
+    "truck": "Truck",
+    "van": "Van",
+    "wagon": "Wagon",
+    "brandtitle": "Brand",
+    "yearstitle": "Years",
+    "new": "Newly listed",
+    "ending": "Ending soon",
+    "trending": "Trending",
+    "ended": "Ended"
   },
   "pages": {
     "home": {

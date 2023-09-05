@@ -4,7 +4,7 @@
       "sign": "Autentificare",
       "menu": {
         "title": "Meniu",
-        "changelanguage":"Schimba limba",
+        "changelanguage": "Schimba limba",
         "account": "Cont",
         "auctions": "Licitatii",
         "upcoming": "Licitatii urmatoare",
@@ -16,32 +16,7 @@
       "auctions": "Licitatii",
       "sell": "Vinde o masina"
     },
-    "row3": {
-      "category": {
-        "title": "Categorii",
-        "all": "Toate",
-        "atv": "ATV",
-        "coupe": "Coupe",
-        "convertible": "Decapotabila",
-        "hatchback": "Hatchback",
-        "motorcycle": "Motociclete",
-        "sedan": "Berlina",
-        "suv": "SUV/Crossover",
-        "truck": "Pick-up",
-        "van": "Dube",
-        "wagon": "Break"
-      },
-      "brand": {
-        "title": "Marca"
-      },
-      "years": { "title": "Ani", "to": "-" }
-    },
-    "row4": {
-      "new": "Nou listate",
-      "ending": "Pe final",
-      "trending": "In tendinte",
-      "ended": "Incheiate"
-    },
+
     "searchinput": "Cauta masini (ex. BMW, Mercedes)",
     "modal": {
       "signin": {
@@ -64,7 +39,7 @@
       },
       "account": {
         "title": "Cont",
-        "signout":"Iesi din cont",
+        "signout": "Iesi din cont",
         "mylisting": "Anunturile mele",
         "bidded": "Licitari",
         "saved": "Anunturi salvate",
@@ -72,6 +47,26 @@
         "settings": "Setari"
       }
     }
+  },
+  "listingsfilter": {
+    "categorytitle": "Categorii",
+    "all": "Toate",
+    "atv": "ATV",
+    "coupe": "Coupe",
+    "convertible": "Decapotabila",
+    "hatchback": "Hatchback",
+    "motorcycle": "Motociclete",
+    "sedan": "Berlina",
+    "suv": "SUV/Crossover",
+    "truck": "Pick-up",
+    "van": "Dube",
+    "wagon": "Break",
+    "brandtitle": "Marca",
+    "yearstitle": "Ani",
+    "new": "Nou listate",
+    "ending": "Pe final",
+    "trending": "In tendinte",
+    "ended": "Incheiate"
   },
   "pages": {
     "home": {

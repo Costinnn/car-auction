@@ -13,7 +13,13 @@ import ro from "@/assets/global/romanian.png";
 
 import "./MenuModal.css";
 
-const MenuModal = ({ toggleMenu, isMenuOpen, language, languageSearch }) => {
+const MenuModal = ({
+  toggleMenu,
+  isMenuOpen,
+  language,
+  languageSearch,
+  langParam,
+}) => {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -50,27 +56,27 @@ const MenuModal = ({ toggleMenu, isMenuOpen, language, languageSearch }) => {
       <SearchInput language={languageSearch} />
       <ul>
         <li>
-          <Link href="/" onClick={() => toggleMenu()}>
+          <Link href={`/${langParam}/account`} onClick={() => toggleMenu()}>
             {language.account}
           </Link>
         </li>
         <li>
-          <Link href="/" onClick={() => toggleMenu()}>
+          <Link href={`/${langParam}`} onClick={() => toggleMenu()}>
             {language.auctions}
           </Link>
         </li>
         <li>
-          <Link href="/" onClick={() => toggleMenu()}>
-            {language.upcoming}
-          </Link>
-        </li>
-        <li>
-          <Link href="/" onClick={() => toggleMenu()}>
+          <Link href={`/${langParam}/listings`} onClick={() => toggleMenu()}>
             {language.favorites}
           </Link>
         </li>
         <li>
-          <Link href="/" onClick={() => toggleMenu()}>
+          <Link href={`/${langParam}/news`} onClick={() => toggleMenu()}>
+            {language.upcoming}
+          </Link>
+        </li>
+        <li>
+          <Link href={`/${langParam}/news`} onClick={() => toggleMenu()}>
             {language.foryou}
           </Link>
         </li>
