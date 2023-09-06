@@ -13,7 +13,7 @@
       }
     },
     "row2": {
-      "auctions": "Auctions",
+      "news": "What's new",
       "sell": "Sell a car"
     },
 
@@ -68,7 +68,112 @@
     "trending": "Trending",
     "ended": "Ended"
   },
+  "footer": {
+    "box1": {
+      "title": "How it works",
+      "buy": "Buying a Car",
+      "sell": "Selling a Car",
+      "sale": "Finalizing the sale",
+      "faqs": "FAQs"
+    },
+    "box2": {
+      "title": "Helpful links",
+      "support": "Support",
+      "shipping": "Shipping",
+      "inspections": "Inspections",
+      "careers": "Careers"
+    },
+    "box3": { "terms": "Terms of use", "policy": "Privacy policy" }
+  },
+  "whyus": {
+    "box1": {
+      "title": "Why Car Dreams?",
+      "auctions": "Auctions completed",
+      "value": "Value of cars sold",
+      "rate": "Sell-through rate",
+      "members": "Registered members"
+    },
+    "box2": {
+      "title": "Our customers love us!",
+      "name": "Mike H.",
+      "date": "Jun. 2023",
+      "review": "Intuitive website with fast turnaround and legit buyers. This became my preffered way to sell a vehicle that I don't need anymore, or to buy a new car."
+    }
+  },
+  "newsletter": {
+    "title": "Get the Daily Email",
+    "placeholder": "Email address",
+    "button": "Subscribe"
+  },
   "pages": {
+    "account": {
+      "profile": { "date": "September 2023", "button": "Edit profile" },
+      "settings": {
+        "email": {
+          "title": "Email Notifications",
+          "line1": "Send me the Cars Dreamz weekly email",
+          "line2": "Email me when I am outbid"
+        },
+        "notifications": {
+          "title": "Watch List Notifications",
+          "line1": "Notify me 1 hour before the auction ends",
+          "line2": "Notify me when there are new bids",
+          "line3": "Notify me with auction results"
+        }
+      }
+    },
+    "addpost": {
+      "title": "Sell your car with us",
+      "message": "Please fill the fields with accurate information about your car. Also, make sure to take good photos, because that is what sells the most.",
+      "addform": {
+        "info": "Your info",
+        "name": "Full name",
+        "phone": "Contact phone number",
+        "details": "Car details",
+        "vin": "VIN",
+        "year": "year",
+        "brand": "Brand",
+        "model": "Model",
+        "transmission": {
+          "title": "Transmission",
+          "manual": "Manual",
+          "automatic": "Automatic"
+        },
+        "gears": { "title": "Gears", "nogear": "No gear/electric" },
+        "drivetrain": {
+          "title": "Drivetrain",
+          "rwd": "Rear-wheel drive",
+          "fwd": "Front-wheel drive",
+          "ffwd": "Four-wheel drive",
+          "awd": "Auto-wheel drive"
+        },
+        "engine": {
+          "capacity": "Engine capacity",
+          "cylinders": "cylinders",
+          "configuration": { "title": "configuration", "inline": "In line" }
+        },
+        "bodystyle": {
+          "title": "Body Style",
+          "atv": "ATV",
+          "coupe": "Coupe",
+          "convertible": "Convertible",
+          "hatchback": "Hatchback",
+          "motorcycle": "Motorcycle",
+          "sedan": "Sedan",
+          "suv": "SUV/Crossover",
+          "truck": "Truck",
+          "van": "Van",
+          "wagon": "Wagon"
+        },
+        "ecolor": "Exterior Color",
+        "icolor": "Interior Color",
+        "location": "Location",
+        "description": "Car description",
+        "modifications": { "title": "Modifications", "button": "Add" },
+        "flaws": { "title": "Known flaws", "button": "Add" },
+        "button": "Add post"
+      }
+    },
     "home": {
       "title": "This title is in english"
     }

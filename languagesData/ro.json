@@ -13,7 +13,7 @@
       }
     },
     "row2": {
-      "auctions": "Licitatii",
+      "news": "Noutati",
       "sell": "Vinde o masina"
     },
 
@@ -68,7 +68,115 @@
     "trending": "In tendinte",
     "ended": "Incheiate"
   },
+  "footer": {
+    "box1": {
+      "title": "Procesul de a",
+      "buy": "Cumpara o masina",
+      "sell": "Vinde o masina",
+      "sale": "Finaliza vanzarea",
+      "faqs": "FAQs"
+    },
+    "box2": {
+      "title": "Link-uri utile",
+      "support": "Suport",
+      "shipping": "Livrare",
+      "inspections": "Inspectii",
+      "careers": "Cariere"
+    },
+    "box3": {
+      "terms": "Termeni si conditii",
+      "policy": "Politica de confidentialitate"
+    }
+  },
+  "whyus": {
+    "box1": {
+      "title": "De ce Car Dreams?",
+      "auctions": "Licitatii realizate",
+      "value": "Valoarea vehiculelor vandute",
+      "rate": "Rata vanzarilor incheiate",
+      "members": "Membri inregistrati"
+    },
+    "box2": {
+      "title": "Clientii ne apreciaza!",
+      "name": "Mike H.",
+      "date": "Iun. 2023",
+      "review": "Website intuitiv cu procesare rapidă și cumpărători legitimi. Aceasta a devenit modalitatea mea preferată de a vinde un vehicul de care nu mai am nevoie sau de a cumpăra o mașină nouă."
+    }
+  },
+  "newsletter": {
+    "title": "Obtine noutati zilnice",
+    "placeholder": "Adresa de email",
+    "button": "Abonare"
+  },
   "pages": {
+    "account": {
+      "profile": { "date": "Septembrie 2023", "button": "Editeaza profilul" },
+      "settings": {
+        "email": {
+          "title": "Notificari prin Email",
+          "line1": "Vreau email-ul saptamanal Cars Dreamz",
+          "line2": "Vreau email cand sunt supralicitat"
+        },
+        "notifications": {
+          "title": "Notificari pentru lista de urmarire",
+          "line1": "Notifica-ma cu o ora inainte sa se incheie licitatia",
+          "line2": "Notifica-ma cand sunt licitatii noi",
+          "line3": "Notifica-ma cu rezultatele licitatiei"
+        }
+      }
+    },
+    "addpost": {
+      "title": "Vinde masina cu noi",
+      "message": "Completeaza campurile cu informatii relevante referitoare la masina ta. Totodata, adauga poze de calitate, deoarece acestea vand cel mai mult.",
+      "addform": {
+        "info": "Detaliile tale",
+        "name": "Nume complet",
+        "phone": "Telefon",
+        "details": "Detaliile masinii",
+        "vin": "VIN",
+        "year": "An",
+        "brand": "Marca",
+        "model": "Model",
+        "transmission": {
+          "title": "Transmisie",
+          "manual": "Manuala",
+          "automatic": "Automata"
+        },
+        "gears": { "title": "Viteze", "nogear": "Fara viteze/electric" },
+        "drivetrain": {
+          "title": "Tractiunea",
+          "rwd": "Tractiune spate",
+          "fwd": "Tractiune fata",
+          "ffwd": "Tractiune fata-spate",
+          "awd": "Tractiune auto"
+        },
+        "engine": {
+          "capacity": "Capacitatea motorului",
+          "cylinders": "cilindri",
+          "configuration": { "title": "configurare", "inline": "In linie" }
+        },
+        "bodystyle": {
+          "title": "Categorie",
+          "atv": "ATV",
+          "coupe": "Coupe",
+          "convertible": "Decapotabila",
+          "hatchback": "Hatchback",
+          "motorcycle": "Motocicleta",
+          "sedan": "Berlina",
+          "suv": "SUV/Crossover",
+          "truck": "Pick-up",
+          "van": "Duba",
+          "wagon": "Break"
+        },
+        "ecolor": "Culoare exterioara",
+        "icolor": "Culoare interioara",
+        "location": "Locatie",
+        "description": "Descrierea masinii",
+        "modifications": { "title": "Modificari", "button": "Adauga" },
+        "flaws": { "title": "Defecte cunoscute", "button": "Adauga" },
+        "button": "Adauga anunt"
+      }
+    },
     "home": {
       "title": "Acest titlu e in romana"
     }

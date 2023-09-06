@@ -81,7 +81,7 @@ const Navigation = ({ language, session, langParam }) => {
       <div className="row2">
         <div>
           <Link href={`/${langParam}/news`} className="auctions-link">
-            {language.row2.auctions}
+            {language.row2.news}
             <Image src={arrowRight} width={10} alt="arrow-right" />
           </Link>
           <Link href={`/${langParam}/add-post`} className="sellcar button-blue">{language.row2.sell}</Link>

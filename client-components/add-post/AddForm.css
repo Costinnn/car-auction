@@ -1,0 +1,121 @@
+.add-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: var(--mediumlight-gray);
+  > h2 {
+    margin-top: 30px;
+  }
+  > h2::before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 18px;
+    margin-right: 2px;
+    background-color: var(--medium-blue);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  > label {
+    color: var(--dark-gray);
+    margin-top: 20px;
+    font-size: 15px;
+  }
+  > input,
+  select {
+    border: 1px solid var(--light-gray);
+    color: var(--dark-gray);
+    outline: none;
+    border-radius: 8px;
+    padding: 8px 10px;
+    margin-top: 5px;
+    width: 100%;
+  }
+  > textarea {
+    resize: none;
+    border: 1px solid var(--light-gray);
+    color: var(--dark-gray);
+    outline: none;
+    border-radius: 8px;
+    padding: 8px 10px;
+    margin-top: 5px;
+    width: 100%;
+  }
+  .small-input {
+    width: auto;
+  }
+  .group1 {
+    margin-top: 20px;
+    > label {
+      color: var(--dark-gray);
+      font-size: 15px;
+    }
+    > div {
+      > input {
+        border: 1px solid var(--light-gray);
+        color: var(--dark-gray);
+        outline: none;
+        border-radius: 8px;
+        padding: 8px 10px;
+        margin-top: 5px;
+        margin-right: 20px;
+      }
+    }
+  }
+  .group2 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
+    > div {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      > label {
+        color: var(--dark-gray);
+        font-size: 15px;
+      }
+      > input {
+        border: 1px solid var(--light-gray);
+        color: var(--dark-gray);
+        outline: none;
+        border-radius: 8px;
+        padding: 8px 10px;
+        margin-top: 5px;
+        width: 100%;
+      }
+    }
+  }
+  .group3 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
+    > div {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      > label {
+        color: var(--dark-gray);
+        font-size: 15px;
+      }
+      > input {
+        border: 1px solid var(--light-gray);
+        color: var(--dark-gray);
+        outline: none;
+        border-radius: 8px;
+        padding: 8px 10px;
+        margin-top: 5px;
+        width: 100%;
+      }
+    }
+  }
+  .button-blue {
+    margin: 30px 0;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+  }
+}

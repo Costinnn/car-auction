@@ -1,0 +1,45 @@
+.account-page {
+  .profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    > div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+      .name {
+        font-weight: 700;
+      }
+      .date {
+        font-size: 13px;
+        color: var(--light-gray);
+      }
+      .bio {
+        font-size: 14px;
+      }
+    }
+    .button-empty {
+      margin-top: 20px;
+    }
+  }
+  .settings {
+    margin-top: 20px;
+    padding: 0 10px;
+    > ul {
+      > h2 {
+        font-size: 18px;
+        margin-top: 20px;
+      }
+      > li {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 10px;
+        font-size: 15px;
+      }
+    }
+  }
+}

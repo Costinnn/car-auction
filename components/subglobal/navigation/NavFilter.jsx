@@ -239,9 +239,7 @@ const NavFilter = ({ language }) => {
                 handleDropdownSelect(e.target.value, null);
               }}
             >
-              <option value="2000" onClick={() => handleDropdownSelect()}>
-                2000
-              </option>
+              <option value="2000">2000</option>
               <option value="2001">2001</option>
               <option value="2002">2002</option>
               <option value="2003">2003</option>

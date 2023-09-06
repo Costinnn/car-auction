@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 5px 10px;
+    width: 100%;
     .category,
     .brand,
     .years {
@@ -37,8 +38,14 @@
       .close {
         display: none;
       }
+      @media screen and (max-width: 330px) {
+        .button-empty {
+          padding: 5px 5px;
+        }
+      }
       .button-empty {
         white-space: nowrap;
+        max-width: 100%;
       }
     }
     .years {
