@@ -189,6 +189,20 @@
         "all": "All photos"
       }
     },
+    "listings": {
+      "navigation": {
+        "mine": "My listings",
+        "bidded": "Bidded listings",
+        "saved": "Saved listings"
+      },
+      "carpostdata": {
+        "bid": "Bid",
+        "location": "Location",
+        "lastbids": "Last bids",
+        "ended": "Ended",
+        "sold": "Sold for"
+      }
+    },
     "home": {
       "title": "This title is in english"
     }

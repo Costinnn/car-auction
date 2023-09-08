@@ -14,7 +14,7 @@ const Navigation = ({ lang, language }) => {
           href={`/${lang}/listings/mine`}
           className={`${params.type === "mine" ? "active" : ""}`}
         >
-          My listings
+          {language.mine}
         </Link>
       </li>
       <li>
@@ -22,7 +22,7 @@ const Navigation = ({ lang, language }) => {
           href={`/${lang}/listings/bidded`}
           className={`${params.type === "bidded" ? "active" : ""}`}
         >
-          Bidded listings
+          {language.bidded}
         </Link>
       </li>
       <li>
@@ -30,7 +30,7 @@ const Navigation = ({ lang, language }) => {
           href={`/${lang}/listings/saved`}
           className={`${params.type === "saved" ? "active" : ""}`}
         >
-          Saved listings
+          {language.saved}
         </Link>
       </li>
     </ul>

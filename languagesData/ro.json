@@ -192,6 +192,20 @@
         "all": "Toate pozele"
       }
     },
+    "listings": {
+      "navigation": {
+        "mine": "Licitatiile mele",
+        "bidded": "Anunturi licitate",
+        "saved": "Licitatii salvate"
+      },
+      "carpostdata": {
+        "bid": "Licitat",
+        "location": "Locatie",
+        "lastbids": "Ultimele licitari",
+        "ended": "Incheiat",
+        "sold": "Vanduta cu"
+      }
+    },
     "home": {
       "title": "Acest titlu e in romana"
     }

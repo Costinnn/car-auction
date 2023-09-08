@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { signIn } from "next-auth/react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 import close from "@/assets/global/close.png";
 import eye from "@/assets/global/eye.png";
@@ -11,11 +12,12 @@ import eye from "@/assets/global/eye.png";
 import "./SignUpModal.css";
 
 const SignUpModal = ({ toggleSignModal, isSignModalOpen, language }) => {
+  const router = useRouter();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cpassword, setCpassword] = useState("");
-  const [isSignIn, setIsSignIn] = useState(true);
+  const [isSignInUp, setIsSignInUp] = useState(true);
   const [activeLabel, setActiveLabel] = useState({
     username: false,
     email: false,
@@ -28,7 +30,7 @@ const SignUpModal = ({ toggleSignModal, isSignModalOpen, language }) => {
   });
 
   const toggleSignIn = () => {
-    setIsSignIn((prev) => !prev);
+    setIsSignInUp((prev) => !prev);
   };
   const toggleVisiblePassword = (labelName) => {
     setIsPasswordVisible((prev) => ({
@@ -49,7 +51,7 @@ const SignUpModal = ({ toggleSignModal, isSignModalOpen, language }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isSignIn) {
+    if (isSignInUp) {
       // User want to sign in
       try {
         const res = await signIn("credentials", {
@@ -62,12 +64,14 @@ const SignUpModal = ({ toggleSignModal, isSignModalOpen, language }) => {
         if (res.error) {
           console.log(res.error);
         } else {
+          router.refresh();
+          toggleSignModal();
           console.log(res);
         }
       } catch (err) {
         console.log(err);
       }
-    } else if (!isSignIn) {
+    } else if (!isSignInUp) {
       // User want to sign up
       try {
         const res = await axios.post(`/api/register`, {
@@ -95,19 +99,19 @@ const SignUpModal = ({ toggleSignModal, isSignModalOpen, language }) => {
           className="close-btn"
           onClick={() => toggleSignModal()}
         />
-        <h3>{isSignIn ? language.signin.title : language.signup.title}</h3>
+        <h3>{isSignInUp ? language.signin.title : language.signup.title}</h3>
         <p>
-          {isSignIn
+          {isSignInUp
             ? language.signin.changemodal1
             : language.signup.changemodal1}
           <span onClick={toggleSignIn}>
-            {isSignIn
+            {isSignInUp
               ? language.signin.changemodal2
               : language.signup.changemodal2}
           </span>
         </p>
         <form onSubmit={handleSubmit}>
-          {isSignIn ? (
+          {isSignInUp ? (
             ""
           ) : (
             <div>
@@ -169,7 +173,7 @@ const SignUpModal = ({ toggleSignModal, isSignModalOpen, language }) => {
               onClick={() => toggleVisiblePassword("vpassword")}
             />
           </div>
-          {isSignIn ? (
+          {isSignInUp ? (
             ""
           ) : (
             <div>
@@ -200,7 +204,7 @@ const SignUpModal = ({ toggleSignModal, isSignModalOpen, language }) => {
           )}
 
           <button className="button-green">
-            {isSignIn ? language.signin.button : language.signup.button}
+            {isSignInUp ? language.signin.button : language.signup.button}
           </button>
         </form>
       </div>

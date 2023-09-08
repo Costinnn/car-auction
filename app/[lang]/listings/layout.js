@@ -10,7 +10,10 @@ const ListingsLayout = async ({ children, params }) => {
 
   return (
     <main className="listings-page">
-      <Navigation lang={params.lang} language={language.pages.listings} />
+      <Navigation
+        lang={params.lang}
+        language={language.pages.listings.navigation}
+      />
       {children}
     </main>
   );

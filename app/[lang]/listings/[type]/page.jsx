@@ -9,7 +9,7 @@ const page = async ({ params }) => {
 
   return (
     <div>
-      <CarPostData language={language.listingsfilter.carpost} />
+      <CarPostData language={language.pages.listings.carpostdata} />
     </div>
   );
 };
