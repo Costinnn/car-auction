@@ -1,0 +1,20 @@
+.content {
+  > dl {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    > dt,
+    dd {
+      padding: 10px 10px;
+      font-size: 15px;
+      color: var(--medium-gray);
+    }
+    > dt {
+      border-bottom: 2px solid var(--mediumlight-gray);
+      border-right: 2px solid var(--mediumlight-gray);
+      font-weight: 600;
+    }
+    > dd {
+      border-bottom: 2px solid var(--mediumlight-gray);
+    }
+  }
+}

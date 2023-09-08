@@ -138,6 +138,7 @@
       "message": "Completeaza campurile cu informatii relevante referitoare la masina ta. Totodata, adauga poze de calitate, deoarece acestea vand cel mai mult.",
       "addform": {
         "info": "Detaliile tale",
+        "seller": "Vanzator",
         "name": "Nume complet",
         "phone": "Telefon",
         "details": "Detaliile masinii",
@@ -145,6 +146,7 @@
         "year": "An",
         "brand": "Marca",
         "model": "Model",
+        "mileage": "Kilometraj",
         "transmission": {
           "title": "Transmisie",
           "manual": "Manuala",
@@ -159,6 +161,7 @@
           "awd": "Tractiune auto"
         },
         "engine": {
+          "title": "Motor",
           "capacity": "Capacitatea motorului",
           "cylinders": "cilindri",
           "configuration": { "title": "configurare", "inline": "In linie" }
@@ -190,7 +193,8 @@
         "exterior": "Exterior",
         "interior": "Interior",
         "all": "Toate pozele"
-      }
+      },
+      "bidbar": { "bid": "Licitat", "button": "Liciteaza" }
     },
     "listings": {
       "navigation": {

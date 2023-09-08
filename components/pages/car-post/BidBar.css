@@ -1,0 +1,40 @@
+.bidbar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+  padding: 0 10px;
+  margin: 20px 0;
+
+  .bid-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
+    border-radius: 10px;
+    background-color: var(--dark-gray);
+    color: var(--whiteish);
+    .clock,
+    .value {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 10px 10px;
+      > span:last-of-type {
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
+    }
+    .value {
+      > span:first-of-type {
+        color: var(--light-gray);
+      }
+    }
+  }
+  .button-green {
+    width: 65px;
+    padding: 10px 10px;
+    font-size: 15px;
+  }
+}

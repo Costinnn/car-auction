@@ -135,13 +135,15 @@
       "message": "Please fill the fields with accurate information about your car. Also, make sure to take good photos, because that is what sells the most.",
       "addform": {
         "info": "Your info",
+        "seller": "Seller",
         "name": "Full name",
         "phone": "Contact phone number",
         "details": "Car details",
         "vin": "VIN",
-        "year": "year",
+        "year": "Year",
         "brand": "Brand",
         "model": "Model",
+        "mileage": "Mileage",
         "transmission": {
           "title": "Transmission",
           "manual": "Manual",
@@ -156,6 +158,7 @@
           "awd": "Auto-wheel drive"
         },
         "engine": {
+          "title": "Engine",
           "capacity": "Engine capacity",
           "cylinders": "cylinders",
           "configuration": { "title": "configuration", "inline": "In line" }
@@ -187,7 +190,8 @@
         "exterior": "Exterior",
         "interior": "Interior",
         "all": "All photos"
-      }
+      },
+      "bidbar": { "bid": "Bid", "button": "Bid" }
     },
     "listings": {
       "navigation": {
