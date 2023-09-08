@@ -8,7 +8,7 @@ import arrowDown from "@/assets/global/arrow-down.png";
 
 import "./NavFilter.css";
 
-const NavFilter = ({ language }) => {
+const NavFilter = ({ language, lang }) => {
   const [filters, setFilters] = useState({
     category: { title: language.categorytitle, option: null },
     brand: { title: language.brandtitle, option: null },
@@ -300,10 +300,10 @@ const NavFilter = ({ language }) => {
         </div>
       </div>
       <div className="row2">
-        <Link href="/">{language.new}</Link>
-        <Link href="/">{language.ending}</Link>
-        <Link href="/">{language.trending}</Link>
-        <Link href="/">{language.ended}</Link>
+        <Link href={`/${lang}/`}>{language.new}</Link>
+        <Link href={`/${lang}/`}>{language.ending}</Link>
+        <Link href={`/${lang}/`}>{language.trending}</Link>
+        <Link href={`/${lang}/`}>{language.ended}</Link>
       </div>
     </div>
   );

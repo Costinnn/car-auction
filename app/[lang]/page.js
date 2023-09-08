@@ -11,7 +11,10 @@ export default async function Home({ params }) {
 
   return (
     <main className="section-wide">
-      <ListingsFilter listingsLanguage={language.listingsfilter} />
+      <ListingsFilter
+        listingsLanguage={language.listingsfilter}
+        lang={params.lang}
+      />
       <WhyUs language={language.whyus} />
       <Newsletter language={language.newsletter} />
     </main>

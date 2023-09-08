@@ -16,8 +16,9 @@ import addFavorite from "@/assets/global/add-favorite.png";
 import favorite from "@/assets/global/favorite.png";
 
 import "./CarPost.css";
+import Link from "next/link";
 
-const CarPost = ({ language }) => {
+const CarPost = ({ language, lang }) => {
   return (
     <div className="carpost">
       <div className="frame">
@@ -53,13 +54,15 @@ const CarPost = ({ language }) => {
       </div>
       <div className="text-content">
         <div className="row1">
-          <span className="title">1998 BMW 316i Touring</span>
+          <Link href={`/${lang}/car-post`} className="title">
+            1998 BMW 316i Touring
+          </Link>
           <Image src={addFavorite} alt="img" width={23} height={23} />
         </div>
-        <span className="description">
-          5-speeed Manual, Euro-Spec E36 Wagon
-        </span>
-        <span className="location">{language.location} England</span>
+        <Link href={`/${lang}/car-post`} className="description">
+          5-speeed Manual, Euro-Spec E36 Wagon <br />
+          <span className="location">{language.location} England</span>
+        </Link>
       </div>
     </div>
   );
