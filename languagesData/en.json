@@ -9,6 +9,7 @@
         "auctions": "Auctions",
         "upcoming": "Upcoming listings",
         "favorites": "Favorites",
+        "results": "Results",
         "foryou": "Auctions for you"
       }
     },
@@ -49,6 +50,13 @@
     }
   },
   "listingsfilter": {
+    "carpost": {
+      "bid": "Bid",
+      "location": "Location",
+      "lastbids": "Last Bids",
+      "ended": "Ended",
+      "sold": "Sold for"
+    },
     "categorytitle": "Category",
     "all": "All",
     "atv": "ATV",
@@ -172,6 +180,13 @@
         "modifications": { "title": "Modifications", "button": "Add" },
         "flaws": { "title": "Known flaws", "button": "Add" },
         "button": "Add post"
+      }
+    },
+    "carpost": {
+      "gallery": {
+        "exterior": "Exterior",
+        "interior": "Interior",
+        "all": "All photos"
       }
     },
     "home": {

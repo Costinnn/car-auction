@@ -29,7 +29,7 @@ const AccountModal = ({
       <ul>
         <li>
           <Link
-            href={`/${langParam}/listings`}
+            href={`/${langParam}/listings/mine`}
             onClick={() => toggleAccountModal()}
           >
             {language.mylisting}
@@ -37,7 +37,7 @@ const AccountModal = ({
         </li>
         <li>
           <Link
-            href={`/${langParam}/listings`}
+            href={`/${langParam}/listings/bidded`}
             onClick={() => toggleAccountModal()}
           >
             {language.bidded}
@@ -45,7 +45,7 @@ const AccountModal = ({
         </li>
         <li>
           <Link
-            href={`/${langParam}/listings`}
+            href={`/${langParam}/listings/saved`}
             onClick={() => toggleAccountModal()}
           >
             {language.saved}

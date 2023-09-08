@@ -1,18 +1,16 @@
 import React from "react";
-
 import { getLanguage } from "@/lib/getLanguage";
 
-import Gallery from "@/components/pages/car-post/Gallery";
-
-import "./CarPost.css";
+import CarPostData from "@/components/pages/listings/CarPostData";
 
 const page = async ({ params }) => {
   const language = await getLanguage(params.lang);
+  // check status of the auction, here should be ended
 
   return (
-    <main className="carpost-page">
-      <Gallery language={language.pages.carpost.gallery} />
-    </main>
+    <div>
+      <CarPostData language={language.listingsfilter.carpost} />
+    </div>
   );
 };
 

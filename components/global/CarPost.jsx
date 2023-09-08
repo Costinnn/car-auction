@@ -17,7 +17,7 @@ import favorite from "@/assets/global/favorite.png";
 
 import "./CarPost.css";
 
-const CarPost = () => {
+const CarPost = ({ language }) => {
   return (
     <div className="carpost">
       <div className="frame">
@@ -46,7 +46,7 @@ const CarPost = () => {
           </div>
 
           <div className="bid">
-            <span>Bid </span>
+            <span>{language.bid} </span>
             <span>$38,000</span>
           </div>
         </div>
@@ -56,8 +56,10 @@ const CarPost = () => {
           <span className="title">1998 BMW 316i Touring</span>
           <Image src={addFavorite} alt="img" width={23} height={23} />
         </div>
-        <span className="description">5-speeed Manual, Euro-Spec E36 Wagon</span>
-        <span className="location">Location England</span>
+        <span className="description">
+          5-speeed Manual, Euro-Spec E36 Wagon
+        </span>
+        <span className="location">{language.location} England</span>
       </div>
     </div>
   );

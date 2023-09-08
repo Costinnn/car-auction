@@ -9,6 +9,7 @@
         "auctions": "Licitatii",
         "upcoming": "Licitatii urmatoare",
         "favorites": "Favorite",
+        "results": "Rezultate",
         "foryou": "Licitatii pentru tine"
       }
     },
@@ -49,6 +50,13 @@
     }
   },
   "listingsfilter": {
+    "carpost": {
+      "bid": "Licitat",
+      "location": "Locatie",
+      "lastbids": "Ultimele licitari",
+      "ended": "Incheiat",
+      "sold": "Vanduta cu"
+    },
     "categorytitle": "Categorii",
     "all": "Toate",
     "atv": "ATV",
@@ -175,6 +183,13 @@
         "modifications": { "title": "Modificari", "button": "Adauga" },
         "flaws": { "title": "Defecte cunoscute", "button": "Adauga" },
         "button": "Adauga anunt"
+      }
+    },
+    "carpost": {
+      "gallery": {
+        "exterior": "Exterior",
+        "interior": "Interior",
+        "all": "Toate pozele"
       }
     },
     "home": {

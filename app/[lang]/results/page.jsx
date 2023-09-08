@@ -1,17 +1,12 @@
 import React from "react";
-
+import CarPost from "@/components/global/CarPost";
 import { getLanguage } from "@/lib/getLanguage";
-
-import Gallery from "@/components/pages/car-post/Gallery";
-
-import "./CarPost.css";
 
 const page = async ({ params }) => {
   const language = await getLanguage(params.lang);
-
   return (
-    <main className="carpost-page">
-      <Gallery language={language.pages.carpost.gallery} />
+    <main>
+      <CarPost language={language.listingsfilter.carpost} />
     </main>
   );
 };

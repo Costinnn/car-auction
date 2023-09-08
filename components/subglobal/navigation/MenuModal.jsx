@@ -71,6 +71,11 @@ const MenuModal = ({
           </Link>
         </li>
         <li>
+          <Link href={`/${langParam}/results`} onClick={() => toggleMenu()}>
+            {language.results}
+          </Link>
+        </li>
+        <li>
           <Link href={`/${langParam}/news`} onClick={() => toggleMenu()}>
             {language.upcoming}
           </Link>

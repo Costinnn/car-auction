@@ -6,10 +6,10 @@ const ListingsFilter = ({ listingsLanguage }) => {
   return (
     <>
       <NavFilter language={listingsLanguage} />
-      <CarPost />
-      <CarPost />
-      <CarPost />
-      <CarPost />
+      <CarPost language={listingsLanguage.carpost} />
+      <CarPost language={listingsLanguage.carpost} />
+      <CarPost language={listingsLanguage.carpost} />
+      <CarPost language={listingsLanguage.carpost} />
     </>
   );
 };
