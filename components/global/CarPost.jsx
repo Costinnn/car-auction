@@ -18,25 +18,55 @@ import favorite from "@/assets/global/favorite.png";
 import "./CarPost.css";
 import Link from "next/link";
 
-const CarPost = ({ language, lang }) => {
+const CarPost = ({ language, lang, data }) => {
   return (
     <div className="carpost">
       <div className="frame">
         <Splide aria-label="My Favorite Images">
           <SplideSlide>
-            <Image src={img1} alt="img1" priority />
+            <Image
+              src={data.images[0]}
+              alt="image"
+              priority
+              width={500}
+              height={500}
+            />
           </SplideSlide>
           <SplideSlide>
-            <Image src={img2} alt="img1" />
+            <Image
+              src={data.images[1]}
+              alt="image"
+              priority
+              width={500}
+              height={500}
+            />
           </SplideSlide>
           <SplideSlide>
-            <Image src={img3} alt="img1" />
+            <Image
+              src={data.images[2]}
+              alt="image"
+              priority
+              width={500}
+              height={500}
+            />
           </SplideSlide>
           <SplideSlide>
-            <Image src={img4} alt="img1" />
+            <Image
+              src={data.images[3]}
+              alt="image"
+              priority
+              width={500}
+              height={500}
+            />
           </SplideSlide>
           <SplideSlide>
-            <Image src={img5} alt="img1" />
+            <Image
+              src={data.images[4]}
+              alt="image"
+              priority
+              width={500}
+              height={500}
+            />
           </SplideSlide>
         </Splide>
 
@@ -55,13 +85,17 @@ const CarPost = ({ language, lang }) => {
       <div className="text-content">
         <div className="row1">
           <Link href={`/${lang}/car-post`} className="title">
-            1998 BMW 316i Touring
+            {data.title}
           </Link>
           <Image src={addFavorite} alt="img" width={23} height={23} />
         </div>
         <Link href={`/${lang}/car-post`} className="description">
-          5-speeed Manual, Euro-Spec E36 Wagon <br />
-          <span className="location">{language.location} England</span>
+          {`${data.gears} - ${language.speed} ${data.transmission} ${data.engineCapacity}L ${language.engine}
+          ${data.engineConfiguration}${data.engineCylinders}`}
+          <br />
+          <span className="location">
+            {language.location} {data.location}
+          </span>
         </Link>
       </div>
     </div>

@@ -36,7 +36,6 @@ const AddForm = ({ language }) => {
   const [buyNow, setBuyNow] = useState("");
   const [minimumBid, setMinimumBid] = useState("");
   const [feedback, setFeedback] = useState("");
-
   // COMPONENT FUNCTIONS
   const compressImage = (file) =>
     new Promise((resolve) => {
@@ -201,6 +200,7 @@ const AddForm = ({ language }) => {
         id="name"
         value={name}
         onChange={(e) => setName(e.target.value)}
+        required
       />
 
       {/* search for  letters*/}
@@ -211,6 +211,7 @@ const AddForm = ({ language }) => {
         id="phone"
         value={phone}
         onChange={(e) => setPhone(e.target.value)}
+        required
       />
 
       <h2>{language.details}</h2>
@@ -224,6 +225,7 @@ const AddForm = ({ language }) => {
           multiple
           accept="image/*"
           onChange={uploadImages}
+          required
         />
         {imagesUrl && (
           <div className="img-display">
@@ -258,7 +260,9 @@ const AddForm = ({ language }) => {
         id="brand"
         value={brand}
         onChange={(e) => setBrand(e.target.value)}
+        required
       >
+        <option value="" disabled></option>
         <option value="audi">Audi</option>
         <option value="bmw">BMW</option>
         <option value="chevrolet">Chevrolet</option>
@@ -272,9 +276,9 @@ const AddForm = ({ language }) => {
         <option value="jaguar">Jaguar</option>
         <option value="jeep">Jeep</option>
         <option value="kia">Kia</option>
-        <option value="landrover">Land Rover</option>
+        <option value="land rover">Land Rover</option>
         <option value="lexus">Lexus</option>
-        <option value="mercedes">Mercedes-Benz</option>
+        <option value="mercedes-benz">Mercedes-Benz</option>
         <option value="mitshubishi">Mitsubishi</option>
         <option value="nissan">Nissan</option>
         <option value="opel">Opel</option>
@@ -294,6 +298,7 @@ const AddForm = ({ language }) => {
         id="model"
         value={model}
         onChange={(e) => setModel(e.target.value)}
+        required
       />
 
       <label htmlFor="vin">{language.vin}</label>
@@ -303,6 +308,7 @@ const AddForm = ({ language }) => {
         id="vin"
         value={vin}
         onChange={(e) => setVin(e.target.value)}
+        required
       />
 
       {/* search for  letters*/}
@@ -318,7 +324,9 @@ const AddForm = ({ language }) => {
             className="small-input"
             value={year}
             onChange={(e) => setYear(e.target.value)}
+            required
           >
+            <option value="" disabled></option>
             <option value="2000">2000</option>
             <option value="2001">2001</option>
             <option value="2002">2002</option>
@@ -351,6 +359,7 @@ const AddForm = ({ language }) => {
             max={999999}
             value={mileage}
             onChange={(e) => setMileage(e.target.value)}
+            required
           />
         </div>
       </div>
@@ -366,7 +375,9 @@ const AddForm = ({ language }) => {
             id="transmission"
             value={transmission}
             onChange={(e) => setTransmission(e.target.value)}
+            required
           >
+            <option value="" disabled></option>
             <option value="manual">{language.transmission.manual}</option>
             <option value="automatic">{language.transmission.automatic}</option>
           </select>
@@ -376,7 +387,9 @@ const AddForm = ({ language }) => {
             id="gears"
             value={gears}
             onChange={(e) => setGears(e.target.value)}
+            required
           >
+            <option value="" disabled></option>
             <option value="0">{language.gears.nogear}</option>
             <option value="4">4</option>
             <option value="5">5</option>
@@ -395,7 +408,9 @@ const AddForm = ({ language }) => {
         id="drivetrain"
         value={drivetrain}
         onChange={(e) => setDriveTrain(e.target.value)}
+        required
       >
+        <option value="" disabled></option>
         <option value="rwd">{language.drivetrain.rwd}</option>
         <option value="fwd">{language.drivetrain.fwd}</option>
         <option value="4wd">{language.drivetrain.ffwd}</option>
@@ -417,6 +432,7 @@ const AddForm = ({ language }) => {
             id="capacity"
             value={engineCapacity}
             onChange={(e) => setEngineCapacity(e.target.value)}
+            required
           />
 
           <select
@@ -424,7 +440,9 @@ const AddForm = ({ language }) => {
             id="cylinders"
             value={engineCylinders}
             onChange={(e) => setEngineCylinders(e.target.value)}
+            required
           >
+            <option value="" disabled></option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -442,7 +460,9 @@ const AddForm = ({ language }) => {
             id="configuration"
             value={engineConfiguration}
             onChange={(e) => setEngineConfiguration(e.target.value)}
+            required
           >
+            <option value="" disabled></option>
             <option value="I">{language.engine.configuration.inline}</option>
             <option value="V">V</option>
           </select>
@@ -455,7 +475,9 @@ const AddForm = ({ language }) => {
         id="body"
         value={category}
         onChange={(e) => setCategory(e.target.value)}
+        required
       >
+        <option value="" disabled></option>
         <option value="atv">{language.bodystyle.atv}</option>
         <option value="coupe">{language.bodystyle.coupe}</option>
         <option value="convertible">{language.bodystyle.convertible}</option>
@@ -480,6 +502,7 @@ const AddForm = ({ language }) => {
             id="ecolor"
             value={eColor}
             onChange={(e) => setEColor(e.target.value)}
+            required
           />
 
           <input
@@ -488,6 +511,7 @@ const AddForm = ({ language }) => {
             id="icolor"
             value={iColor}
             onChange={(e) => setIColor(e.target.value)}
+            required
           />
         </div>
       </div>
@@ -498,6 +522,7 @@ const AddForm = ({ language }) => {
         id="location"
         value={location}
         onChange={(e) => setLocation(e.target.value)}
+        required
       />
 
       <label htmlFor="description">{language.description}</label>
@@ -508,6 +533,7 @@ const AddForm = ({ language }) => {
         rows="10"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
+        required
       ></textarea>
       <div className="group1">
         <label htmlFor="modifications">{language.modifications.title}</label>

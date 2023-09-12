@@ -55,7 +55,9 @@
       "location": "Location",
       "lastbids": "Last Bids",
       "ended": "Ended",
-      "sold": "Sold for"
+      "sold": "Sold for",
+      "speed":"Speed",
+      "engine":"Engine"
     },
     "categorytitle": "Category",
     "all": "All",
