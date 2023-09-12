@@ -141,6 +141,7 @@
         "details": "Car details",
         "vin": "VIN",
         "year": "Year",
+        "images": "Add images",
         "brand": "Brand",
         "model": "Model",
         "mileage": "Mileage",
@@ -182,6 +183,8 @@
         "description": "Car description",
         "modifications": { "title": "Modifications", "button": "Add" },
         "flaws": { "title": "Known flaws", "button": "Add" },
+        "minbid": "Minimum bid",
+        "buynow": "Buy now",
         "button": "Add post"
       }
     },

@@ -144,6 +144,7 @@
         "details": "Detaliile masinii",
         "vin": "VIN",
         "year": "An",
+        "images": "Adauga imagini",
         "brand": "Marca",
         "model": "Model",
         "mileage": "Kilometraj",
@@ -185,6 +186,8 @@
         "description": "Descrierea masinii",
         "modifications": { "title": "Modificari", "button": "Adauga" },
         "flaws": { "title": "Defecte cunoscute", "button": "Adauga" },
+        "minbid": "Pret de pornire",
+        "buynow": "Cumpara acum",
         "button": "Adauga anunt"
       }
     },
