@@ -64,7 +64,8 @@ model Carpost {
   id                  String   @id @default(auto()) @map("_id") @db.ObjectId
   name                String
   phone               String
-  images              String[]
+  extImages           String[]
+  intImages           String[]
   title               String
   brand               String
   model               String

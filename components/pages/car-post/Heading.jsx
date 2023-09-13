@@ -6,14 +6,23 @@ import favorite from "@/assets/global/favorite.png";
 
 import "./Heading.css";
 
-const Heading = () => {
+const Heading = ({
+  language,
+  title,
+  gears,
+  transmission,
+  engineCapacity,
+  engineConfiguration,
+  engineCylinders,
+}) => {
   return (
     <div className="heading">
       <div className="row1">
-        <span className="title">1998 BMW 316i Touring</span>
+        <h1 className="title">{title}</h1>
         <Image src={addFavorite} alt="img" width={23} height={23} />
       </div>
-      <span className="description">5-speeed Manual, Euro-Spec E36 Wagon</span>
+      <span className="description">{`${gears}-${language.speed} ${transmission} ${engineCapacity}L ${language.engine}
+          ${engineConfiguration}${engineCylinders}`}</span>
     </div>
   );
 };

@@ -146,7 +146,8 @@
         "details": "Detaliile masinii",
         "vin": "VIN",
         "year": "An",
-        "images": "Adauga imagini",
+        "intimages": "Imagini interioare",
+        "extimages": "Imagini exterioare",
         "brand": "Marca",
         "model": "Model",
         "mileage": "Kilometraj",
@@ -199,7 +200,8 @@
         "interior": "Interior",
         "all": "Toate pozele"
       },
-      "bidbar": { "bid": "Licitat", "button": "Liciteaza" }
+      "bidbar": { "bid": "Licitat", "button": "Liciteaza" },
+      "heading": { "speed": "Viteze", "engine": "Motor" }
     },
     "listings": {
       "navigation": {

@@ -1,4 +1,5 @@
 .content {
+  text-transform: capitalize;
   > dl {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -7,6 +8,9 @@
       padding: 10px 10px;
       font-size: 15px;
       color: var(--medium-gray);
+      > span {
+        text-transform: lowercase;
+      }
     }
     > dt {
       border-bottom: 2px solid var(--mediumlight-gray);
@@ -15,6 +19,55 @@
     }
     > dd {
       border-bottom: 2px solid var(--mediumlight-gray);
+    }
+  }
+  .description {
+    background-color: var(--mediumlight2-gray);
+    margin: 20px 10px 10px 10px;
+    padding: 20px;
+    border-radius: 10px;
+
+    > div {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      > img {
+        border-radius: 50%;
+      }
+      > span {
+        font-weight: 600;
+      }
+    }
+    > p {
+      margin-top: 15px;
+      font-size: 14px;
+      font-style: italic;
+      line-height: 20px;
+    }
+  }
+  .modifications,
+  .flaws {
+    margin: 20px 10px 10px 10px;
+    > h2 {
+      font-size: 17px;
+    }
+    > ul {
+      margin-top: 5px;
+      > li {
+        font-size: 15px;
+        margin-top: 2px;
+        
+      }
+      > li::before {
+        content: "";
+        display: inline-block;
+        width: 5px;
+        height: 10px;
+        margin-right: 5px;
+        background-color: var(--medium-blue);
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+      }
     }
   }
 }

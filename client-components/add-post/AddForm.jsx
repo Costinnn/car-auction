@@ -11,8 +11,10 @@ import axios from "axios";
 const AddForm = ({ language }) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [images, setImages] = useState([]);
-  const [imagesUrl, setImagesUrl] = useState([]);
+  const [intImages, setIntImages] = useState([]);
+  const [extImages, setExtImages] = useState([]);
+  const [intImagesUrl, setIntImagesUrl] = useState([]);
+  const [extImagesUrl, setExtImagesUrl] = useState([]);
   const [brand, setBrand] = useState("");
   const [model, setModel] = useState("");
   const [vin, setVin] = useState("");
@@ -53,53 +55,90 @@ const AddForm = ({ language }) => {
       );
     });
 
-  const addImagesInBase64 = async (fileArr) => {
+  const addImagesInBase64 = async (fileArr, imgType) => {
     // 1. Compress and convert
     for await (let file of fileArr) {
       try {
         const compressedImg = await compressImage(file);
-        setImages((prev) => [...prev, compressedImg]);
+        if (imgType === "int") {
+          setIntImages((prev) => [...prev, compressedImg]);
+        } else if (imgType === "ext") {
+          setExtImages((prev) => [...prev, compressedImg]);
+        }
       } catch (err) {
         console.log(err);
       }
     }
   };
 
-  const createImgUrl = (fileArr) => {
+  const createImgUrl = (fileArr, imgType) => {
     const imagesUrl = [];
     fileArr.forEach((item) => imagesUrl.push(URL.createObjectURL(item)));
-    setImagesUrl((prev) => [...prev, ...imagesUrl]);
-  };
-
-  const uploadImages = async (e) => {
-    const selectedImg = [...e.target.files];
-
-    if (images.length >= 30) {
-      alert("Poti adauga maxim 30 poze!");
-    } else if (images.length + selectedImg.length > 30) {
-      const numberFilesToAdd = 30 - images.length;
-      const newSelectedImg = selectedImg.slice(0, numberFilesToAdd);
-      await addImagesInBase64(newSelectedImg);
-      createImgUrl(newSelectedImg);
-    } else {
-      await addImagesInBase64(selectedImg);
-      createImgUrl(selectedImg);
+    if (imgType === "int") {
+      setIntImagesUrl((prev) => [...prev, ...imagesUrl]);
+    } else if (imgType === "ext") {
+      setExtImagesUrl((prev) => [...prev, ...imagesUrl]);
     }
   };
 
-  const deleteImage = (urlToDelete) => {
-    const newImagesUrl = imagesUrl.filter((urlItem, urlIndex) => {
-      if (urlItem !== urlToDelete) return urlItem;
-      if (urlItem === urlToDelete) {
-        // modify images data
-        setImages((prev) =>
-          prev.filter((imgItem, imgIndex) => imgIndex !== urlIndex)
-        );
+  const uploadImages = async (e, imgType) => {
+    if (imgType === "int") {
+      const selectedImg = [...e.target.files];
+      if (intImages.length >= 15) {
+        alert("Poti adauga maxim 15 poze!");
+      } else if (intImages.length + selectedImg.length > 15) {
+        const numberFilesToAdd = 15 - intImages.length;
+        const newSelectedImg = selectedImg.slice(0, numberFilesToAdd);
+        await addImagesInBase64(newSelectedImg, "int");
+        createImgUrl(newSelectedImg, "int");
+      } else {
+        await addImagesInBase64(selectedImg, "int");
+        createImgUrl(selectedImg, "int");
       }
-    });
+    } else if (imgType === "ext") {
+      const selectedImg = [...e.target.files];
+      if (extImages.length >= 15) {
+        alert("Poti adauga maxim 15 poze!");
+      } else if (extImages.length + selectedImg.length > 15) {
+        const numberFilesToAdd = 15 - extImages.length;
+        const newSelectedImg = selectedImg.slice(0, numberFilesToAdd);
+        await addImagesInBase64(newSelectedImg, "ext");
+        createImgUrl(newSelectedImg, "ext");
+      } else {
+        await addImagesInBase64(selectedImg, "ext");
+        createImgUrl(selectedImg, "ext");
+      }
+    }
+  };
 
-    // modify images URL data
-    setImagesUrl(newImagesUrl);
+  const deleteImage = (urlToDelete, imgType) => {
+    if (imgType === "int") {
+      const newImagesUrl = intImagesUrl.filter((urlItem, urlIndex) => {
+        if (urlItem !== urlToDelete) return urlItem;
+        if (urlItem === urlToDelete) {
+          // modify images data
+          setIntImages((prev) =>
+            prev.filter((imgItem, imgIndex) => imgIndex !== urlIndex)
+          );
+        }
+      });
+
+      // modify images URL data
+      setIntImagesUrl(newImagesUrl);
+    } else if (imgType === "ext") {
+      const newImagesUrl = extImagesUrl.filter((urlItem, urlIndex) => {
+        if (urlItem !== urlToDelete) return urlItem;
+        if (urlItem === urlToDelete) {
+          // modify images data
+          setExtImages((prev) =>
+            prev.filter((imgItem, imgIndex) => imgIndex !== urlIndex)
+          );
+        }
+      });
+
+      // modify images URL data
+      setExtImagesUrl(newImagesUrl);
+    }
   };
 
   const handleModifications = () => {
@@ -131,7 +170,8 @@ const AddForm = ({ language }) => {
     const postToAdd = {
       name,
       phone,
-      images,
+      extImages,
+      intImages,
       brand,
       model,
       vin,
@@ -160,8 +200,10 @@ const AddForm = ({ language }) => {
       setFeedback("Listing added with success");
       setName("");
       setPhone("");
-      setImages([]);
-      setImagesUrl([]);
+      setIntImages([]);
+      setExtImages([]);
+      setIntImagesUrl([]);
+      setExtImagesUrl([]);
       setBrand("");
       setModel("");
       setVin("");
@@ -216,21 +258,21 @@ const AddForm = ({ language }) => {
 
       <h2>{language.details}</h2>
 
-      <label htmlFor="addimg">{language.images}</label>
+      <label htmlFor="addeimg">{language.extimages}</label>
       <div className="addimg">
         <input
           type="file"
-          name="addimg"
-          id="addimg"
+          name="addeimg"
+          id="addeimg"
           multiple
           accept="image/*"
-          onChange={uploadImages}
+          onChange={(e) => uploadImages(e, "ext")}
           required
         />
-        {imagesUrl && (
+        {extImagesUrl && (
           <div className="img-display">
             <div className="img-content">
-              {imagesUrl.map((item) => (
+              {extImagesUrl.map((item) => (
                 <div key={item} className="img-box">
                   <Image
                     src={deleteimg}
@@ -238,7 +280,45 @@ const AddForm = ({ language }) => {
                     className="deleteimg"
                     width={23}
                     height={23}
-                    onClick={() => deleteImage(item)}
+                    onClick={() => deleteImage(item, "ext")}
+                  />
+                  <Image
+                    src={item}
+                    alt="img"
+                    className="car-image"
+                    width={80}
+                    height={70}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
+      <label htmlFor="addiimg">{language.intimages}</label>
+      <div className="addimg">
+        <input
+          type="file"
+          name="addiimg"
+          id="addiimg"
+          multiple
+          accept="image/*"
+          onChange={(e) => uploadImages(e, "int")}
+          required
+        />
+        {intImagesUrl && (
+          <div className="img-display">
+            <div className="img-content">
+              {intImagesUrl.map((item) => (
+                <div key={item} className="img-box">
+                  <Image
+                    src={deleteimg}
+                    alt="img"
+                    className="deleteimg"
+                    width={23}
+                    height={23}
+                    onClick={() => deleteImage(item, "int")}
                   />
                   <Image
                     src={item}
