@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 
 import clock from "@/assets/global/clock.png";
@@ -8,7 +8,10 @@ import clock from "@/assets/global/clock.png";
 import "./BidBar.css";
 import CountdownTimer from "@/components/global/CountdownTimer";
 
-const BidBar = ({ language, data }) => {
+const BidBar = ({ language, data, sellerId, userId }) => {
+  const [isShown, setIsShown] = useState(
+    userId === sellerId ? false : !userId || userId !== sellerId ? true : false
+  );
   return (
     <div className="bidbar">
       <div className="bid-info">
@@ -21,7 +24,7 @@ const BidBar = ({ language, data }) => {
           <span>$24.000</span>
         </div>
       </div>
-      <button className="button-green">{language.button}</button>
+      {isShown && <button className="button-green">{language.button}</button>}
     </div>
   );
 };

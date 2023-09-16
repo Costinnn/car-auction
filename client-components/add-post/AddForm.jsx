@@ -196,7 +196,7 @@ const AddForm = ({ language }) => {
 
     const res = await addPostToDb(postToAdd);
 
-    if (res.data.id) {
+    if (res.data.message === "Success") {
       setFeedback("Listing added with success");
       setName("");
       setPhone("");
@@ -224,7 +224,7 @@ const AddForm = ({ language }) => {
       setFlaws([]);
       setBuyNow("");
       setMinimumBid("");
-    } else if (!res.data.id) {
+    } else if (res.data.error) {
       console.log(res);
       setFeedback("Could not add your listing");
     }

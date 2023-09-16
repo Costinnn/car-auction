@@ -1,8 +1,5 @@
 import React from "react";
-import Image from "next/image";
-
-import addFavorite from "@/assets/global/add-favorite.png";
-import favorite from "@/assets/global/favorite.png";
+import AddToFavorite from "@/client-components/global/AddToFavorite";
 
 import "./Heading.css";
 
@@ -14,12 +11,23 @@ const Heading = ({
   engineCapacity,
   engineConfiguration,
   engineCylinders,
+  userFavorites,
+  sellerId,
+  postId,
+  userId,
 }) => {
   return (
     <div className="heading">
       <div className="row1">
         <h1 className="title">{title}</h1>
-        <Image src={addFavorite} alt="img" width={23} height={23} />
+        <AddToFavorite
+          width={23}
+          height={23}
+          userId={userId}
+          userFavorites={userFavorites}
+          sellerId={sellerId}
+          postId={postId}
+        />
       </div>
       <span className="description">{`${gears}-${language.speed} ${transmission} ${engineCapacity}L ${language.engine}
           ${engineConfiguration}${engineCylinders}`}</span>

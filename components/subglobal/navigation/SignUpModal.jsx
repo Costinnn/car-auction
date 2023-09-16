@@ -13,6 +13,7 @@ import "./SignUpModal.css";
 
 const SignUpModal = ({ toggleSignModal, isSignModalOpen, language }) => {
   const router = useRouter();
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -64,8 +65,9 @@ const SignUpModal = ({ toggleSignModal, isSignModalOpen, language }) => {
         if (res.error) {
           console.log(res.error);
         } else {
-          router.refresh();
           toggleSignModal();
+
+          router.refresh();
           console.log(res);
         }
       } catch (err) {
@@ -79,8 +81,8 @@ const SignUpModal = ({ toggleSignModal, isSignModalOpen, language }) => {
           name: username,
           password,
         });
-        if (res.data.id) {
-          console.log(res);
+        if (res.data.message === "Success") {
+          console.log("User created with success!");
         } else {
           console.log("Fetch didn't worked", res);
         }
@@ -89,6 +91,7 @@ const SignUpModal = ({ toggleSignModal, isSignModalOpen, language }) => {
       }
     }
   };
+
   return (
     <div className={`signup-modal ${isSignModalOpen ? "open" : "close"}`}>
       <div className="modal">

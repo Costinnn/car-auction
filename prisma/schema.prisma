@@ -56,8 +56,14 @@ model User {
   accounts       Account[]
   sessions       Session[]
 
-  bids     Bid[]
-  carPosts Carpost[]
+  bids          Bid[]
+  ownedListings Carpost[] @relation("ownCarpost")
+
+  savedListingsIds String[]  @db.ObjectId
+  savedListings    Carpost[] @relation("savedCarpost", fields: [savedListingsIds], references: [id])
+
+  biddedListingsIds String[]  @db.ObjectId
+  biddedListings    Carpost[] @relation("biddedCarpost", fields: [biddedListingsIds], references: [id])
 }
 
 model Carpost {
@@ -93,7 +99,13 @@ model Carpost {
   views      Int?  @default(0)
 
   sellerId String @db.ObjectId
-  seller   User   @relation(fields: [sellerId], references: [id])
+  seller   User   @relation("ownCarpost", fields: [sellerId], references: [id])
+
+  savedByUsers String[] @db.ObjectId
+  savedBy      User[]   @relation("savedCarpost", fields: [savedByUsers], references: [id])
+
+  biddedByUsers String[] @db.ObjectId
+  biddedBy      User[]   @relation("biddedCarpost", fields: [biddedByUsers], references: [id])
 
   expiresAt DateTime
   createdAt DateTime @default(now())

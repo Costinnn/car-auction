@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import Image from "next/image";
 import "@splidejs/react-splide/css/skyblue";
@@ -13,8 +13,9 @@ import favorite from "@/assets/global/favorite.png";
 
 import "./CarPost.css";
 import Link from "next/link";
+import AddToFavorite from "@/client-components/global/AddToFavorite";
 
-const CarPost = ({ language, lang, data }) => {
+const CarPost = ({ language, lang, data, userId, userFavorites }) => {
   return (
     <div className="carpost">
       <div className="frame">
@@ -83,7 +84,14 @@ const CarPost = ({ language, lang, data }) => {
           <Link href={`/${lang}/car-post/${data.id}`} className="title">
             {data.title}
           </Link>
-          <Image src={addFavorite} alt="img" width={23} height={23} />
+          <AddToFavorite
+            width={23}
+            height={23}
+            userId={userId}
+            userFavorites={userFavorites}
+            sellerId={data.sellerId}
+            postId={data.id}
+          />
         </div>
         <Link href={`/${lang}/car-post/${data.id}`} className="description">
           {`${data.gears}-${language.speed} ${data.transmission} ${data.engineCapacity}L ${language.engine}

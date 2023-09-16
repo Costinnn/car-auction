@@ -6,7 +6,8 @@ const page = async ({ params }) => {
   const language = await getLanguage(params.lang);
   return (
     <main>
-      <CarPost language={language.listingsfilter.carpost} />
+      {/* <CarPost language={language.listingsfilter.carpost} /> */}
+      results
     </main>
   );
 };

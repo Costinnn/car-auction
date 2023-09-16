@@ -66,7 +66,7 @@ const MenuModal = ({
           </Link>
         </li>
         <li>
-          <Link href={`/${langParam}/listings`} onClick={() => toggleMenu()}>
+          <Link href={`/${langParam}/listings/saved`} onClick={() => toggleMenu()}>
             {language.favorites}
           </Link>
         </li>

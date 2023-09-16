@@ -20,8 +20,15 @@ export async function POST(request) {
       },
     });
 
-    return NextResponse.json(newPost);
+    if (newPost) {
+      return NextResponse.json({ message: "Success" }, { status: 201 });
+    }
+
+    return NextResponse.json({ error: "Could not add post!" }, { status: 500 });
   } catch (err) {
-    return NextResponse.json(err);
+    return NextResponse.json(
+      { error: `ADD_POST_API_ERROR ${err}` },
+      { status: 500 }
+    );
   }
 }

@@ -16,7 +16,7 @@ export async function POST(request) {
     });
 
     if (existingUser) {
-      return NextResponse.json({ error: "Email taken!" });
+      return NextResponse.json({ error: "Email taken!" }, { status: 500 });
     }
 
     // 2. Search for username in DB
@@ -34,8 +34,17 @@ export async function POST(request) {
       },
     });
 
-    return NextResponse.json(user);
-  } catch (error) {
-    return NextResponse.json({ error: `Something went wrong: ${error}` });
+    if (user) {
+      return NextResponse.json({ message: "Success" }, { status: 201 });
+    }
+    return NextResponse.json(
+      { error: "Could not create user!" },
+      { status: 500 }
+    );
+  } catch (err) {
+    return NextResponse.json(
+      { error: `REGISTER_API_ERROR: ${err}` },
+      { status: 500 }
+    );
   }
 }
