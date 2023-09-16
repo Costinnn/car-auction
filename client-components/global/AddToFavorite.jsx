@@ -16,9 +16,7 @@ const AddToFavorite = ({
   postId,
 }) => {
   const [isFavorite, setIsFavorite] = useState(false);
-  const [isShown, setIsShown] = useState(
-    userId === sellerId ? false : !userId || userId !== sellerId ? true : false
-  );
+  const [isShown, setIsShown] = useState(false);
 
   const toggleFavorite = async () => {
     if (userId && isShown && userId !== sellerId) {
@@ -45,6 +43,11 @@ const AddToFavorite = ({
       userFavorites.forEach((item) =>
         item === postId ? setIsFavorite(true) : ""
       );
+    }
+    if (!userId || userId !== sellerId) {
+      setIsShown(true);
+    } else {
+      setIsShown(false);
     }
   }, [userId, isShown]);
 

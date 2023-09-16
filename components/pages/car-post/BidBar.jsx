@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
 import clock from "@/assets/global/clock.png";
@@ -9,9 +9,16 @@ import "./BidBar.css";
 import CountdownTimer from "@/components/global/CountdownTimer";
 
 const BidBar = ({ language, data, sellerId, userId }) => {
-  const [isShown, setIsShown] = useState(
-    userId === sellerId ? false : !userId || userId !== sellerId ? true : false
-  );
+  const [isShown, setIsShown] = useState(false);
+
+  useEffect(() => {
+    if (!userId || userId !== sellerId) {
+      setIsShown(true);
+    } else {
+      setIsShown(false);
+    }
+  }, [userId]);
+
   return (
     <div className="bidbar">
       <div className="bid-info">
