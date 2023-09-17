@@ -3,17 +3,15 @@
 import React, { useEffect, useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import Image from "next/image";
+import Link from "next/link";
 import "@splidejs/react-splide/css/skyblue";
 
 import CountdownTimer from "./CountdownTimer";
+import AddToFavorite from "@/client-components/global/AddToFavorite";
 
 import clock from "@/assets/global/clock.png";
-import addFavorite from "@/assets/global/add-favorite.png";
-import favorite from "@/assets/global/favorite.png";
 
 import "./CarPost.css";
-import Link from "next/link";
-import AddToFavorite from "@/client-components/global/AddToFavorite";
 
 const CarPost = ({ language, lang, data, userId, userFavorites }) => {
   return (

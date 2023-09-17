@@ -40,7 +40,7 @@ const AddToFavorite = ({
 
   useEffect(() => {
     if (userId && isShown) {
-      userFavorites.forEach((item) =>
+      userFavorites?.forEach((item) =>
         item === postId ? setIsFavorite(true) : ""
       );
     }

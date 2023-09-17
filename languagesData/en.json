@@ -211,7 +211,9 @@
         "location": "Location",
         "lastbids": "Last bids",
         "ended": "Ended",
-        "sold": "Sold for"
+        "sold": "Sold for",
+        "speed": "Speed",
+        "engine": "Engine"
       }
     },
     "home": {

@@ -1,10 +1,16 @@
 import CarPost from "@/components/global/CarPost";
 import React from "react";
 
-const CarPostData = ({ language, type, lang, data }) => {
+const CarPostData = ({ language, type, lang, data, userId, userFavorites }) => {
   return (
     <>
-      <CarPost language={language} lang={lang} data={data} />
+      <CarPost
+        language={language}
+        lang={lang}
+        data={data}
+        userId={userId}
+        userFavorites={userFavorites}
+      />
       <div className="carpostdata">
         <span>{language.lastbids}:</span>
         <ul>

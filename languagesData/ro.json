@@ -214,7 +214,9 @@
         "location": "Locatie",
         "lastbids": "Ultimele licitari",
         "ended": "Incheiat",
-        "sold": "Vanduta cu"
+        "sold": "Vanduta cu",
+        "speed": "Viteze",
+        "engine": "Motor"
       }
     },
     "home": {
