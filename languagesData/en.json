@@ -197,7 +197,12 @@
         "interior": "Interior",
         "all": "All photos"
       },
-      "bidbar": { "bid": "Bid", "button": "Bid" },
+      "bidbar": {
+        "bid": "Bid",
+        "button": "Bid",
+        "ended": "Ended",
+        "sold": "Sold for"
+      },
       "heading": { "speed": "Speed", "engine": "Engine" }
     },
     "listings": {

@@ -93,9 +93,9 @@ model Carpost {
   flaws               String[]
 
   buyNow     Int?  @default(0)
-  minimumBid Int?  @default(0)
-  currentBid Bid?  @relation("currentBid")
+  minimumBid Int   @default(0)
   bids       Bid[] @relation("bids")
+  bidValue   Int?
   views      Int?  @default(0)
 
   sellerId String @db.ObjectId
@@ -116,12 +116,11 @@ model Bid {
   bidValue  Int
   createdAt DateTime @default(now())
 
+  isCurrentBid Boolean @default(true)
+
   bidderId String @db.ObjectId
   bidder   User   @relation(fields: [bidderId], references: [id])
 
   carPostId String  @db.ObjectId
   carPost   Carpost @relation("bids", fields: [carPostId], references: [id])
-
-  currentCarPostId String  @unique @db.ObjectId
-  currentBid       Carpost @relation("currentBid", fields: [currentCarPostId], references: [id])
 }

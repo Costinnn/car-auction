@@ -1,7 +1,7 @@
 import CarPost from "@/components/global/CarPost";
 import React from "react";
 
-const CarPostData = ({ language, type, lang, data, userId, userFavorites }) => {
+const CarPostData = ({ language, lang, data, userId, userFavorites }) => {
   return (
     <>
       <CarPost

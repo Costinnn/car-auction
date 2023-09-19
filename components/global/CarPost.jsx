@@ -14,6 +14,7 @@ import clock from "@/assets/global/clock.png";
 import "./CarPost.css";
 
 const CarPost = ({ language, lang, data, userId, userFavorites }) => {
+  const dateNow = new Date().getTime();
   return (
     <div className="carpost">
       <div className="frame">
@@ -68,12 +69,25 @@ const CarPost = ({ language, lang, data, userId, userFavorites }) => {
         <div className="time-bid ">
           <div className="time">
             <Image src={clock} alt="clock" width={13} height={13} />
-            <CountdownTimer expiresAt={data.expiresAt} />
+            <CountdownTimer
+              dateNow={dateNow}
+              expiresAt={data.expiresAt}
+              language={language.ended}
+            />
           </div>
 
           <div className="bid">
-            <span>{language.bid} </span>
-            <span>$38,000</span>
+            <span>
+              {dateNow <= data.expiresAt.getTime()
+                ? language.bid
+                : language.sold}
+            </span>
+            <span>
+              $
+              {data.bidValue && data.bidValue >= data.minimumBid
+                ? data.bidValue
+                : data.minimumBid}
+            </span>
           </div>
         </div>
       </div>

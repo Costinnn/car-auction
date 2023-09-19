@@ -1,40 +1,89 @@
 .bidbar {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  gap: 10px;
-  padding: 0 10px;
   margin: 20px 0;
+  padding: 0 10px;
 
-  .bid-info {
+  .row1 {
     display: flex;
     align-items: center;
-    justify-content: center;
     width: 100%;
-    gap: 20px;
-    border-radius: 10px;
-    background-color: var(--dark-gray);
-    color: var(--whiteish);
-    .clock,
-    .value {
+    gap: 10px;
+
+    .bid-info {
       display: flex;
       align-items: center;
-      gap: 5px;
-      padding: 10px 10px;
-      > span:last-of-type {
-        font-weight: 600;
-        letter-spacing: 1px;
+      justify-content: center;
+      width: 100%;
+      border-radius: 10px;
+      background-color: var(--dark-gray);
+      color: var(--whiteish);
+      .clock,
+      .value {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 10px 10px;
+        > span:last-of-type {
+          font-weight: 600;
+          letter-spacing: 1px;
+        }
+      }
+      .value {
+        > span:first-of-type {
+          color: var(--light-gray);
+        }
       }
     }
-    .value {
-      > span:first-of-type {
-        color: var(--light-gray);
-      }
+    .button-green {
+      width: 65px;
+      padding: 10px 10px;
+      font-size: 15px;
     }
   }
-  .button-green {
-    width: 65px;
-    padding: 10px 10px;
+  >span{
+    margin: 3px auto;
+    display: block;
+    text-align: center;
     font-size: 15px;
+    font-weight: 600;
+    color: var(--medium-gray);
+  }
+  .row2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-top: 10px;
+    .input-box {
+      position: relative;
+      width: 50%;
+      min-width: 200px;
+      margin: 0 auto;
+      .dollar {
+        position: absolute;
+        top: calc(33px / 2 - 10px);
+        left: 8px;
+      }
+      > input {
+        width: 100%;
+        display: block;
+        border: 1px solid var(--light-gray);
+        color: var(--medium-gray);
+
+        outline: none;
+        border-radius: 8px;
+        padding: 8px 10px 8px 30px;
+        font-weight: 600;
+      }
+    }
+
+    .close-input {
+      margin-right: 15px;
+    }
+  }
+  .open {
+    display: flex;
+  }
+  .close {
+    display: none;
   }
 }

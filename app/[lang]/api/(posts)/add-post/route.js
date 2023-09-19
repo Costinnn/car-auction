@@ -16,7 +16,7 @@ export async function POST(request) {
         ...reqData,
         expiresAt: currentDate,
         title: `${reqData.year} ${reqData.brand} ${reqData.model} `,
-        sellerId: userId,
+        seller: { connect: { id: userId } },
       },
     });
 

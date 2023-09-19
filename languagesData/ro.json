@@ -200,7 +200,12 @@
         "interior": "Interior",
         "all": "Toate pozele"
       },
-      "bidbar": { "bid": "Licitat", "button": "Liciteaza" },
+      "bidbar": {
+        "bid": "Licitat",
+        "button": "Liciteaza",
+        "ended": "Incheiat",
+        "sold": "Vanduta cu"
+      },
       "heading": { "speed": "Viteze", "engine": "Motor" }
     },
     "listings": {

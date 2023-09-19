@@ -11,10 +11,12 @@ import BidBar from "@/components/pages/car-post/BidBar";
 import Content from "@/components/pages/car-post/Content";
 
 import "./CarPost.css";
+import getBidCurrent from "@/lib/getBidCurrent";
 
 const page = async ({ params }) => {
   const language = await getLanguage(params.lang);
   const carPost = await getCarPost(params.id);
+  const currentDbBid = await getBidCurrent(params.id);
   const userId = await getUserId();
   const userFavorites = await getUserFavorites();
 
@@ -22,8 +24,11 @@ const page = async ({ params }) => {
     <main className="carpost-page">
       <BidBar
         language={language.pages.carpost.bidbar}
-        data={carPost.expiresAt}
+        expiresAt={carPost.expiresAt}
         sellerId={carPost.sellerId}
+        postId={carPost.id}
+        minimumBid={carPost.minimumBid}
+        currentDbBid={currentDbBid?.bidValue}
         userId={userId}
       />
       <Gallery
