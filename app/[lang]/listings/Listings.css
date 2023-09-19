@@ -1,4 +1,7 @@
 .listings-page {
+  .loading-listings {
+    padding-top: 0;
+  }
   .nav {
     display: flex;
     align-items: center;

@@ -15,6 +15,9 @@ const page = async ({ params }) => {
     data = res.posts;
     userId = res.userId;
   } else if (params.type === "bidded") {
+    const res = await getListingsType(params.type);
+    data = res.posts;
+    userId = res.userId;
   } else if (params.type === "saved") {
     const res = await getListingsType(params.type);
     data = res.posts;

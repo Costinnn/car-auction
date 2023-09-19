@@ -6,6 +6,7 @@ import Image from "next/image";
 import clock from "@/assets/global/clock.png";
 import close from "@/assets/global/close.png";
 import dollar from "@/assets/global/dollar.png";
+import loading from "@/assets/global/loading.png";
 
 import "./BidBar.css";
 import CountdownTimer from "@/components/global/CountdownTimer";
@@ -28,9 +29,11 @@ const BidBar = ({
   );
   const [isBidInputShown, setIsBidInputShown] = useState(false);
   const [feedback, setFeedback] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleBidding = async () => {
     if (isBidInputShown && Number(newBidValue) >= currentBidValue + 250) {
+      setIsLoading(true);
       try {
         const res = await axios.post("/en/api/add-bid", {
           bidValue: Number(newBidValue),
@@ -48,6 +51,7 @@ const BidBar = ({
         console.log("Could not place the bid: ", err);
         setFeedback("There was an error while placing your bid!");
       }
+      setIsLoading(false);
     } else if (isBidInputShown && Number(newBidValue) < currentBidValue + 250) {
       setFeedback("Your bid value is too low!");
     } else {
@@ -91,7 +95,16 @@ const BidBar = ({
           </button>
         )}
       </div>
-      {feedback && <span>{feedback}</span>}
+      {isLoading && (
+        <Image
+          src={loading}
+          alt="loading"
+          width={20}
+          height={20}
+          className="loading"
+        />
+      )}
+      {feedback && <span className="feedback">{feedback}</span>}
       <div className={`row2 ${isBidInputShown ? "open" : "close"}`}>
         <div className="input-box">
           <Image src={dollar} alt="close" width={20} className="dollar" />
