@@ -6,7 +6,7 @@ import "./page.css";
 import WhyUs from "@/components/decoration/WhyUs";
 import Newsletter from "@/client-components/global/Newsletter";
 
-export default async function Home({ params }) {
+export default async function Home({ params, searchParams }) {
   const language = await getLanguage(params.lang);
 
   return (
@@ -14,6 +14,7 @@ export default async function Home({ params }) {
       <ListingsFilter
         listingsLanguage={language.listingsfilter}
         lang={params.lang}
+        searchParams={searchParams}
       />
       <WhyUs language={language.whyus} />
       <Newsletter language={language.newsletter} />

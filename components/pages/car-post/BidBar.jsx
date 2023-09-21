@@ -70,6 +70,20 @@ const BidBar = ({
     }
   }, [userId]);
 
+  // Increase post views
+  useEffect(() => {
+    const increaseViews = async () => {
+      try {
+        await axios.patch("/en/api/increase-views", {
+          postId,
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    increaseViews();
+  }, []);
+
   return (
     <div className="bidbar">
       <div className="row1">

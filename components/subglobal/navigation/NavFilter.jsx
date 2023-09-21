@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -8,12 +9,67 @@ import arrowDown from "@/assets/global/arrow-down.png";
 
 import "./NavFilter.css";
 
-const NavFilter = ({ language, lang }) => {
-  const [filters, setFilters] = useState({
-    category: { title: language.categorytitle, option: null },
-    brand: { title: language.brandtitle, option: null },
-    years: { title: language.yearstitle, option1: "2000", option2: "2023" },
-  });
+const categoryArr = [
+  "all",
+  "atv",
+  "coupe",
+  "convertible",
+  "hatchback",
+  "motorcycle",
+  "sedan",
+  "suv",
+  "truck",
+  "van",
+  "wagon",
+];
+const brandArr = [
+  { title: "All", option: "all" },
+  { title: "Audi", option: "audi" },
+  { title: "BMW", option: "bmw" },
+  { title: "Chevrolet", option: "chevrolet" },
+  { title: "Citroen", option: "citroen" },
+  { title: "Dacia", option: "dacia" },
+  { title: "Fiat", option: "fiat" },
+  { title: "Ford", option: "ford" },
+  { title: "Honda", option: "honda" },
+  { title: "Hyundai", option: "hyundai" },
+  { title: "Infiniti", option: "infiniti" },
+  { title: "Jaguar", option: "jaguar" },
+  { title: "Jeep", option: "jeep" },
+  { title: "Kia", option: "kia" },
+  { title: "Land Rover", option: "landrover" },
+  { title: "Lexus", option: "lexus" },
+  { title: "Mercedes-Benz", option: "mercedes" },
+  { title: "Mitsubishi", option: "mitshubishi" },
+  { title: "Nissan", option: "nissan" },
+  { title: "Peugeot", option: "peugeot" },
+  { title: "Opel", option: "opel" },
+  { title: "Renault", option: "renault" },
+  { title: "Seat", option: "seat" },
+  { title: "Skoda", option: "skoda" },
+  { title: "Toyota", option: "toyota" },
+  { title: "Volkswagen", option: "volkswagen" },
+  { title: "Volvo", option: "volvo" },
+];
+
+const NavFilter2 = ({ language, lang }) => {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const category = {
+    title: language.categorytitle,
+    option: searchParams.get("category") || "all",
+  };
+  const brand = {
+    title: language.brandtitle,
+    option: searchParams.get("brand") || "all",
+  };
+  const years = {
+    title: language.yearstitle,
+    option1: searchParams.get("year1") || "2000",
+    option2: searchParams.get("year2") || "2023",
+  };
+  const sort = searchParams.get("sort") || "new";
+
   const [isDropdownOpen, setIsDropdownOpen] = useState({
     category: false,
     brand: false,
@@ -34,59 +90,19 @@ const NavFilter = ({ language, lang }) => {
     }
   };
 
-  const handleDropdownValues = (filterName, value) => {
-    setFilters((prev) => ({
-      ...prev,
-      [filterName]: { title: value, option: value },
-    }));
-    setIsDropdownOpen({ ...isDropdownOpen, [filterName]: false });
-  };
-
   const handleDropdownSelect = (value1, value2) => {
-    if (!value2) {
-      if (Number(value1) <= Number(filters.years.option2)) {
-        setFilters((prev) => ({
-          ...prev,
-          years: {
-            ...prev.years,
-            title: `${value1} ${language.years.to} ${filters.years.option2}`,
-            option1: value1,
-          },
-        }));
-      } else {
-        setFilters((prev) => ({
-          ...prev,
-          years: {
-            ...prev.years,
-            title: `${filters.years.option2} ${language.years.to} ${filters.years.option2}`,
-            option1: filters.years.option2,
-          },
-        }));
-      }
-    }
-    if (!value1) {
-      if (Number(value2) >= Number(filters.years.option1)) {
-        setFilters((prev) => ({
-          ...prev,
-          years: {
-            ...prev.years,
-            title: `${filters.years.option1} ${language.years.to} ${value2}`,
-            option2: value2,
-          },
-        }));
-      } else {
-        setFilters((prev) => ({
-          ...prev,
-          years: {
-            ...prev.years,
-            title: `${filters.years.option1} ${language.years.to} ${filters.years.option1}`,
-            option2: filters.years.option1,
-          },
-        }));
-      }
+    if (value1) {
+      router.push(
+        `?sort=${sort}&category=${category.option}&brand=${brand.option}&year1=${value1}&year2=${years.option2}`
+      );
+    } else if (value2) {
+      router.push(
+        `?sort=${sort}&category=${category.option}&brand=${brand.option}&year1=${years.option1}&year2=${value2}`
+      );
     }
     setIsDropdownOpen({ ...isDropdownOpen, years: false });
   };
+
   return (
     <div className="nav-filter">
       <div className="row1">
@@ -98,47 +114,23 @@ const NavFilter = ({ language, lang }) => {
               handleDropdown("category");
             }}
           >
-            {filters.category.option
-              ? filters.category.option
-              : filters.category.title}
+            {category.option !== "all"
+              ? category.option
+              : language.categorytitle}
             <Image src={arrowDown} width={10} alt="arrow-down" />
           </button>
           <ul
             className={`dropdown ${isDropdownOpen.category ? "open" : "close"}`}
           >
-            <li onClick={() => handleDropdownValues("category", "all")}>
-              {language.all}
-            </li>
-            <li onClick={() => handleDropdownValues("category", "atv")}>
-              {language.atv}
-            </li>
-            <li onClick={() => handleDropdownValues("category", "coupe")}>
-              {language.coupe}
-            </li>
-            <li onClick={() => handleDropdownValues("category", "convertible")}>
-              {language.convertible}
-            </li>
-            <li onClick={() => handleDropdownValues("category", "hatchback")}>
-              {language.hatchback}
-            </li>
-            <li onClick={() => handleDropdownValues("category", "motorcycle")}>
-              {language.motorcycle}
-            </li>
-            <li onClick={() => handleDropdownValues("category", "sedan")}>
-              {language.sedan}
-            </li>
-            <li onClick={() => handleDropdownValues("category", "suv")}>
-              {language.suv}
-            </li>
-            <li onClick={() => handleDropdownValues("category", "truck")}>
-              {language.truck}
-            </li>
-            <li onClick={() => handleDropdownValues("category", "van")}>
-              {language.van}
-            </li>
-            <li onClick={() => handleDropdownValues("category", "wagon")}>
-              {language.wagon}
-            </li>
+            {categoryArr.map((item) => (
+              <li key={item} onClick={() => handleDropdown("category")}>
+                <Link
+                  href={`?sort=${sort}&category=${item}&brand=${brand.option}&year1=${years.option1}&year2=${years.option2}`}
+                >
+                  {language[item]}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -150,72 +142,19 @@ const NavFilter = ({ language, lang }) => {
               handleDropdown("brand");
             }}
           >
-            {filters.brand.option ? filters.brand.option : filters.brand.title}
+            {brand.option !== "all" ? brand.option : language.brandtitle}
             <Image src={arrowDown} width={10} alt="arrow-down" />
           </button>
           <ul className={`dropdown ${isDropdownOpen.brand ? "open" : "close"}`}>
-            <li onClick={() => handleDropdownValues("brand", "audi")}>Audi</li>
-            <li onClick={() => handleDropdownValues("brand", "bmw")}>BMW</li>
-            <li onClick={() => handleDropdownValues("brand", "chevrolet")}>
-              Chevrolet
-            </li>
-            <li onClick={() => handleDropdownValues("brand", "citroen")}>
-              Citroen
-            </li>
-            <li onClick={() => handleDropdownValues("brand", "dacia")}>
-              Dacia
-            </li>
-            <li onClick={() => handleDropdownValues("brand", "fiat")}>Fiat</li>
-            <li onClick={() => handleDropdownValues("brand", "ford")}>Ford</li>
-            <li onClick={() => handleDropdownValues("brand", "honda")}>
-              Honda
-            </li>
-            <li onClick={() => handleDropdownValues("brand", "hyundai")}>
-              Hyundai
-            </li>
-            <li onClick={() => handleDropdownValues("brand", "infiniti")}>
-              Infiniti
-            </li>
-            <li onClick={() => handleDropdownValues("brand", "jaguar")}>
-              Jaguar
-            </li>
-            <li onClick={() => handleDropdownValues("brand", "jeep")}>Jeep</li>
-            <li onClick={() => handleDropdownValues("brand", "kia")}>Kia</li>
-            <li onClick={() => handleDropdownValues("brand", "landrover")}>
-              Land Rover
-            </li>
-            <li onClick={() => handleDropdownValues("brand", "lexus")}>
-              Lexus
-            </li>
-            <li onClick={() => handleDropdownValues("brand", "mercedes")}>
-              Mercedes-Benz
-            </li>
-            <li onClick={() => handleDropdownValues("brand", "mitshubishi")}>
-              Mitsubishi
-            </li>
-            <li onClick={() => handleDropdownValues("brand", "nissan")}>
-              Nissan
-            </li>
-            <li onClick={() => handleDropdownValues("brand", "opel")}>Opel</li>
-            <li onClick={() => handleDropdownValues("brand", "peugeot")}>
-              Peugeot
-            </li>
-            <li onClick={() => handleDropdownValues("brand", "renault")}>
-              Renault
-            </li>
-            <li onClick={() => handleDropdownValues("brand", "seat")}>Seat</li>
-            <li onClick={() => handleDropdownValues("brand", "skoda")}>
-              Skoda
-            </li>
-            <li onClick={() => handleDropdownValues("brand", "toyota")}>
-              Toyota
-            </li>
-            <li onClick={() => handleDropdownValues("brand", "volkswagen")}>
-              Volkswagen
-            </li>
-            <li onClick={() => handleDropdownValues("brand", "volvo")}>
-              Volvo
-            </li>
+            {brandArr.map((item) => (
+              <li key={item.title} onClick={() => handleDropdown("brand")}>
+                <Link
+                  href={`?sort=${sort}&category=${category.option}&brand=${item.option}&year1=${years.option1}&year2=${years.option2}`}
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -227,7 +166,9 @@ const NavFilter = ({ language, lang }) => {
               handleDropdown("years");
             }}
           >
-            {filters.years.title}
+            {years.option1 === "2000" && years.option2 === "2023"
+              ? language.yearstitle
+              : `${years.option1}-${years.option2}`}
             <Image src={arrowDown} width={10} alt="arrow-down" />
           </button>
           <div
@@ -300,13 +241,33 @@ const NavFilter = ({ language, lang }) => {
         </div>
       </div>
       <div className="row2">
-        <Link href={`/${lang}/`}>{language.new}</Link>
-        <Link href={`/${lang}/`}>{language.ending}</Link>
-        <Link href={`/${lang}/`}>{language.trending}</Link>
-        <Link href={`/${lang}/`}>{language.ended}</Link>
+        <Link
+          href={`?sort=new&category=${category.option}&brand=${brand.option}&year1=${years.option1}&year2=${years.option2}`}
+          className={sort === "new" ? "sort-active" : ""}
+        >
+          {language.new}
+        </Link>
+        <Link
+          href={`?sort=ending&category=${category.option}&brand=${brand.option}&year1=${years.option1}&year2=${years.option2}`}
+          className={sort === "ending" ? "sort-active" : ""}
+        >
+          {language.ending}
+        </Link>
+        <Link
+          href={`?sort=trending&category=${category.option}&brand=${brand.option}&year1=${years.option1}&year2=${years.option2}`}
+          className={sort === "trending" ? "sort-active" : ""}
+        >
+          {language.trending}
+        </Link>
+        <Link
+          href={`?sort=ended&category=${category.option}&brand=${brand.option}&year1=${years.option1}&year2=${years.option2}`}
+          className={sort === "ended" ? "sort-active" : ""}
+        >
+          {language.ended}
+        </Link>
       </div>
     </div>
   );
 };
 
-export default NavFilter;
+export default NavFilter2;
