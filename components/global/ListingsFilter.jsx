@@ -16,7 +16,7 @@ const ListingsFilter = async ({ listingsLanguage, lang, searchParams }) => {
     <>
       <NavFilter language={listingsLanguage} lang={lang} />
 
-      {listings &&
+      {listings.length > 0 ? (
         listings.map((carpost) => (
           <CarPost
             key={carpost.id}
@@ -26,7 +26,10 @@ const ListingsFilter = async ({ listingsLanguage, lang, searchParams }) => {
             userId={userId}
             userFavorites={userFavorites?.savedListingsIds}
           />
-        ))}
+        ))
+      ) : (
+        <h2 className="no-listings">{listingsLanguage.nolistings}</h2>
+      )}
     </>
   );
 };

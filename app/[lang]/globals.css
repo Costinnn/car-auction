@@ -197,3 +197,9 @@ a:active {
     transform: rotate(360deg);
   }
 }
+
+.no-listings{
+  text-align: center;
+  color: var(--green);
+  margin-top: 50px;
+}

@@ -1,7 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 import MenuModal from "../subglobal/navigation/MenuModal";
 import SignUpModal from "../subglobal/navigation/SignUpModal";
@@ -17,6 +18,8 @@ import "./Navigation.css";
 import SearchInput from "@/client-components/navigation/SearchInput";
 
 const Navigation = ({ language, session, langParam }) => {
+  const searchParams = useSearchParams();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchInputOpen, setIsSearchInputOpen] = useState(false);
   const [isSignModalOpen, setIsSignModalOpen] = useState(false);
@@ -33,6 +36,15 @@ const Navigation = ({ language, session, langParam }) => {
   const toggleAccountModal = () => {
     setIsAccountModalOpen((prev) => !prev);
   };
+
+  useEffect(() => {
+    if (!session && searchParams.get("signed") === "no") {
+      toggleSignModal();
+    }
+    if (searchParams.get("search") && isMenuOpen) {
+      toggleMenu();
+    }
+  }, [searchParams.get("signed"), searchParams.get("search")]);
 
   return (
     <nav className="navigation section-narrow">
@@ -58,6 +70,7 @@ const Navigation = ({ language, session, langParam }) => {
           language={language.row1.menu}
           languageSearch={language.searchinput}
           langParam={langParam}
+          session={session}
         />
         {session ? (
           <Image
@@ -84,7 +97,12 @@ const Navigation = ({ language, session, langParam }) => {
             {language.row2.news}
             <Image src={arrowRight} width={10} alt="arrow-right" />
           </Link>
-          <Link href={`/${langParam}/add-post`} className="sellcar button-blue">{language.row2.sell}</Link>
+          <Link
+            href={session ? `/${langParam}/add-post` : "?signed=no"}
+            className="sellcar button-blue"
+          >
+            {language.row2.sell}
+          </Link>
           <Image
             src={search}
             width={28}

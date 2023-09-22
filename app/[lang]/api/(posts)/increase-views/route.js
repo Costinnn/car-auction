@@ -4,7 +4,6 @@ import { NextResponse } from "next/server";
 export async function PATCH(request) {
   try {
     const reqData = await request.json();
-    console.log("API", reqData.postId);
 
     // update views number
     const updatedViews = await prismadb.carpost.update({

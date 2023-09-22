@@ -9,52 +9,51 @@ import arrowDown from "@/assets/global/arrow-down.png";
 
 import "./NavFilter.css";
 
-const categoryArr = [
-  "all",
-  "atv",
-  "coupe",
-  "convertible",
-  "hatchback",
-  "motorcycle",
-  "sedan",
-  "suv",
-  "truck",
-  "van",
-  "wagon",
-];
-const brandArr = [
-  { title: "All", option: "all" },
-  { title: "Audi", option: "audi" },
-  { title: "BMW", option: "bmw" },
-  { title: "Chevrolet", option: "chevrolet" },
-  { title: "Citroen", option: "citroen" },
-  { title: "Dacia", option: "dacia" },
-  { title: "Fiat", option: "fiat" },
-  { title: "Ford", option: "ford" },
-  { title: "Honda", option: "honda" },
-  { title: "Hyundai", option: "hyundai" },
-  { title: "Infiniti", option: "infiniti" },
-  { title: "Jaguar", option: "jaguar" },
-  { title: "Jeep", option: "jeep" },
-  { title: "Kia", option: "kia" },
-  { title: "Land Rover", option: "landrover" },
-  { title: "Lexus", option: "lexus" },
-  { title: "Mercedes-Benz", option: "mercedes" },
-  { title: "Mitsubishi", option: "mitshubishi" },
-  { title: "Nissan", option: "nissan" },
-  { title: "Peugeot", option: "peugeot" },
-  { title: "Opel", option: "opel" },
-  { title: "Renault", option: "renault" },
-  { title: "Seat", option: "seat" },
-  { title: "Skoda", option: "skoda" },
-  { title: "Toyota", option: "toyota" },
-  { title: "Volkswagen", option: "volkswagen" },
-  { title: "Volvo", option: "volvo" },
-];
-
-const NavFilter2 = ({ language, lang }) => {
+const NavFilter = ({ language, lang }) => {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const categoryArr = [
+    "all",
+    "atv",
+    "coupe",
+    "convertible",
+    "hatchback",
+    "motorcycle",
+    "sedan",
+    "suv",
+    "truck",
+    "van",
+    "wagon",
+  ];
+  const brandArr = [
+    { title: `${language.all}`, option: "all" },
+    { title: "Audi", option: "audi" },
+    { title: "BMW", option: "bmw" },
+    { title: "Chevrolet", option: "chevrolet" },
+    { title: "Citroen", option: "citroen" },
+    { title: "Dacia", option: "dacia" },
+    { title: "Fiat", option: "fiat" },
+    { title: "Ford", option: "ford" },
+    { title: "Honda", option: "honda" },
+    { title: "Hyundai", option: "hyundai" },
+    { title: "Infiniti", option: "infiniti" },
+    { title: "Jaguar", option: "jaguar" },
+    { title: "Jeep", option: "jeep" },
+    { title: "Kia", option: "kia" },
+    { title: "Land Rover", option: "landrover" },
+    { title: "Lexus", option: "lexus" },
+    { title: "Mercedes-Benz", option: "mercedes" },
+    { title: "Mitsubishi", option: "mitshubishi" },
+    { title: "Nissan", option: "nissan" },
+    { title: "Peugeot", option: "peugeot" },
+    { title: "Opel", option: "opel" },
+    { title: "Renault", option: "renault" },
+    { title: "Seat", option: "seat" },
+    { title: "Skoda", option: "skoda" },
+    { title: "Toyota", option: "toyota" },
+    { title: "Volkswagen", option: "volkswagen" },
+    { title: "Volvo", option: "volvo" },
+  ];
   const category = {
     title: language.categorytitle,
     option: searchParams.get("category") || "all",
@@ -270,4 +269,4 @@ const NavFilter2 = ({ language, lang }) => {
   );
 };
 
-export default NavFilter2;
+export default NavFilter;

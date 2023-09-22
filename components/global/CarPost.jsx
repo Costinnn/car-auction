@@ -72,7 +72,8 @@ const CarPost = ({ language, lang, data, userId, userFavorites }) => {
             <CountdownTimer
               dateNow={dateNow}
               expiresAt={data.expiresAt}
-              language={language.ended}
+              langEnded={language.ended}
+              langDays={language.days}
             />
           </div>
 

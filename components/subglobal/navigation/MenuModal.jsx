@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
@@ -19,6 +19,7 @@ const MenuModal = ({
   language,
   languageSearch,
   langParam,
+  session,
 }) => {
   const pathname = usePathname();
   const router = useRouter();
@@ -56,7 +57,10 @@ const MenuModal = ({
       <SearchInput language={languageSearch} />
       <ul>
         <li>
-          <Link href={`/${langParam}/account`} onClick={() => toggleMenu()}>
+          <Link
+            href={session ? `/${langParam}/account` : "?signed=no"}
+            onClick={() => toggleMenu()}
+          >
             {language.account}
           </Link>
         </li>
@@ -66,7 +70,10 @@ const MenuModal = ({
           </Link>
         </li>
         <li>
-          <Link href={`/${langParam}/listings/saved`} onClick={() => toggleMenu()}>
+          <Link
+            href={session ? `/${langParam}/listings/saved` : "?signed=no"}
+            onClick={() => toggleMenu()}
+          >
             {language.favorites}
           </Link>
         </li>

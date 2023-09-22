@@ -39,8 +39,8 @@ export async function middleware(request) {
         request.nextUrl.pathname.startsWith(`/${locale}/listings`))
     ) {
       // YES lang - NO session
-      // NEWS is only for test purpose
-      return NextResponse.redirect(new URL(`/${locale}/news`, request.url));
+      // redirected to homepage
+      return NextResponse.redirect(new URL(`/${locale}`, request.url));
     }
   }
 }

@@ -13,12 +13,19 @@ const CarPostData = ({ language, lang, data, userId, userFavorites }) => {
       />
       <div className="carpostdata">
         <span>{language.lastbids}:</span>
-        <ul>
-          <li className="button-empty">$38.000</li>
-          <li className="button-empty">$23.500</li>
-          <li className="button-empty">$22.000</li>
-          <li className="button-empty">$20.500</li>
-        </ul>
+        <div className="frame">
+          <ul>
+            {data.bids.length > 0 ? (
+              data.bids.map((bid) => (
+                <li key={bid.id} className="button-empty">
+                  {`$${bid.bidValue}`}
+                </li>
+              ))
+            ) : (
+              <li className="button-empty">{language.nobids}</li>
+            )}
+          </ul>
+        </div>
       </div>
     </>
   );

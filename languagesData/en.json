@@ -18,7 +18,10 @@
       "sell": "Sell a car"
     },
 
-    "searchinput": "Search for cars (ex. BMW, Mercedes)",
+    "searchinput": {
+      "input": "Search for cars (ex. BMW, Mercedes)",
+      "btn": "Search"
+    },
     "modal": {
       "signin": {
         "title": "Sign in",
@@ -55,6 +58,7 @@
       "location": "Location",
       "lastbids": "Last Bids",
       "ended": "Ended",
+      "days": "Days",
       "sold": "Sold for",
       "speed": "Speed",
       "engine": "Engine"
@@ -76,7 +80,8 @@
     "new": "Newly listed",
     "ending": "Ending soon",
     "trending": "Trending",
-    "ended": "Ended"
+    "ended": "Ended",
+    "nolistings": "No listings found!"
   },
   "footer": {
     "box1": {
@@ -216,13 +221,12 @@
         "location": "Location",
         "lastbids": "Last bids",
         "ended": "Ended",
+        "days": "Days",
         "sold": "Sold for",
         "speed": "Speed",
-        "engine": "Engine"
+        "engine": "Engine",
+        "nobids":"No bids yet!"
       }
-    },
-    "home": {
-      "title": "This title is in english"
     }
   }
 }

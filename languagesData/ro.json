@@ -18,7 +18,10 @@
       "sell": "Vinde o masina"
     },
 
-    "searchinput": "Cauta masini (ex. BMW, Mercedes)",
+    "searchinput": {
+      "input": "Cauta masini (ex. BMW, Mercedes)",
+      "btn": "Cauta"
+    },
     "modal": {
       "signin": {
         "title": "Autentificare",
@@ -55,6 +58,7 @@
       "location": "Locatie",
       "lastbids": "Ultimele licitari",
       "ended": "Incheiat",
+      "days": "Zile",
       "sold": "Vanduta cu",
       "speed": "Viteze",
       "engine": "Motor"
@@ -76,7 +80,9 @@
     "new": "Nou listate",
     "ending": "Pe final",
     "trending": "In tendinte",
-    "ended": "Incheiate"
+    "ended": "Incheiate",
+
+    "nolistings": "Nu au fost gasite licitatii!"
   },
   "footer": {
     "box1": {
@@ -219,13 +225,12 @@
         "location": "Locatie",
         "lastbids": "Ultimele licitari",
         "ended": "Incheiat",
+        "days": "Zile",
         "sold": "Vanduta cu",
         "speed": "Viteze",
-        "engine": "Motor"
+        "engine": "Motor",
+        "nobids": "Inca nu sunt licitatii!"
       }
-    },
-    "home": {
-      "title": "Acest titlu e in romana"
     }
   }
 }
