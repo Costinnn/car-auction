@@ -2,15 +2,16 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import axios from "axios";
 
 import clock from "@/assets/global/clock.png";
 import close from "@/assets/global/close.png";
 import dollar from "@/assets/global/dollar.png";
-import loading from "@/assets/global/loading.png";
+
+import CountdownTimer from "@/components/global/CountdownTimer";
+import Spinner from "@/components/decoration/Spinner";
 
 import "./BidBar.css";
-import CountdownTimer from "@/components/global/CountdownTimer";
-import axios from "axios";
 
 const BidBar = ({
   language,
@@ -93,7 +94,8 @@ const BidBar = ({
             <CountdownTimer
               expiresAt={expiresAt}
               dateNow={dateNow}
-              language={language.ended}
+              langEnded={language.ended}
+              langDays={language.days}
             />
           </div>
           <div className="value">
@@ -109,15 +111,7 @@ const BidBar = ({
           </button>
         )}
       </div>
-      {isLoading && (
-        <Image
-          src={loading}
-          alt="loading"
-          width={20}
-          height={20}
-          className="loading"
-        />
-      )}
+      {isLoading && <Spinner />}
       {feedback && <span className="feedback">{feedback}</span>}
       <div className={`row2 ${isBidInputShown ? "open" : "close"}`}>
         <div className="input-box">

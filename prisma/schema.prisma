@@ -49,6 +49,7 @@ model User {
   id             String    @id @default(auto()) @map("_id") @db.ObjectId
   name           String    @unique
   image          String?
+  bio            String    @default("No bio info.")
   email          String    @unique
   emailVerified  DateTime?
   hashedPassword String
@@ -64,6 +65,12 @@ model User {
 
   biddedListingsIds String[]  @db.ObjectId
   biddedListings    Carpost[] @relation("biddedCarpost", fields: [biddedListingsIds], references: [id])
+
+  weeklyEmail   Boolean @default(true)
+  outbidEmail   Boolean @default(true)
+  endNotify     Boolean @default(true)
+  newBidsNotify Boolean @default(true)
+  resultsNotify Boolean @default(true)
 }
 
 model Carpost {

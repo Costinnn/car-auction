@@ -126,7 +126,15 @@
   },
   "pages": {
     "account": {
-      "profile": { "date": "Septembrie 2023", "button": "Editeaza profilul" },
+      "profile": {
+        "date": "Septembrie 2023",
+        "edit": "Editeaza profilul",
+        "cancel": "Anuleaza",
+        "save": "Salveaza",
+        "addimg": "Adauga o imagine noua",
+        "iplaceholder": "Schimba numele",
+        "tplaceholder": "Adauga ceva despre tine"
+      },
       "settings": {
         "email": {
           "title": "Notificari prin Email",
@@ -210,6 +218,7 @@
         "bid": "Licitat",
         "button": "Liciteaza",
         "ended": "Incheiat",
+        "days": "Zile",
         "sold": "Vanduta cu"
       },
       "heading": { "speed": "Viteze", "engine": "Motor" }

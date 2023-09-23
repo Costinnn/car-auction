@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import Image from "next/image";
 import Link from "next/link";

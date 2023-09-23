@@ -122,7 +122,15 @@
   },
   "pages": {
     "account": {
-      "profile": { "date": "September 2023", "button": "Edit profile" },
+      "profile": {
+        "date": "September 2023",
+        "edit": "Edit profile",
+        "cancel": "Cancel",
+        "save": "Save",
+        "addimg": "Add new image",
+        "iplaceholder": "Change username",
+        "tplaceholder": "Enter something about you"
+      },
       "settings": {
         "email": {
           "title": "Email Notifications",
@@ -206,6 +214,7 @@
         "bid": "Bid",
         "button": "Bid",
         "ended": "Ended",
+        "days": "Days",
         "sold": "Sold for"
       },
       "heading": { "speed": "Speed", "engine": "Engine" }
@@ -225,7 +234,7 @@
         "sold": "Sold for",
         "speed": "Speed",
         "engine": "Engine",
-        "nobids":"No bids yet!"
+        "nobids": "No bids yet!"
       }
     }
   }
