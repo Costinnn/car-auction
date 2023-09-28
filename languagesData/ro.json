@@ -81,8 +81,10 @@
     "ending": "Pe final",
     "trending": "In tendinte",
     "ended": "Incheiate",
-
-    "nolistings": "Nu au fost gasite licitatii!"
+    "nolistingsnew": "Nu sunt licitatii adaugate in ultimele 5 zile!",
+    "nolistingsending": "Nu sunt licitatii care se incheie in urmatoarele 2 zile!",
+    "nolistings": "Nu s-au gasit licitatii!",
+    "nolistingsended": "Nu sunt licitatii incheiate!"
   },
   "footer": {
     "box1": {

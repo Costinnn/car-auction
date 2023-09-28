@@ -20,6 +20,7 @@ const AddToFavorite = ({
 
   const toggleFavorite = async () => {
     if (userId && isShown && userId !== sellerId) {
+      setIsFavorite((prev) => !prev);
       try {
         const res = await axios.patch(`/en/api/addToFavorite`, {
           userId,
@@ -28,12 +29,13 @@ const AddToFavorite = ({
 
         if (res.data.message === "Success") {
           console.log("User favorites changed!");
-          setIsFavorite((prev) => !prev);
         } else {
           console.log("Could not change user favorites!");
+          setIsFavorite(false);
         }
       } catch (err) {
         console.log("HandleFavoritesPost ERROR");
+        setIsFavorite(false);
       }
     }
   };

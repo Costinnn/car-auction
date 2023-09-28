@@ -13,7 +13,9 @@ import Spinner from "@/components/decoration/Spinner";
 const Profile = ({ language, accInfo }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isUpdateProfileOpen, setIsUpdateProfileOpen] = useState(false);
-  const [profileImgUrl, setProfileImgUrl] = useState("");
+  const [profileImgUrl, setProfileImgUrl] = useState(
+    accInfo.image ? accInfo.image : blankProfileImg
+  );
   const [imgToUpload, setImgToUpload] = useState("");
   const [nameToUpload, setNameToUpload] = useState("");
   const [bioToUpload, setBioToUpload] = useState("");
@@ -64,18 +66,7 @@ const Profile = ({ language, accInfo }) => {
 
   return (
     <section className="profile">
-      <Image
-        src={
-          accInfo.image
-            ? accInfo.image
-            : profileImgUrl
-            ? profileImgUrl
-            : blankProfileImg
-        }
-        alt="profile"
-        width={100}
-        height={100}
-      />
+      <Image src={profileImgUrl} alt="profile" width={100} height={100} />
       {isUpdateProfileOpen && (
         <div className="addimg">
           <Image
@@ -85,8 +76,8 @@ const Profile = ({ language, accInfo }) => {
             width={20}
             height={20}
             onClick={() => {
-              setProfileImgUrl("");
-              setImgToUpload("");
+              setProfileImgUrl(blankProfileImg);
+              setImgToUpload("delete");
             }}
           />
           <input type="file" accept="image/*" onChange={handleProfileImage} />

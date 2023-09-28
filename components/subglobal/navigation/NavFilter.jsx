@@ -67,7 +67,7 @@ const NavFilter = ({ language, lang }) => {
     option1: searchParams.get("year1") || "2000",
     option2: searchParams.get("year2") || "2023",
   };
-  const sort = searchParams.get("sort") || "new";
+  const sort = searchParams.get("sort") || "all";
 
   const [isDropdownOpen, setIsDropdownOpen] = useState({
     category: false,
@@ -240,6 +240,12 @@ const NavFilter = ({ language, lang }) => {
         </div>
       </div>
       <div className="row2">
+      <Link
+          href={`?sort=all&category=${category.option}&brand=${brand.option}&year1=${years.option1}&year2=${years.option2}`}
+          className={sort === "all" ? "sort-active" : ""}
+        >
+          All
+        </Link>
         <Link
           href={`?sort=new&category=${category.option}&brand=${brand.option}&year1=${years.option1}&year2=${years.option2}`}
           className={sort === "new" ? "sort-active" : ""}

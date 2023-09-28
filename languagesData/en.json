@@ -81,7 +81,10 @@
     "ending": "Ending soon",
     "trending": "Trending",
     "ended": "Ended",
-    "nolistings": "No listings found!"
+    "nolistingsnew": "No listings added in the last 5 days!",
+    "nolistingsending": "No listings will end in the next 2 days!",
+    "nolistings": "No listings found!",
+    "nolistingsended": "No listings ended yet!"
   },
   "footer": {
     "box1": {

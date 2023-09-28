@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Resizer from "react-image-file-resizer";
 
+import Spinner from "@/components/decoration/Spinner";
 import deleteimg from "@/assets/global/deleteimg.png";
 
 import "./AddForm.css";
@@ -38,6 +39,7 @@ const AddForm = ({ language }) => {
   const [buyNow, setBuyNow] = useState("");
   const [minimumBid, setMinimumBid] = useState("");
   const [feedback, setFeedback] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   // COMPONENT FUNCTIONS
   const compressImage = (file) =>
     new Promise((resolve) => {
@@ -165,7 +167,7 @@ const AddForm = ({ language }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setIsLoading(true);
     // create postToAdd
     const postToAdd = {
       name,
@@ -228,6 +230,7 @@ const AddForm = ({ language }) => {
       console.log(res);
       setFeedback("Could not add your listing");
     }
+    setIsLoading(false);
     setTimeout(() => setFeedback(""), 10000);
   };
 
@@ -679,7 +682,7 @@ const AddForm = ({ language }) => {
           />
         </div>
       </div>
-
+      {isLoading && <Spinner />}
       <button type="submit" className="button-blue">
         {language.button}
       </button>

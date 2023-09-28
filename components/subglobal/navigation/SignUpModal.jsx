@@ -10,6 +10,7 @@ import close from "@/assets/global/close.png";
 import eye from "@/assets/global/eye.png";
 
 import "./SignUpModal.css";
+import Spinner from "@/components/decoration/Spinner";
 
 const SignUpModal = ({ toggleSignModal, isSignModalOpen, language }) => {
   const router = useRouter();
@@ -29,7 +30,8 @@ const SignUpModal = ({ toggleSignModal, isSignModalOpen, language }) => {
     vpassword: false,
     vcpassword: false,
   });
-
+  const [feedBack, setFeedback] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const toggleSignIn = () => {
     setIsSignInUp((prev) => !prev);
   };
@@ -52,6 +54,7 @@ const SignUpModal = ({ toggleSignModal, isSignModalOpen, language }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     if (isSignInUp) {
       // User want to sign in
       try {
@@ -63,33 +66,46 @@ const SignUpModal = ({ toggleSignModal, isSignModalOpen, language }) => {
         });
 
         if (res.error) {
-          console.log(res.error);
+          setFeedback(res.error);
         } else {
-          toggleSignModal();
-
           router.refresh();
-          console.log(res);
+          setTimeout(() => {
+            toggleSignModal();
+          }, 1000);
         }
       } catch (err) {
         console.log(err);
+        setFeedback("Could not sign you in!");
       }
     } else if (!isSignInUp) {
       // User want to sign up
-      try {
-        const res = await axios.post(`/api/register`, {
-          email,
-          name: username,
-          password,
-        });
-        if (res.data.message === "Success") {
-          console.log("User created with success!");
-        } else {
-          console.log("Fetch didn't worked", res);
+      if (password === cpassword) {
+        try {
+          const res = await axios.post(`/api/register`, {
+            email,
+            name: username,
+            password,
+          });
+          if (res.data.message === "Success") {
+            setFeedback("User created with success, you can Sign in!");
+            setIsSignInUp((prev) => !prev);
+          } else {
+            setFeedback(res.error);
+          }
+        } catch (err) {
+          console.log(err);
+          setFeedback(err.response.data.error);
         }
-      } catch (err) {
-        console.log(err);
+      } else {
+        setFeedback("Passwords don't match!");
       }
     }
+    setTimeout(() => {
+      if (feedBack) {
+        setFeedback("");
+      }
+    }, 2500);
+    setIsLoading(false);
   };
 
   return (
@@ -206,6 +222,8 @@ const SignUpModal = ({ toggleSignModal, isSignModalOpen, language }) => {
             </div>
           )}
 
+          {feedBack && <span>{feedBack}</span>}
+          {isLoading && <Spinner />}
           <button className="button-green">
             {isSignInUp ? language.signin.button : language.signup.button}
           </button>

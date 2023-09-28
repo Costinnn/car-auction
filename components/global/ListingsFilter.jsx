@@ -28,7 +28,13 @@ const ListingsFilter = async ({ listingsLanguage, lang, searchParams }) => {
           />
         ))
       ) : (
-        <h2 className="no-listings">{listingsLanguage.nolistings}</h2>
+        <h2 className="no-listings">
+          {searchParams.sort === "new" && listingsLanguage.nolistingsnew}
+          {searchParams.sort === "ending" && listingsLanguage.nolistingsending}
+          {searchParams.sort === "trending" && listingsLanguage.nolistings}
+          {searchParams.sort === "ended" && listingsLanguage.nolistingsended}
+          {!searchParams.sort && listingsLanguage.nolistings}
+        </h2>
       )}
     </>
   );

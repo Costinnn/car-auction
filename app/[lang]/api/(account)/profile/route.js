@@ -12,7 +12,8 @@ export async function PATCH(request) {
       where: { id: userId },
       data: {
         ...(name ? { name: name } : {}),
-        ...(image ? { image: image } : {}),
+        ...(image && image !== "delete" ? { image: image } : {}),
+        ...(image && image === "delete" ? { image: "" } : {}),
         ...(bio ? { bio: bio } : {}),
       },
     });
