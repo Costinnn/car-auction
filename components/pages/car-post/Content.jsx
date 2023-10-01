@@ -7,8 +7,8 @@ import "./Content.css";
 
 const Content = ({ language, content }) => {
   return (
-    <div className="content">
-      <dl>
+    <div className="car-content">
+      <dl className="car-information">
         <dt>{language.brand}</dt>
         <dd>{content.brand}</dd>
         <dt>{language.model}</dt>

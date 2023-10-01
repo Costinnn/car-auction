@@ -1,5 +1,7 @@
 .whyus {
-  margin: 50px 10px 20px 10px;
+  margin: 50px auto 20px auto;
+  padding: 0 10px;
+  max-width: 1440px;
   border-top: 1px solid var(--mediumlight-gray);
   border-bottom: 1px solid var(--mediumlight-gray);
   .box1 {
@@ -68,3 +70,4 @@
     }
   }
 }
+

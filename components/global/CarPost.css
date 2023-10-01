@@ -83,4 +83,30 @@
       }
     }
   }
+
+  @media screen and (min-width: 480px) {
+    .frame {
+      height: 350px;
+    }
+  }
+  @media screen and (min-width: 600px) {
+    .frame {
+      height: 450px;
+    }
+  }
+  @media screen and (min-width: 800px) {
+    .frame {
+      height: 285px;
+    }
+  }
+  @media screen and (min-width: 1050px) {
+    .frame {
+      height: 350px;
+    }
+  }
+  @media screen and (min-width: 1300px) {
+    .frame {
+      height: 285px;
+    }
+  }
 }

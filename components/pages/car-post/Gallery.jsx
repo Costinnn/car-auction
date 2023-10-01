@@ -33,8 +33,9 @@ const Gallery = ({ language, extImages, intImages }) => {
             src={extImages[0]}
             alt="car"
             onClick={() => toggleGalleryModal(0)}
-            width={500}
-            height={400}
+            // width={500}
+            // height={400}
+            fill={true}
           />
         </div>
         <div className="other-img">
@@ -42,68 +43,80 @@ const Gallery = ({ language, extImages, intImages }) => {
             <span className="badge">
               {language.exterior} ({extImgLength})
             </span>
-            <Image
-              src={extImages[1]}
-              alt="car"
-              onClick={() => toggleGalleryModal(1)}
-              width={300}
-              height={200}
-            />
-            <Image
-              src={extImages[2]}
-              alt="car"
-              onClick={() => toggleGalleryModal(2)}
-              width={300}
-              height={200}
-            />
-            <Image
-              src={extImages[3]}
-              alt="car"
-              onClick={() => toggleGalleryModal(3)}
-              width={300}
-              height={200}
-            />
-            <Image
-              src={extImages[4]}
-              alt="car"
-              onClick={() => toggleGalleryModal(4)}
-              width={300}
-              height={200}
-            />
+            <div className="img-box">
+              <Image
+                src={extImages[1]}
+                alt="car"
+                onClick={() => toggleGalleryModal(1)}
+                fill={true}
+              />
+            </div>
+            <div className="img-box">
+              <Image
+                src={extImages[2]}
+                alt="car"
+                onClick={() => toggleGalleryModal(2)}
+                fill={true}
+              />
+            </div>
+            <div className="img-box">
+              <Image
+                src={extImages[3]}
+                alt="car"
+                onClick={() => toggleGalleryModal(3)}
+                fill={true}
+              />
+            </div>
+            <div className="img-box">
+              <Image
+                src={extImages[4]}
+                alt="car"
+                onClick={() => toggleGalleryModal(4)}
+                fill={true}
+              />
+            </div>
           </div>
           <div className="interior-img">
             <span className="badge">
               {language.interior} ({intImages.length})
             </span>
-            <Image
-              src={intImages[0]}
-              alt="car"
-              onClick={() => toggleGalleryModal(extImgLength)}
-              width={300}
-              height={200}
-            />
-            <Image
-              src={intImages[1]}
-              alt="car"
-              onClick={() => toggleGalleryModal(extImgLength + 1)}
-              width={300}
-              height={200}
-            />
-            <Image
-              src={intImages[2]}
-              alt="car"
-              onClick={() => toggleGalleryModal(extImgLength + 2)}
-              width={300}
-              height={200}
-            />
+            <div className="img-box">
+              <Image
+                src={intImages[0]}
+                alt="car"
+                onClick={() => toggleGalleryModal(extImgLength)}
+                fill={true}
+              />
+            </div>
+            <div className="img-box">
+              <Image
+                src={intImages[1]}
+                alt="car"
+                onClick={() => toggleGalleryModal(extImgLength + 1)}
+                fill={true}
+              />
+            </div>
+            <div className="img-box">
+              <Image
+                src={intImages[2]}
+                alt="car"
+                onClick={() => toggleGalleryModal(extImgLength + 2)}
+                fill={true}
+              />
+            </div>
             <div
               className="last-box"
               onClick={() => toggleGalleryModal(extImgLength + 3)}
             >
-              <span className="badge-all">
-                {language.all}({extImgLength + intImages.length})
-              </span>
-              <Image src={intImages[3]} alt="car" width={300} height={200} />
+              <div className="bg-color">
+                <span className="badge-all">
+                  {language.all}({extImgLength + intImages.length})
+                </span>
+              </div>
+
+              <div className="img-box">
+                <Image src={intImages[3]} alt="car" fill={true} />
+              </div>
             </div>
           </div>
         </div>

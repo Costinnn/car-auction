@@ -1,4 +1,5 @@
 .account-page {
+  min-height: 50vh;
   .profile {
     display: flex;
     flex-direction: column;
@@ -93,5 +94,12 @@
         font-size: 15px;
       }
     }
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .account-page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 }

@@ -26,7 +26,7 @@ const page = async ({ params }) => {
   }
 
   return (
-    <section>
+    <section className="carpostdata-content">
       {data &&
         data.map((item) => (
           <CarPostData

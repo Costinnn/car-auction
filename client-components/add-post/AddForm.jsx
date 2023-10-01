@@ -45,10 +45,10 @@ const AddForm = ({ language }) => {
     new Promise((resolve) => {
       Resizer.imageFileResizer(
         file,
-        500,
-        500,
+        1000,
+        1000,
         "WEBP",
-        70,
+        85,
         0,
         (uri) => {
           resolve(uri);

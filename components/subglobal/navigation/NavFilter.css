@@ -5,6 +5,8 @@
     justify-content: space-between;
     padding: 5px 10px;
     width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
     .category,
     .brand,
     .years {
@@ -66,6 +68,8 @@
     align-items: center;
     padding: 5px 10px;
     justify-content: space-around;
+    max-width: 700px;
+    margin: 0 auto;
     > a {
       font-weight: 600;
       font-size: 13px;
@@ -75,6 +79,54 @@
     .sort-active {
       color: var(--dark-gray);
       border-bottom: 1px solid var(--dark-gray);
+    }
+  }
+
+  @media screen and (min-width: 480px) {
+    .row1 {
+      justify-content: space-around;
+      .category,
+      .brand,
+      .years {
+        width: 25%;
+        .button-empty {
+          width: 100%;
+        }
+      }
+    }
+  }
+  @media screen and (min-width: 700px) {
+    .row1 {
+      .category,
+      .brand,
+      .years {
+        .dropdown {
+          width: 180px;
+          text-align: center;
+          left: calc(50% - 90px);
+          > li {
+            > a {
+              margin: 8px 0;
+              padding: 2px 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .nav-filter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .row1{
+      max-width: 750px;
+    }
+    .row2 {
+      width: 60%;
+      max-width: 450px;
     }
   }
 }

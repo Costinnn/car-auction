@@ -4,7 +4,7 @@
     position: fixed;
     z-index: 5;
     top: 0;
-    left: 0;
+    right: 0;
     width: 100%;
     height: 100%;
     padding: 30px 10px;
@@ -52,5 +52,24 @@
   }
   .close {
     display: none;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .navigation {
+    .account-modal {
+      top: 0;
+      right: 0;
+      width: 400px;
+      height: 100%;
+    }
+  }
+}
+
+@media screen and (min-width: 1441px) {
+  .navigation {
+    .account-modal {
+      right: calc(50% - 720px);
+    }
   }
 }

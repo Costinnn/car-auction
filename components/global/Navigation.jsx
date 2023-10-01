@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -45,6 +46,10 @@ const Navigation = ({ language, session, langParam }) => {
       toggleMenu();
     }
   }, [searchParams.get("signed"), searchParams.get("search")]);
+
+  useEffect(() => {
+    if (window.innerWidth > 850) setIsSearchInputOpen(true);
+  }, []);
 
   return (
     <nav className="navigation section-narrow">
@@ -107,6 +112,7 @@ const Navigation = ({ language, session, langParam }) => {
             src={search}
             width={28}
             alt="search"
+            className="search-icon"
             onClick={() => setIsSearchInputOpen((prev) => !prev)}
           />
         </div>

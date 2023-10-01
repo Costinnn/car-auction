@@ -1,2 +1,14 @@
-.listings-filter {
+.center-align {
+  @media screen and (min-width: 800px) {
+    .listings-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 10px;
+    }
+  }
+  @media screen and (min-width: 1300px) {
+    .listings-content {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
 }

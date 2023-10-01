@@ -33,7 +33,7 @@ const GalleryModal = ({
 
   return (
     <div className={`gallery-modal ${isGalleryModalOpen ? "active" : "close"}`}>
-      <div className="content">
+      <div className="gm-content">
         <div className="row1">
           <ul>
             <li onClick={() => handleThumbs(0)}>Exterior</li>

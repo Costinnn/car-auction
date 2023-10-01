@@ -17,3 +17,13 @@
     margin-top: 10px;
   }
 }
+
+@media screen and (min-width: 1000px) {
+  .newsletter {
+    text-align: center;
+    .button-empty {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}

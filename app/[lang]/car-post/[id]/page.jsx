@@ -21,7 +21,7 @@ const page = async ({ params }) => {
   const userFavorites = await getUserFavorites();
 
   return (
-    <main className="carpost-page">
+    <main className="carpost-page section-narrow">
       <BidBar
         language={language.pages.carpost.bidbar}
         expiresAt={carPost.expiresAt}

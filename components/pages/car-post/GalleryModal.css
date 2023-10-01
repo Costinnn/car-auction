@@ -4,10 +4,10 @@
   left: 0;
   z-index: 5;
   width: 100%;
-  height: 100%;
+  height: max(100vh, 100vw);
   background-color: rgba(0, 0, 0, 0.911);
-
-  .content {
+  overflow-y: scroll;
+  .gm-content {
     .row1 {
       display: flex;
       align-items: center;
@@ -30,9 +30,10 @@
     }
     .frame {
       width: 100%;
-      height: 100%;
+      max-width: 900px;
+      height: min(85vh, 100vw);
       overflow: hidden;
-      margin-top: 200px;
+      margin: 0vh auto 0 auto;
       .splide {
         height: 100%;
         .splide__arrows {
@@ -70,4 +71,14 @@
 }
 .close {
   display: none;
+}
+
+@media screen and (max-width: 500px) {
+  .gallery-modal {
+    .gm-content {
+      .frame {
+        margin: 20vh auto 0 auto;
+      }
+    }
+  }
 }

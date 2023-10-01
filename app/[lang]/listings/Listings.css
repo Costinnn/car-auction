@@ -7,6 +7,8 @@
     align-items: center;
     padding: 5px 10px;
     justify-content: space-around;
+    max-width: 600px;
+    margin: 0 auto;
     > li {
       > a {
         padding: 3px 5px;
@@ -20,34 +22,49 @@
       }
     }
   }
-  .carpostdata {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 0px 10px;
-    > span {
-      font-weight: 600;
-      font-size: 13px;
-      color: var(--medium-gray);
-      min-width: 62px;
-    }
-    .frame {
-      overflow-x: scroll;
-      padding: 5px 0;
-      > ul {
-        display: flex;
-        align-items: center;
-        gap: 3px;
-        .button-empty {
-          padding: 3px;
-          color: var(--medium-gray);
-          font-size: 14px;
-        }
-        > .button-empty:first-of-type {
-          color: var(--green);
-          border-color: var(--green);
+  .carpostdata-content {
+    .bids-display {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0px 10px;
+
+      > span {
+        font-weight: 600;
+        font-size: 13px;
+        color: var(--medium-gray);
+        min-width: 62px;
+      }
+      .frame {
+        overflow-x: scroll;
+        padding: 5px 0;
+        > ul {
+          display: flex;
+          align-items: center;
+          gap: 3px;
+          .button-empty {
+            padding: 3px;
+            color: var(--medium-gray);
+            font-size: 14px;
+          }
+          > .button-empty:first-of-type {
+            color: var(--green);
+            border-color: var(--green);
+          }
         }
       }
+    }
+  }
+  @media screen and (min-width: 800px) {
+    .carpostdata-content {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 10px;
+    }
+  }
+  @media screen and (min-width: 1300px) {
+    .carpostdata-content {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
 }

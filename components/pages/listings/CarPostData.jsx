@@ -3,7 +3,7 @@ import React from "react";
 
 const CarPostData = ({ language, lang, data, userId, userFavorites }) => {
   return (
-    <>
+    <div>
       <CarPost
         language={language}
         lang={lang}
@@ -11,7 +11,7 @@ const CarPostData = ({ language, lang, data, userId, userFavorites }) => {
         userId={userId}
         userFavorites={userFavorites}
       />
-      <div className="carpostdata">
+      <div className="bids-display">
         <span>{language.lastbids}:</span>
         <div className="frame">
           <ul>
@@ -27,7 +27,7 @@ const CarPostData = ({ language, lang, data, userId, userFavorites }) => {
           </ul>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
