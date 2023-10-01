@@ -14,7 +14,6 @@ export const authOptions = {
       },
 
       async authorize(credentials, req) {
-        
         // 1. Verify content of credentials
         if (!credentials.email || !credentials.password) {
           throw new Error("Email and password required");
@@ -40,7 +39,8 @@ export const authOptions = {
         }
 
         // 4. If all good return user
-        if (user && isCorrectPassword) return user;
+        if (user && isCorrectPassword)
+          return `${user.email} authenticated with success!`;
 
         // OR
 
