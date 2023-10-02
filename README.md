@@ -1,7 +1,7 @@
-# Animal adoption website
+# Car auction website
 This is a React website, build using [Next.js v13.4.19](https://nextjs.org/) , [Prisma](https://www.prisma.io/) and [Mongo DB](https://www.mongodb.com/)
 
-<img src="https://github.com/Costinnn/car-auction/assets/103998434/db622b8d-4756-4203-bb23-0a921f3ccd8c" width=70% >
+<img src="https://github.com/Costinnn/car-auction/assets/103998434/9f3a849e-8b8b-46b2-92fb-fc2b615fcf6c" width=70% >
 
 ## Introduction - project's aim
 This is my third biggest project, and it's purpose was to help me deepen the understanding of Prisma schema model relations, Next.js features and API logic but also the arhitecture of a complex application with modal components, image carousel library Splidejs and bidding functionalities.
