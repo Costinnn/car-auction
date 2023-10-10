@@ -1,6 +1,7 @@
 .add-form {
   display: flex;
   flex-direction: column;
+  align-items: center;
   align-items: flex-start;
   padding: 10px;
   margin-top: 20px;
@@ -8,6 +9,7 @@
   > h2 {
     margin-top: 30px;
   }
+
   > h2::before {
     content: "";
     display: inline-block;
@@ -18,160 +20,172 @@
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
   }
-  .addimg {
-    position: relative;
-    border: 1px solid var(--light-gray);
-    color: var(--dark-gray);
-    background-color: white;
-    border-radius: 8px;
-    padding: 8px 10px;
-    margin-top: 5px;
-    width: 100%;
+  .container {
+    margin: 0 auto;
+    width: 98%;
+    max-width: 400px;
+    .box,
+    .group2,
+    .group3 {
+      margin-top: 20px;
+      > label {
+        color: var(--dark-gray);
 
-    > input {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      height: 60px;
-      opacity: 0;
-    }
-    .img-display {
-      padding-top: 10px;
-      width: 100%;
-      overflow-y: scroll;
-      .img-content {
-        display: flex;
-        gap: 15px;
-        padding: 0 5px;
-        .img-box {
+        font-size: 15px;
+      }
+      > input,
+      select {
+        border: 1px solid var(--light-gray);
+        color: var(--dark-gray);
+        outline: none;
+        border-radius: 8px;
+        padding: 8px 10px;
+        margin-top: 5px;
+        width: 100%;
+      }
+      > textarea {
+        resize: none;
+        border: 1px solid var(--light-gray);
+        color: var(--dark-gray);
+        outline: none;
+        border-radius: 8px;
+        padding: 8px 10px;
+        margin-top: 5px;
+        width: 100%;
+      }
+      .addimg {
+        position: relative;
+        border: 1px solid var(--light-gray);
+        color: var(--dark-gray);
+        background-color: white;
+        border-radius: 8px;
+        padding: 8px 10px;
+        margin-top: 5px;
+        width: 100%;
+
+        > input {
           position: relative;
-          .deleteimg {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background-color: white;
-            border-radius: 10px;
-            padding: 2px;
+          z-index: 2;
+          width: 100%;
+          height: 60px;
+          opacity: 0;
+        }
+        .img-display {
+          padding-top: 10px;
+          width: 100%;
+          overflow-y: scroll;
+          .img-content {
+            display: flex;
+            gap: 15px;
+            padding: 0 5px;
+            .img-box {
+              position: relative;
+              .deleteimg {
+                position: absolute;
+                top: -10px;
+                right: -10px;
+                background-color: white;
+                border-radius: 10px;
+                padding: 2px;
+              }
+              .car-image {
+                object-fit: cover;
+              }
+            }
           }
-          .car-image {
-            object-fit: cover;
-          }
+        }
+      }
+      .addimg::after {
+        content: "";
+        background-image: url("../../assets/global/addimg.png");
+        background-size: contain;
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        top: 15px;
+        z-index: 1;
+        left: calc(50% - 25px);
+      }
+    }
+    .small-input {
+      width: auto;
+    }
+    .group1 {
+      margin-top: 20px;
+      > label {
+        color: var(--dark-gray);
+        font-size: 15px;
+      }
+      > div {
+        > input {
+          border: 1px solid var(--light-gray);
+          color: var(--dark-gray);
+          outline: none;
+          border-radius: 8px;
+          padding: 8px 10px;
+          margin-top: 5px;
+          margin-right: 20px;
+        }
+      }
+      > span {
+        font-size: 14px;
+        color: var(--medium-gray);
+      }
+    }
+    .group2 {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      > div {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        > label {
+          color: var(--dark-gray);
+          font-size: 15px;
+        }
+        > input {
+          border: 1px solid var(--light-gray);
+          color: var(--dark-gray);
+          outline: none;
+          border-radius: 8px;
+          padding: 8px 10px;
+          margin-top: 5px;
+          width: 100%;
+        }
+      }
+    }
+    .group3 {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      > div {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+        > label {
+          color: var(--dark-gray);
+          font-size: 15px;
+        }
+        > input {
+          border: 1px solid var(--light-gray);
+          color: var(--dark-gray);
+          outline: none;
+          border-radius: 8px;
+          padding: 8px 10px;
+          margin-top: 5px;
+          width: 100%;
         }
       }
     }
   }
-  .addimg::after {
-    content: "";
-    background-image: url("../../assets/global/addimg.png");
-    background-size: contain;
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    top: 15px;
-    z-index: 1;
-    left: calc(50% - 25px);
-  }
-  > label {
-    color: var(--dark-gray);
-    margin-top: 20px;
-    font-size: 15px;
-  }
-  > input,
-  select {
-    border: 1px solid var(--light-gray);
-    color: var(--dark-gray);
-    outline: none;
-    border-radius: 8px;
-    padding: 8px 10px;
-    margin-top: 5px;
-    width: 100%;
-  }
-  > textarea {
-    resize: none;
-    border: 1px solid var(--light-gray);
-    color: var(--dark-gray);
-    outline: none;
-    border-radius: 8px;
-    padding: 8px 10px;
-    margin-top: 5px;
-    width: 100%;
-  }
-  .small-input {
-    width: auto;
-  }
-  .group1 {
-    margin-top: 20px;
-    > label {
-      color: var(--dark-gray);
-      font-size: 15px;
-    }
-    > div {
-      > input {
-        border: 1px solid var(--light-gray);
-        color: var(--dark-gray);
-        outline: none;
-        border-radius: 8px;
-        padding: 8px 10px;
-        margin-top: 5px;
-        margin-right: 20px;
-      }
-    }
-    > span {
-      font-size: 14px;
-      color: var(--medium-gray);
-    }
-  }
-  .group2 {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin-top: 20px;
-    > div {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      > label {
-        color: var(--dark-gray);
-        font-size: 15px;
-      }
-      > input {
-        border: 1px solid var(--light-gray);
-        color: var(--dark-gray);
-        outline: none;
-        border-radius: 8px;
-        padding: 8px 10px;
-        margin-top: 5px;
-        width: 100%;
-      }
-    }
-  }
-  .group3 {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin-top: 20px;
-    > div {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 10px;
-      > label {
-        color: var(--dark-gray);
-        font-size: 15px;
-      }
-      > input {
-        border: 1px solid var(--light-gray);
-        color: var(--dark-gray);
-        outline: none;
-        border-radius: 8px;
-        padding: 8px 10px;
-        margin-top: 5px;
-        width: 100%;
-      }
-    }
-  }
+
   .button-blue {
-    margin: 30px 0;
+    margin: 30px auto;
     width: 100%;
+    max-width: 200px;
     padding: 10px;
     font-size: 16px;
   }
@@ -179,5 +193,18 @@
     width: 100%;
     text-align: center;
     font-size: 14px;
+  }
+
+  @media screen and (min-width: 700px) {
+    > h2 {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      max-width: 800px;
+    }
   }
 }

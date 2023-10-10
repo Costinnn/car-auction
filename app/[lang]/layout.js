@@ -39,7 +39,7 @@ export default async function RootLayout({ children, params }) {
             langParam={params.lang}
           />
           {children}
-          <Footer language={language.footer}/>
+          <Footer language={language.footer} />
         </AuthProvider>
       </body>
     </html>

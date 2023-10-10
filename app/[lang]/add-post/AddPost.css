@@ -1,6 +1,6 @@
 .addpost-page {
   > h1,
-  >p {
+  > p {
     padding: 5px 10px;
   }
   > h1 {
@@ -8,5 +8,16 @@
   }
   > p {
     font-size: 15px;
+    max-width: 600px;
+  }
+
+  @media screen and (min-width: 700px) {
+    > h1,
+    > p {
+      text-align: center;
+    }
+    > p {
+      margin: 0 auto;
+    }
   }
 }
