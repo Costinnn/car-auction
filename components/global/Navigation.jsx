@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import axios from "axios";
 import { useSearchParams } from "next/navigation";
 
 import MenuModal from "../subglobal/navigation/MenuModal";
@@ -14,17 +15,21 @@ import menu from "@/assets/global/menu.png";
 import search from "@/assets/global/search.png";
 import arrowRight from "@/assets/global/arrow-right.png";
 import account from "@/assets/global/user.png";
+import notification from "@/assets/global/notification.png";
 
 import "./Navigation.css";
 import SearchInput from "@/client-components/navigation/SearchInput";
+import NotifModal from "../subglobal/navigation/NotifModal";
 
-const Navigation = ({ language, session, langParam }) => {
+const Navigation = ({ language, session, langParam, notifications }) => {
   const searchParams = useSearchParams();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchInputOpen, setIsSearchInputOpen] = useState(false);
   const [isSignModalOpen, setIsSignModalOpen] = useState(false);
   const [isAccountModalOpen, setIsAccountModalOpen] = useState(false);
+  const [isNotifModalOpen, setIsNotifModalOpen] = useState(false);
+  const [unseenNotif, setUnseenNotif] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
@@ -38,6 +43,25 @@ const Navigation = ({ language, session, langParam }) => {
     setIsAccountModalOpen((prev) => !prev);
   };
 
+  const updateMarkNotif = async () => {
+    try {
+      const res = await axios.patch("/en/api/markNotifications");
+      // console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const toggleNotifModal = () => {
+    setIsNotifModalOpen((prev) => !prev);
+    if (unseenNotif) {
+      setTimeout(() => {
+        updateMarkNotif();
+        setUnseenNotif(false);
+      }, 2000);
+    }
+  };
+
   useEffect(() => {
     if (!session && searchParams.get("signed") === "no") {
       toggleSignModal();
@@ -49,6 +73,12 @@ const Navigation = ({ language, session, langParam }) => {
 
   useEffect(() => {
     if (window.innerWidth > 850) setIsSearchInputOpen(true);
+
+    // unseen notifications
+    const unseenNotifications = notifications.filter(
+      (notif) => notif.isSeen === false
+    );
+    if (unseenNotifications.length > 0) setUnseenNotif(true);
   }, []);
 
   return (
@@ -64,6 +94,12 @@ const Navigation = ({ language, session, langParam }) => {
         language={language.modal.account}
         langParam={langParam}
       />
+      <NotifModal
+        toggleNotifModal={toggleNotifModal}
+        isNotifModalOpen={isNotifModalOpen}
+        langParam={langParam}
+        notifications={notifications}
+      />
       <div className="row1">
         <Link href={`/${langParam}`}>
           <Image src={logo} width={150} alt="logo" priority />
@@ -78,13 +114,25 @@ const Navigation = ({ language, session, langParam }) => {
           session={session}
         />
         {session ? (
-          <Image
-            src={account}
-            width={28}
-            alt="menu"
-            className="account"
-            onClick={() => toggleAccountModal()}
-          />
+          <>
+            <Image
+              src={account}
+              width={28}
+              alt="menu"
+              className="account"
+              onClick={() => toggleAccountModal()}
+            />
+            <div className="notif-box">
+              {unseenNotif && <div className="red-dot"></div>}
+              <Image
+                src={notification}
+                width={28}
+                alt="notif"
+                className="notif"
+                onClick={() => toggleNotifModal()}
+              />
+            </div>
+          </>
         ) : (
           <button
             className="signup button-green"

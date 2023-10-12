@@ -144,7 +144,7 @@
           "title": "Watch List Notifications",
           "line1": "Notify me 1 hour before the auction ends",
           "line2": "Notify me when there are new bids",
-          "line3": "Notify me with auction results"
+          "line3": "Notify me with ended auction results"
         }
       }
     },

@@ -8,6 +8,7 @@ import { getServerSession } from "@/lib/getServerSession";
 import AuthProvider from "@/lib/AuthProvider";
 import Navigation from "@/components/global/Navigation";
 import Footer from "@/components/global/Footer";
+import getNotifications from "@/lib/getNotifications";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -28,6 +29,7 @@ export const metadata = {
 export default async function RootLayout({ children, params }) {
   const language = await getLanguage(params.lang);
   const session = await getServerSession(headers().get("cookie") ?? "");
+  const notifications = await getNotifications();
 
   return (
     <html lang={params.lang}>
@@ -37,6 +39,7 @@ export default async function RootLayout({ children, params }) {
             language={language.navigation}
             session={session}
             langParam={params.lang}
+            notifications={notifications}
           />
           {children}
           <Footer language={language.footer} />

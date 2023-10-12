@@ -1,0 +1,44 @@
+.navigation {
+  .notif-modal {
+    width: 79%;
+    max-width: 400px;
+    height: calc(100vh - 66px);
+    position: fixed;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    z-index: 6;
+    top: 66px;
+    right: 0;
+    background-color: var(--whiteish);
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    padding: 5px 0;
+
+    .notification {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 90%;
+      margin: 5px auto;
+      padding: 5px 10px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid var(--light-gray);
+    }
+    .seen {
+      color: var(--medium-gray);
+      background-color: var(--mediumlight2-gray);
+    }
+    .notseen {
+      background-color: var(--light-gray);
+      color: var(--black);
+    }
+  }
+  .open {
+    display: block;
+  }
+  .close {
+    display: none;
+  }
+}

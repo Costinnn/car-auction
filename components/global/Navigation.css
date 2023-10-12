@@ -20,6 +20,19 @@
       margin-left: auto;
       margin-right: 20px;
     }
+    .notif-box {
+      position: relative;
+      margin-right: 20px;
+      .red-dot {
+        position: absolute;
+        top: -2px;
+        right: 0;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: var(--rust);
+      }
+    }
   }
   > .row2 {
     flex-direction: column;

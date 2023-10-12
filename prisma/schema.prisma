@@ -66,11 +66,12 @@ model User {
   biddedListingsIds String[]  @db.ObjectId
   biddedListings    Carpost[] @relation("biddedCarpost", fields: [biddedListingsIds], references: [id])
 
-  weeklyEmail   Boolean @default(true)
-  outbidEmail   Boolean @default(true)
-  endNotify     Boolean @default(true)
-  newBidsNotify Boolean @default(true)
-  resultsNotify Boolean @default(true)
+  weeklyEmail   Boolean        @default(true)
+  outbidEmail   Boolean        @default(true)
+  endNotify     Boolean        @default(true)
+  newBidsNotify Boolean        @default(true)
+  resultsNotify Boolean        @default(true)
+  notifications Notification[]
 }
 
 model Carpost {
@@ -114,8 +115,9 @@ model Carpost {
   biddedByUsers String[] @db.ObjectId
   biddedBy      User[]   @relation("biddedCarpost", fields: [biddedByUsers], references: [id])
 
-  expiresAt DateTime
-  createdAt DateTime @default(now())
+  expiresAt     DateTime
+  createdAt     DateTime       @default(now())
+  notifications Notification[]
 }
 
 model Bid {
@@ -130,4 +132,20 @@ model Bid {
 
   carPostId String  @db.ObjectId
   carPost   Carpost @relation("bids", fields: [carPostId], references: [id])
+}
+
+model Notification {
+  id      String  @id @default(auto()) @map("_id") @db.ObjectId
+  type    String
+  link    String
+  message String
+  isSeen  Boolean @default(false)
+
+  carPostId String  @db.ObjectId
+  carPost   Carpost @relation(fields: [carPostId], references: [id])
+
+  userId String @db.ObjectId
+  user   User   @relation(fields: [userId], references: [id])
+
+  createdAt     DateTime       @default(now())
 }
