@@ -33,7 +33,7 @@ const NotifModal = ({
     <div className={`notif-modal ${isNotifModalOpen ? "open" : "close"} `}>
       {notifications &&
         notifications.map((notif) => (
-          <Notification data={notif} key={notif.id} />
+          <Notification data={notif} key={notif.id} langParam={langParam} toggleNotifModal={toggleNotifModal}/>
         ))}
     </div>
   );

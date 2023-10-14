@@ -135,11 +135,12 @@ model Bid {
 }
 
 model Notification {
-  id      String  @id @default(auto()) @map("_id") @db.ObjectId
-  type    String
-  link    String
-  message String
-  isSeen  Boolean @default(false)
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  type      String
+  link      String
+  message   String
+  isSeen    Boolean @default(false)
+  extraInfo String?
 
   carPostId String  @db.ObjectId
   carPost   Carpost @relation(fields: [carPostId], references: [id])
@@ -147,5 +148,5 @@ model Notification {
   userId String @db.ObjectId
   user   User   @relation(fields: [userId], references: [id])
 
-  createdAt     DateTime       @default(now())
+  createdAt DateTime @default(now())
 }

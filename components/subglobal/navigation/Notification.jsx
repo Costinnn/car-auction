@@ -8,10 +8,11 @@ import results from "@/assets/global/results.png";
 import Link from "next/link";
 import Image from "next/image";
 
-const Notification = ({ data }) => {
+const Notification = ({ data, langParam, toggleNotifModal }) => {
   return (
     <Link
-      href={`/en/${data.link}`}
+      href={`/${langParam}/${data.link}`}
+      onClick={toggleNotifModal}
       className={`notification ${data.isSeen ? "seen" : "notseen"}`}
     >
       <Image

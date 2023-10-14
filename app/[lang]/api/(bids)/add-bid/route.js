@@ -4,7 +4,7 @@ import getUserId from "@/lib/getUserId";
 
 export async function POST(request) {
   const userId = await getUserId();
-
+  let isCarPostIdFound = false;
   try {
     const reqData = await request.json();
     const { bidValue, postId } = reqData;
@@ -33,6 +33,18 @@ export async function POST(request) {
       data: { bidValue },
     });
 
+    // add carPostId to user biddedListings if it does not exist yet
+    const biddedListingsData = await prismadb.user.findMany({
+      where: { id: userId, biddedListingsIds: { has: postId } },
+    });
+    if (biddedListingsData.length === 0) {
+      await prismadb.user.update({
+        where: { id: userId },
+        data: { biddedListingsIds: { push: postId } },
+      });
+    }
+
+    // RESPONSE
     if (newBid && carpostBidUpdate) {
       return NextResponse.json({ message: "Success" }, { status: 201 });
     }
