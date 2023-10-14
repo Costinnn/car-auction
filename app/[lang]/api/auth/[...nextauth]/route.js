@@ -24,6 +24,7 @@ export const authOptions = {
           where: {
             email: credentials.email,
           },
+          select: { id: true, email: true, name: true, hashedPassword: true },
         });
         if (!user) {
           throw new Error("Email does not exist");
@@ -39,8 +40,9 @@ export const authOptions = {
         }
 
         // 4. If all good return user
-        if (user && isCorrectPassword)
-          return `${user.email} authenticated with success!`;
+        if (user && isCorrectPassword) {
+          return user;
+        }
 
         // OR
 
