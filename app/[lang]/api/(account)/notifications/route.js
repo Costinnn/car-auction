@@ -6,6 +6,7 @@ import getApiUserSettings from "@/lib/apiOnly/getApiUserSettings";
 import getApiUserNotifications from "@/lib/apiOnly/getApiUserNotifications";
 import getApiUserBiddedListings from "@/lib/apiOnly/getApiUserBiddedListings";
 import getApiUserBids from "@/lib/apiOnly/getApiUserBids";
+import getApiExpiredListings from "@/lib/apiOnly/getApiExpiredListings";
 
 export async function POST() {
   try {
@@ -14,10 +15,10 @@ export async function POST() {
     const userFavoritesIds = await getApiUserFavorites(userId);
     const userBiddedListingsIds = await getApiUserBiddedListings(userId);
     const userNotifications = await getApiUserNotifications(userId);
-    const notifResponseStatus = { ending: 0, ended: 0, outbid: 0, new: 0 };
+    // const notifResponseStatus = { ending: 0, ended: 0, outbid: 0, new: 0 };
 
-    if (userId) {
-      // ----- FAVORITES NOTIFICATION CHECK
+    if (userId && userSettings) {
+      // ----- FAVORITES NOTIFICATION CHECK (ending, favResults)
       if (userFavoritesIds.length > 0 && userNotifications) {
         // get FavoritePosts data
         const favoritePosts = await prismadb.carpost.findMany({
@@ -27,16 +28,17 @@ export async function POST() {
 
         if (
           favoritePosts.length > 0 &&
-          (userSettings.endNotify || userSettings.resultsNotify)
+          (userSettings.endingNotify || userSettings.favResultsNotify)
         ) {
           const dateNow = new Date().getTime();
 
           for (const favPost of favoritePosts) {
             const auctionExpireAt = favPost.expiresAt.getTime();
+
             // --ENDING NOTIFICATION CHECK
             // TYPE: ending (in 5 hours)
             if (
-              userSettings.endNotify &&
+              userSettings.endingNotify &&
               dateNow <= auctionExpireAt &&
               dateNow + 5 * 60 * 60 * 1000 >= auctionExpireAt
             ) {
@@ -59,90 +61,116 @@ export async function POST() {
                 notifResponseStatus.ending++;
               }
             }
-            // --ENDED NOTIFICATION CHECK
-            // TYPE: ended
-            if (userSettings.resultsNotify && dateNow > auctionExpireAt) {
+
+            // --FAVORITE RESULTS NOTIFICATION CHECK
+            // TYPE: favResults
+            if (userSettings.favResultsNotify && dateNow > auctionExpireAt) {
               // check if notification exists with carPostId & type
               const notifExists = userNotifications.filter(
                 (notif) =>
-                  notif.carPostId === favPost.id && notif.type === "ended"
+                  notif.carPostId === favPost.id && notif.type === "favResults"
               );
 
               if (notifExists.length === 0) {
-                //create ended notification
+                //create favResults notification
                 const newNotif = await prismadb.notification.create({
                   data: {
-                    type: "ended",
+                    type: "favResults",
                     link: `car-post/${favPost.id}`,
                     message: `Auction: ${favPost.title} ended!`,
                     carPost: { connect: { id: favPost.id } },
                     user: { connect: { id: userId } },
                   },
                 });
-                notifResponseStatus.ended++;
               }
             }
           }
         }
-
-        // return NextResponse.json({ message: "Success" }, { status: 200 });
       }
 
-      // ----- BIDDED NOTIFICATION CHECK
+      // ----- BIDDED NOTIFICATION CHECK (outbid, bidResults)
       if (userBiddedListingsIds.length > 0 && userNotifications) {
         // --OUTBID NOTIFICATION CHECK
         // TYPE: outbid - when user bidded
-        const userBids = await getApiUserBids(userId);
+        if (userSettings.outbidNotify) {
+          const userBids = await getApiUserBids(userId);
 
-        for (const biddedCarpostId of userBiddedListingsIds) {
-          let stillCurrentBid = false;
-          let lastBid = { createdAt: 0 };
-          for (const bid of userBids) {
-            if (
-              biddedCarpostId === bid.carPostId &&
-              bid.isCurrentBid === true
-            ) {
-              // check if exists an active bid for carpost
-              stillCurrentBid = true;
-            } else {
-              // check if is last bid by date and store it
-
-              if (lastBid.createdAt < bid.createdAt) {
-                lastBid = bid;
+          for (const biddedCarpostId of userBiddedListingsIds) {
+            let stillCurrentBid = false;
+            let lastBid = { createdAt: 0 };
+            for (const bid of userBids) {
+              if (
+                biddedCarpostId === bid.carPostId &&
+                bid.isCurrentBid === true
+              ) {
+                // check if exists an active bid for carpost
+                stillCurrentBid = true;
+              } else {
+                // check if is last bid by date and store it
+                if (lastBid.createdAt < bid.createdAt) {
+                  lastBid = bid;
+                }
               }
             }
-          }
-
-          if (!stillCurrentBid) {
-            // if no active bid found its been outbidded, check if notification already exists
-            const notifExists = userNotifications.filter(
-              (notif) =>
-                notif.carPostId === biddedCarpostId &&
-                notif.type === "outbid" &&
-                notif.extraInfo === lastBid.id
-            );
-            if (notifExists.length === 0) {
-              // if no notification exists, create one
-
-              const newOutbidNotif = await prismadb.notification.create({
-                data: {
-                  type: "outbid",
-                  link: `car-post/${biddedCarpostId}`,
-                  message: `You have been outbidded!`,
-                  extraInfo: lastBid.id,
-                  carPost: { connect: { id: biddedCarpostId } },
-                  user: { connect: { id: userId } },
-                },
-              });
+            if (!stillCurrentBid) {
+              // if no active bid found its been outbidded, check if notification already exists
+              const notifExists = userNotifications.filter(
+                (notif) =>
+                  notif.carPostId === biddedCarpostId &&
+                  notif.type === "outbid" &&
+                  notif.extraInfo === lastBid.id
+              );
+              if (notifExists.length === 0) {
+                // if no notification exists, create one
+                const newOutbidNotif = await prismadb.notification.create({
+                  data: {
+                    type: "outbid",
+                    link: `car-post/${biddedCarpostId}`,
+                    message: `You have been outbidded!`,
+                    extraInfo: lastBid.id,
+                    carPost: { connect: { id: biddedCarpostId } },
+                    user: { connect: { id: userId } },
+                  },
+                });
+              }
             }
           }
         }
 
-        // --RESULTS NOTIFICATION CHECK
-        // TYPE: results - when user bidded and auction ended
+        // -- RESULTS NOTIFICATION CHECK
+        // TYPE: bidResults - when user bidded and auction ended
+        if (userSettings.bidResultsNotify) {
+          const expiredBiddedListings = await getApiExpiredListings(
+            userBiddedListingsIds
+          );
+          // if expired bidded listings exists check them
+          if (expiredBiddedListings.length > 0) {
+            for (const expiredListing of expiredBiddedListings) {
+              // for bidded expired listings check if notification already exists
+              const notifExists = userNotifications.filter(
+                (notif) =>
+                  notif.carPostId === expiredListing.id &&
+                  notif.type === "bidResults"
+              );
+
+              if (notifExists.length === 0) {
+                //create bidResults notification
+                const newNotif = await prismadb.notification.create({
+                  data: {
+                    type: "bidResults",
+                    link: `car-post/${expiredListing.id}`,
+                    message: `Auction: ${expiredListing.title} ended!`,
+                    carPost: { connect: { id: expiredListing.id } },
+                    user: { connect: { id: userId } },
+                  },
+                });
+              }
+            }
+          }
+        }
       }
 
-      // --NEW AUCTIONS NOTIFICATION CHECK
+      // --NEW Listings NOTIFICATION CHECK (newListings)
       // TYPE: new - random
 
       return NextResponse.json({ message: "Success" }, { status: 200 });

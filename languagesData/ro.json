@@ -146,9 +146,11 @@
         },
         "notifications": {
           "title": "Notificari pentru lista de urmarire",
-          "line1": "Notifica-ma cu 5 orae inainte sa se incheie licitatia",
-          "line2": "Notifica-ma cand sunt licitatii noi",
-          "line3": "Notifica-ma cu rezultatele licitatiilor incheiate"
+          "line1": "Notifica-ma cand sunt licitatii noi",
+          "line2": "Notifica-ma cand s-a supralicitat",
+          "line3": "Notifica-ma cu 5 ore inainte sa se incheie licitatia",
+          "line4": "Notifica-ma cu resultatele licitatiilor favorite incheiate",
+          "line5": "Notifica-ma cu resultatele licitatiilor incheiate la care am licitat"
         }
       }
     },

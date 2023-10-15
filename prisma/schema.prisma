@@ -68,9 +68,12 @@ model User {
 
   weeklyEmail   Boolean        @default(true)
   outbidEmail   Boolean        @default(true)
-  endNotify     Boolean        @default(true)
-  newBidsNotify Boolean        @default(true)
-  resultsNotify Boolean        @default(true)
+
+  newListingsNotify Boolean        @default(true)
+  outbidNotify   Boolean        @default(true)
+  endingNotify     Boolean        @default(true)
+  favResultsNotify Boolean        @default(true)
+  bidResultsNotify Boolean        @default(true)
   notifications Notification[]
 }
 

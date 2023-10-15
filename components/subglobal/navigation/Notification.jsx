@@ -8,6 +8,8 @@ import results from "@/assets/global/results.png";
 import Link from "next/link";
 import Image from "next/image";
 
+// notification types : newListings, outbid, ending, favResults, bidResults
+
 const Notification = ({ data, langParam, toggleNotifModal }) => {
   return (
     <Link
@@ -17,15 +19,17 @@ const Notification = ({ data, langParam, toggleNotifModal }) => {
     >
       <Image
         src={
-          data.type === "ended"
+          data.type === "favResults"
             ? ended
+            : data.type === "bidResults"
+            ? results
             : data.type === "ending"
             ? ending
             : data.type === "outbid"
             ? outbid
-            : data.type === "new"
+            : data.type === "newListings"
             ? newpost
-            : results
+            : ""
         }
         alt="ended"
         width={30}

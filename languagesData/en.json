@@ -143,9 +143,11 @@
         },
         "notifications": {
           "title": "Watch List Notifications",
-          "line1": "Notify me 5 hours before the auction ends",
-          "line2": "Notify me when there are new bids",
-          "line3": "Notify me with ended auction results"
+          "line1": "Notify me when there are new listings",
+          "line2": "Notify me when I'm outbidded",
+          "line3": "Notify me 5 hours before the auction ends",
+          "line4": "Notify me with results of favorite ended auction",
+          "line5": "Notify me with results of ended auction that I bidded"
         }
       }
     },

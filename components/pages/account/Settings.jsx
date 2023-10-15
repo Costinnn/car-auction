@@ -6,9 +6,16 @@ import React, { useState } from "react";
 const Settings = ({ language, accInfo }) => {
   const [weeklyEmail, setWeeklyEmail] = useState(accInfo.weeklyEmail);
   const [outbidEmail, setOutbidEmail] = useState(accInfo.outbidEmail);
-  const [endNotify, setEndNotify] = useState(accInfo.endNotify);
-  const [newBidsNotify, setNewBidsNotify] = useState(accInfo.newBidsNotify);
-  const [resultsNotify, setResultsNotify] = useState(accInfo.resultsNotify);
+
+  const [newListingsNotify, setNewListingsNotify] = useState(accInfo.newListingsNotify);
+  const [outbidNotify, setOutbidNotify] = useState(accInfo.outbidNotify);
+  const [endingNotify, setEndingNotify] = useState(accInfo.endingNotify);
+  const [favResultsNotify, setFavResultsNotify] = useState(
+    accInfo.favResultsNotify
+  );
+  const [bidResultsNotify, setBidResultsNotify] = useState(
+    accInfo.bidResultsNotify
+  );
 
   const handleSettings = async (field, value) => {
     try {
@@ -16,9 +23,11 @@ const Settings = ({ language, accInfo }) => {
       if (res.data.message === "Success") {
         if (field === "weeklyEmail") setWeeklyEmail((prev) => !prev);
         if (field === "outbidEmail") setOutbidEmail((prev) => !prev);
-        if (field === "endNotify") setEndNotify((prev) => !prev);
-        if (field === "newBidsNotify") setNewBidsNotify((prev) => !prev);
-        if (field === "resultsNotify") setResultsNotify((prev) => !prev);
+        if (field === "newListingsNotify") setNewListingsNotify((prev) => !prev);
+        if (field === "outbidNotify") setOutbidNotify((prev) => !prev);
+        if (field === "endingNotify") setEndingNotify((prev) => !prev);
+        if (field === "favResultsNotify") setFavResultsNotify((prev) => !prev);
+        if (field === "bidResultsNotify") setBidResultsNotify((prev) => !prev);
       } else if (res.data.error) {
         console.log(res.data.error);
       }
@@ -52,31 +61,62 @@ const Settings = ({ language, accInfo }) => {
       </ul>
       <ul>
         <h2>{language.notifications.title}</h2>
+
         <li>
           <span>{language.notifications.line1}</span>
           <button
-            className={endNotify ? "button-toggle-on" : "button-toggle-off"}
-            onClick={() => handleSettings("endNotify", !endNotify)}
+            className={newListingsNotify ? "button-toggle-on" : "button-toggle-off"}
+            onClick={() => handleSettings("newListingsNotify", !newListingsNotify)}
           >
-            {endNotify ? "On" : "Off"} <span className="switch"></span>
+            {newListingsNotify ? "On" : "Off"} <span className="switch"></span>
           </button>
         </li>
+
         <li>
           <span>{language.notifications.line2}</span>
           <button
-            className={newBidsNotify ? "button-toggle-on" : "button-toggle-off"}
-            onClick={() => handleSettings("newBidsNotify", !newBidsNotify)}
+            className={outbidNotify ? "button-toggle-on" : "button-toggle-off"}
+            onClick={() => handleSettings("outbidNotify", !outbidNotify)}
           >
-            {newBidsNotify ? "On" : "Off"} <span className="switch"></span>
+            {outbidNotify ? "On" : "Off"} <span className="switch"></span>
           </button>
         </li>
+
         <li>
           <span>{language.notifications.line3}</span>
           <button
-            className={resultsNotify ? "button-toggle-on" : "button-toggle-off"}
-            onClick={() => handleSettings("resultsNotify", !resultsNotify)}
+            className={endingNotify ? "button-toggle-on" : "button-toggle-off"}
+            onClick={() => handleSettings("endingNotify", !endingNotify)}
           >
-            {resultsNotify ? "On" : "Off"} <span className="switch"></span>
+            {endingNotify ? "On" : "Off"} <span className="switch"></span>
+          </button>
+        </li>
+
+        <li>
+          <span>{language.notifications.line4}</span>
+          <button
+            className={
+              favResultsNotify ? "button-toggle-on" : "button-toggle-off"
+            }
+            onClick={() =>
+              handleSettings("favResultsNotify", !favResultsNotify)
+            }
+          >
+            {favResultsNotify ? "On" : "Off"} <span className="switch"></span>
+          </button>
+        </li>
+
+        <li>
+          <span>{language.notifications.line5}</span>
+          <button
+            className={
+              bidResultsNotify ? "button-toggle-on" : "button-toggle-off"
+            }
+            onClick={() =>
+              handleSettings("bidResultsNotify", !bidResultsNotify)
+            }
+          >
+            {bidResultsNotify ? "On" : "Off"} <span className="switch"></span>
           </button>
         </li>
       </ul>
