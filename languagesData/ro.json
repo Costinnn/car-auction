@@ -59,6 +59,7 @@
       "lastbids": "Ultimele licitari",
       "ended": "Incheiat",
       "days": "Zile",
+      "hours": "Ore",
       "sold": "Vanduta cu",
       "speed": "Viteze",
       "engine": "Motor"
@@ -145,7 +146,7 @@
         },
         "notifications": {
           "title": "Notificari pentru lista de urmarire",
-          "line1": "Notifica-ma cu o ora inainte sa se incheie licitatia",
+          "line1": "Notifica-ma cu 5 orae inainte sa se incheie licitatia",
           "line2": "Notifica-ma cand sunt licitatii noi",
           "line3": "Notifica-ma cu rezultatele licitatiilor incheiate"
         }
@@ -221,6 +222,7 @@
         "button": "Liciteaza",
         "ended": "Incheiat",
         "days": "Zile",
+        "hours": "Ore",
         "sold": "Vanduta cu"
       },
       "heading": { "speed": "Viteze", "engine": "Motor" }
@@ -237,6 +239,7 @@
         "lastbids": "Ultimele licitari",
         "ended": "Incheiat",
         "days": "Zile",
+        "hours": "Ore",
         "sold": "Vanduta cu",
         "speed": "Viteze",
         "engine": "Motor",

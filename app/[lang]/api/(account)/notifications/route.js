@@ -38,7 +38,7 @@ export async function POST() {
             if (
               userSettings.endNotify &&
               dateNow <= auctionExpireAt &&
-              dateNow - 5 * 60 * 60 * 1000 >= auctionExpireAt
+              dateNow + 5 * 60 * 60 * 1000 >= auctionExpireAt
             ) {
               // check if notification already exists, with carPostId & type
               const notifExists = userNotifications.filter(
@@ -90,7 +90,6 @@ export async function POST() {
 
       // ----- BIDDED NOTIFICATION CHECK
       if (userBiddedListingsIds.length > 0 && userNotifications) {
-       
         // --OUTBID NOTIFICATION CHECK
         // TYPE: outbid - when user bidded
         const userBids = await getApiUserBids(userId);

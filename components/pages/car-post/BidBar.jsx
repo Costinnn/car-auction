@@ -96,6 +96,7 @@ const BidBar = ({
               dateNow={dateNow}
               langEnded={language.ended}
               langDays={language.days}
+              langHours={language.hours}
             />
           </div>
           <div className="value">

@@ -74,6 +74,7 @@ const CarPost = ({ language, lang, data, userId, userFavorites }) => {
               expiresAt={data.expiresAt}
               langEnded={language.ended}
               langDays={language.days}
+              langHours={language.hours}
             />
           </div>
 
