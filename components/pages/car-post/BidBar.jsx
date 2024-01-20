@@ -101,7 +101,7 @@ const BidBar = ({
           </div>
           <div className="value">
             <span>
-              {dateNow <= expiresAt.getTime() ? language.bid : language.sold}
+              {dateNow <= expiresAt?.getTime() ? language.bid : language.sold}
             </span>
             <span>${currentBidValue}</span>
           </div>

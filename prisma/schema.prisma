@@ -66,21 +66,22 @@ model User {
   biddedListingsIds String[]  @db.ObjectId
   biddedListings    Carpost[] @relation("biddedCarpost", fields: [biddedListingsIds], references: [id])
 
-  weeklyEmail   Boolean        @default(true)
-  outbidEmail   Boolean        @default(true)
+  weeklyEmail Boolean @default(true)
+  outbidEmail Boolean @default(true)
 
   newListingsNotify Boolean        @default(true)
-  outbidNotify   Boolean        @default(true)
-  endingNotify     Boolean        @default(true)
-  favResultsNotify Boolean        @default(true)
-  bidResultsNotify Boolean        @default(true)
-  notifications Notification[]
+  outbidNotify      Boolean        @default(true)
+  endingNotify      Boolean        @default(true)
+  favResultsNotify  Boolean        @default(true)
+  bidResultsNotify  Boolean        @default(true)
+  notifications     Notification[]
 }
 
 model Carpost {
   id                  String   @id @default(auto()) @map("_id") @db.ObjectId
   name                String
   phone               String
+  mainImage           String
   extImages           String[]
   intImages           String[]
   title               String

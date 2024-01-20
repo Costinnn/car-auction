@@ -14,6 +14,7 @@ import "./GalleryModal.css";
 const GalleryModal = ({
   toggleGalleryModal,
   isGalleryModalOpen,
+  mainImage,
   extImages,
   intImages,
   galleryImgId,
@@ -53,14 +54,23 @@ const GalleryModal = ({
             options={{ type: "fade" }}
             ref={splideRef}
           >
+            <SplideSlide>
+              <Image
+                src={mainImage}
+                alt="carimg"
+                priority
+                width={1500}
+                height={1400}
+              />
+            </SplideSlide>
             {images.map((img) => (
               <SplideSlide key={img}>
                 <Image
                   src={img}
                   alt="carimg"
                   priority
-                  width={500}
-                  height={400}
+                  width={1500}
+                  height={1400}
                 />
               </SplideSlide>
             ))}

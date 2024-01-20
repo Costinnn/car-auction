@@ -162,6 +162,7 @@
         "details": "Car details",
         "vin": "VIN",
         "year": "Year",
+        "mainimage": "Main image",
         "intimages": "Interior images",
         "extimages": "Exterior images",
         "brand": "Brand",

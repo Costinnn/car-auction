@@ -165,6 +165,7 @@
         "details": "Detaliile masinii",
         "vin": "VIN",
         "year": "An",
+        "mainimage": "Imaginea principala",
         "intimages": "Imagini interioare",
         "extimages": "Imagini exterioare",
         "brand": "Marca",

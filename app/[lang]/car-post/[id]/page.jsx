@@ -33,6 +33,7 @@ const page = async ({ params }) => {
       />
       <Gallery
         language={language.pages.carpost.gallery}
+        mainImage={carPost.mainImage}
         extImages={carPost.extImages}
         intImages={carPost.intImages}
       />

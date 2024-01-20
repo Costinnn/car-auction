@@ -21,6 +21,15 @@ const CarPost = ({ language, lang, data, userId, userFavorites }) => {
         <Splide aria-label="My Favorite Images" options={{ type: "fade" }}>
           <SplideSlide>
             <Image
+              src={data.mainImage}
+              alt="image"
+              priority
+              width={500}
+              height={500}
+            />
+          </SplideSlide>
+          <SplideSlide>
+            <Image
               src={data.extImages[0]}
               alt="image"
               priority
@@ -49,15 +58,6 @@ const CarPost = ({ language, lang, data, userId, userFavorites }) => {
           <SplideSlide>
             <Image
               src={data.extImages[3]}
-              alt="image"
-              priority
-              width={500}
-              height={500}
-            />
-          </SplideSlide>
-          <SplideSlide>
-            <Image
-              src={data.extImages[4]}
               alt="image"
               priority
               width={500}

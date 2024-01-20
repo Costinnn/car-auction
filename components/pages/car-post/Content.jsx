@@ -49,7 +49,7 @@ const Content = ({ language, content }) => {
         </div>
         <p>{content.description}</p>
       </div>
-      {content.modifications.length > 0 ? (
+      {content.modifications?.length > 0 ? (
         <div className="modifications">
           <h2>{language.description}</h2>
           <ul>
@@ -62,7 +62,7 @@ const Content = ({ language, content }) => {
         ""
       )}
 
-      {content.flaws.length > 0 ? (
+      {content.flaws?.length > 0 ? (
         <div className="flaws">
           <h2>{language.flaws.title}</h2>
           <ul>

@@ -7,7 +7,7 @@ import GalleryModal from "./GalleryModal";
 
 import "./Gallery.css";
 
-const Gallery = ({ language, extImages, intImages }) => {
+const Gallery = ({ language, extImages, intImages, mainImage }) => {
   const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false);
   const [galleryImgId, setGalleryImgId] = useState(0);
 
@@ -24,13 +24,14 @@ const Gallery = ({ language, extImages, intImages }) => {
         toggleGalleryModal={toggleGalleryModal}
         galleryImgId={galleryImgId}
         isGalleryModalOpen={isGalleryModalOpen}
+        mainImage={mainImage}
         extImages={extImages}
         intImages={intImages}
       />
       <div className="images">
         <div className="main-img">
           <Image
-            src={extImages[0]}
+            src={mainImage}
             alt="car"
             onClick={() => toggleGalleryModal(0)}
             // width={500}
@@ -45,7 +46,7 @@ const Gallery = ({ language, extImages, intImages }) => {
             </span>
             <div className="img-box">
               <Image
-                src={extImages[1]}
+                src={extImages[0]}
                 alt="car"
                 onClick={() => toggleGalleryModal(1)}
                 fill={true}
@@ -53,7 +54,7 @@ const Gallery = ({ language, extImages, intImages }) => {
             </div>
             <div className="img-box">
               <Image
-                src={extImages[2]}
+                src={extImages[1]}
                 alt="car"
                 onClick={() => toggleGalleryModal(2)}
                 fill={true}
@@ -61,7 +62,7 @@ const Gallery = ({ language, extImages, intImages }) => {
             </div>
             <div className="img-box">
               <Image
-                src={extImages[3]}
+                src={extImages[2]}
                 alt="car"
                 onClick={() => toggleGalleryModal(3)}
                 fill={true}
@@ -69,7 +70,7 @@ const Gallery = ({ language, extImages, intImages }) => {
             </div>
             <div className="img-box">
               <Image
-                src={extImages[4]}
+                src={extImages[3]}
                 alt="car"
                 onClick={() => toggleGalleryModal(4)}
                 fill={true}
