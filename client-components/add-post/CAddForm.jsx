@@ -4,7 +4,8 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 
-import { AddNewPost } from "@/lib/actions/addNewPost";
+// import { AddNewPost } from "@/lib/actions/addNewPost";
+import testANP from "@/lib/actions/testANP";
 
 import Spinner from "@/components/decoration/Spinner";
 import deleteimg from "@/assets/global/deleteimg.png";
@@ -14,7 +15,7 @@ import "./AddForm.css";
 const initialState = { message: "", status: "" };
 
 const CAddForm = ({ language }) => {
-  const [state, formAction] = useFormState(AddNewPost, initialState);
+  const [state, formAction] = useFormState(testANP, initialState);
 
   const [mainImageUrl, setMainImageUrl] = useState("");
   const [intImagesUrl, setIntImagesUrl] = useState([]);
@@ -71,7 +72,7 @@ const CAddForm = ({ language }) => {
   // ADD TO DB FUNCTIONS
 
   return (
-    <form className="add-form" action={AddNewPost}>
+    <form className="add-form" action={testANP}>
       <h2>{language.info}</h2>
 
       {/* Name - Phone */}
