@@ -1,5 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    serverActions: {
+      allowedOrigins: ["https://car-auction-five.vercel.app"],
+    },
+  },
   images: {
     remotePatterns: [
       {
