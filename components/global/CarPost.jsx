@@ -19,51 +19,61 @@ const CarPost = ({ language, lang, data, userId, userFavorites }) => {
     <div className="carpost">
       <div className="frame">
         <Splide aria-label="My Favorite Images" options={{ type: "fade" }}>
-          <SplideSlide>
-            <Image
-              src={data.mainImage}
-              alt="image"
-              priority
-              width={500}
-              height={500}
-            />
-          </SplideSlide>
-          <SplideSlide>
-            <Image
-              src={data.extImages[0]}
-              alt="image"
-              priority
-              width={500}
-              height={500}
-            />
-          </SplideSlide>
-          <SplideSlide>
-            <Image
-              src={data.extImages[1]}
-              alt="image"
-              priority
-              width={500}
-              height={500}
-            />
-          </SplideSlide>
-          <SplideSlide>
-            <Image
-              src={data.extImages[2]}
-              alt="image"
-              priority
-              width={500}
-              height={500}
-            />
-          </SplideSlide>
-          <SplideSlide>
-            <Image
-              src={data.extImages[3]}
-              alt="image"
-              priority
-              width={500}
-              height={500}
-            />
-          </SplideSlide>
+          {data?.mainImage && (
+            <SplideSlide>
+              <Image
+                src={data?.mainImage}
+                alt="image"
+                priority
+                width={500}
+                height={500}
+              />
+            </SplideSlide>
+          )}
+          {data?.extImages[0] && (
+            <SplideSlide>
+              <Image
+                src={data.extImages[0]}
+                alt="image"
+                priority
+                width={500}
+                height={500}
+              />
+            </SplideSlide>
+          )}
+          {data?.extImages[1] && (
+            <SplideSlide>
+              <Image
+                src={data.extImages[1]}
+                alt="image"
+                priority
+                width={500}
+                height={500}
+              />
+            </SplideSlide>
+          )}
+          {data?.extImages[2] && (
+            <SplideSlide>
+              <Image
+                src={data.extImages[2]}
+                alt="image"
+                priority
+                width={500}
+                height={500}
+              />
+            </SplideSlide>
+          )}
+          {data?.extImages[3] && (
+            <SplideSlide>
+              <Image
+                src={data.extImages[3]}
+                alt="image"
+                priority
+                width={500}
+                height={500}
+              />
+            </SplideSlide>
+          )}
         </Splide>
 
         <div className="time-bid ">
@@ -98,14 +108,16 @@ const CarPost = ({ language, lang, data, userId, userFavorites }) => {
           <Link href={`/${lang}/car-post/${data.id}`} className="title">
             {data.title}
           </Link>
-          <AddToFavorite
-            width={23}
-            height={23}
-            userId={userId}
-            userFavorites={userFavorites}
-            sellerId={data.sellerId}
-            postId={data.id}
-          />
+          {userId && (
+            <AddToFavorite
+              width={23}
+              height={23}
+              userId={userId}
+              userFavorites={userFavorites}
+              sellerId={data.sellerId}
+              postId={data.id}
+            />
+          )}
         </div>
         <Link href={`/${lang}/car-post/${data.id}`} className="description">
           {`${data.gears}-${language.speed} ${data.transmission} ${data.engineCapacity}L ${language.engine}

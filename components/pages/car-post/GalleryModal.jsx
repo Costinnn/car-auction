@@ -17,19 +17,19 @@ const GalleryModal = ({
   mainImage,
   extImages,
   intImages,
-  galleryImgId,
+  galleryImgIdx,
 }) => {
-  const images = [...extImages, ...intImages];
+  const images = [mainImage, ...extImages, ...intImages];
   const splideRef = useRef(null);
 
-  const handleThumbs = (id) => {
+  const handleThumbs = (idx) => {
     if (splideRef.current) {
-      splideRef.current.go(id);
+      splideRef.current.go(idx);
     }
   };
 
   useEffect(() => {
-    handleThumbs(galleryImgId);
+    handleThumbs(galleryImgIdx);
   }, [toggleGalleryModal]);
 
   return (
@@ -54,15 +54,6 @@ const GalleryModal = ({
             options={{ type: "fade" }}
             ref={splideRef}
           >
-            <SplideSlide>
-              <Image
-                src={mainImage}
-                alt="carimg"
-                priority
-                width={1500}
-                height={1400}
-              />
-            </SplideSlide>
             {images.map((img) => (
               <SplideSlide key={img}>
                 <Image

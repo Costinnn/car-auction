@@ -41,15 +41,15 @@ const AddToFavorite = ({
   };
 
   useEffect(() => {
-    if (userId && isShown) {
+    if (userId && userId !== sellerId) {
       userFavorites?.forEach((item) =>
         item === postId ? setIsFavorite(true) : ""
       );
     }
-    if (!userId || userId !== sellerId) {
-      setIsShown(true);
-    } else {
+    if (!userId || (userId && userId === sellerId)) {
       setIsShown(false);
+    } else {
+      setIsShown(true);
     }
   }, [userId, isShown]);
 

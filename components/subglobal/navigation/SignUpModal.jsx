@@ -6,11 +6,11 @@ import { signIn } from "next-auth/react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
+import Spinner from "@/components/decoration/Spinner";
 import close from "@/assets/global/close.png";
 import eye from "@/assets/global/eye.png";
 
 import "./SignUpModal.css";
-import Spinner from "@/components/decoration/Spinner";
 
 const SignUpModal = ({ toggleSignModal, isSignModalOpen, language }) => {
   const router = useRouter();

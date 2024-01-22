@@ -9,11 +9,11 @@ import "./Gallery.css";
 
 const Gallery = ({ language, extImages, intImages, mainImage }) => {
   const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false);
-  const [galleryImgId, setGalleryImgId] = useState(0);
+  const [galleryImgIdx, setGalleryImgIdx] = useState(0);
 
-  const toggleGalleryModal = (imgId) => {
+  const toggleGalleryModal = (imgIdx) => {
     setIsGalleryModalOpen((prev) => !prev);
-    setGalleryImgId(imgId);
+    setGalleryImgIdx(imgIdx);
   };
 
   const extImgLength = extImages.length;
@@ -22,7 +22,7 @@ const Gallery = ({ language, extImages, intImages, mainImage }) => {
     <section className="gallery">
       <GalleryModal
         toggleGalleryModal={toggleGalleryModal}
-        galleryImgId={galleryImgId}
+        galleryImgIdx={galleryImgIdx}
         isGalleryModalOpen={isGalleryModalOpen}
         mainImage={mainImage}
         extImages={extImages}
@@ -85,7 +85,7 @@ const Gallery = ({ language, extImages, intImages, mainImage }) => {
               <Image
                 src={intImages[0]}
                 alt="car"
-                onClick={() => toggleGalleryModal(extImgLength)}
+                onClick={() => toggleGalleryModal(extImgLength + 1)}
                 fill={true}
               />
             </div>
@@ -93,7 +93,7 @@ const Gallery = ({ language, extImages, intImages, mainImage }) => {
               <Image
                 src={intImages[1]}
                 alt="car"
-                onClick={() => toggleGalleryModal(extImgLength + 1)}
+                onClick={() => toggleGalleryModal(extImgLength + 2)}
                 fill={true}
               />
             </div>
@@ -101,13 +101,13 @@ const Gallery = ({ language, extImages, intImages, mainImage }) => {
               <Image
                 src={intImages[2]}
                 alt="car"
-                onClick={() => toggleGalleryModal(extImgLength + 2)}
+                onClick={() => toggleGalleryModal(extImgLength + 3)}
                 fill={true}
               />
             </div>
             <div
               className="last-box"
-              onClick={() => toggleGalleryModal(extImgLength + 3)}
+              onClick={() => toggleGalleryModal(extImgLength + 4)}
             >
               <div className="bg-color">
                 <span className="badge-all">

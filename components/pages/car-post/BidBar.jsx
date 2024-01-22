@@ -64,10 +64,14 @@ const BidBar = ({
   };
 
   useEffect(() => {
-    if ((!userId || userId !== sellerId) && dateNow <= expiresAt.getTime()) {
-      setIsShownBidBtn(true);
-    } else {
+    if (
+      !userId ||
+      (userId && userId === sellerId) ||
+      dateNow > expiresAt.getTime()
+    ) {
       setIsShownBidBtn(false);
+    } else {
+      setIsShownBidBtn(true);
     }
   }, [userId]);
 

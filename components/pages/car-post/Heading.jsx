@@ -20,14 +20,16 @@ const Heading = ({
     <div className="heading">
       <div className="row1">
         <h1 className="title">{title}</h1>
-        <AddToFavorite
-          width={23}
-          height={23}
-          userId={userId}
-          userFavorites={userFavorites}
-          sellerId={sellerId}
-          postId={postId}
-        />
+        {userId && (
+          <AddToFavorite
+            width={23}
+            height={23}
+            userId={userId}
+            userFavorites={userFavorites}
+            sellerId={sellerId}
+            postId={postId}
+          />
+        )}
       </div>
       <span className="description">{`${gears}-${language.speed} ${transmission} ${engineCapacity}L ${language.engine}
           ${engineConfiguration}${engineCylinders}`}</span>
