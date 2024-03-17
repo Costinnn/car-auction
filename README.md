@@ -25,16 +25,20 @@ MongoDb is the database that I choosed to use for this project because of it's J
 HTML & SCSS basic languages for web applications, I choosed SCSS over CSS only because it's nested structure, which helps me understand faster HTML components hierarchy.
 
 ## Dependencies :
-### React-image-file-resizer
+
+#### Cloudinary
+After problems with big sized data fetched from database I integrated Cloudinary Image API to reduce the size of data fetched from MongoDb and speed up the time for displaying high quality images on the website from a CDN.
+
+#### React-image-file-resizer (replaced with cloudinary API)
 I used this package to compress the uploaded images, because if the size of the post was bigger that 10MB it wasn't uploaded to database.
 
-### Axios
+#### Axios
 I used axios to fetch posts from database.
 
-### Bcrypt
+#### Bcrypt
 Bcrypt was used to hash the password before storing it to database, when a user register or login.
 
-### Splidejs
+#### Splidejs
 I used this package to shorten the implementation time and to offer to the end user a simple, and robust image carousel.
 
 ## What I learned?
@@ -43,23 +47,31 @@ Also something new that I introduced in this application is language selection (
 
 ## Functionalities
 
-### This is the main page where all the posts are displayed. Here the user can filter or search for specific auctions. Each post has a preview of 5 photos and information about the highest bid and the time left. In the auction page if you're not logged or the auction time expired you can't bid.
-<img hspace="15" src="https://github.com/Costinnn/car-auction/assets/103998434/25cc9a45-daff-4a5c-9fa2-4869fcd8ad0b" width=30%><img hspace="15" src="https://github.com/Costinnn/car-auction/assets/103998434/9d89dbe0-8b02-4793-8243-f6408780cf97" width=30%><img hspace="15" src="https://github.com/Costinnn/car-auction/assets/103998434/5638d2df-aca6-4156-a12d-21fa4dee2545" width=30%>
+#### This is the main page where all the posts are displayed. Here the user can filter or search for specific auctions. Each post has a preview of 5 photos and information about the highest bid and the time left. If you're not logged in you can't add posts to favorite and the sign up modal will pop up
+<img src="https://github.com/Costinnn/car-auction/assets/103998434/76ba1ff4-255a-432b-ad39-56411a442ddd" width=48%><img hspace="15" src="https://github.com/Costinnn/car-auction/assets/103998434/4c1bdaff-d5ea-464a-a4ae-f66c2741c535" width=48%>
+======
 
-### This is the main menu, if you're not logged you don't have access to these routes a sign up modal will open for user to log in.
-<img src="https://github.com/Costinnn/car-auction/assets/103998434/a0883f3d-092f-4325-99a0-58d11095a332" width=30%>
+#### On the right is the main menu opened and if you're not logged in you don't have access to these routes. A sign up modal will open for user to log in. Also, you can still filter and search for you favorite car
+<img src="https://github.com/Costinnn/car-auction/assets/103998434/289d82bf-543c-463a-a611-17a051075ff1" width=70%>.
+======
 
-### To access more functionality of the website you can create an account and login safely with you credentials. After a successful login you'll be able to add posts to favorites or create new auctions accessing the "Sell a car" button.
-<img hspace="15" src="https://github.com/Costinnn/car-auction/assets/103998434/2626b324-1e4a-4f3b-9cde-5deb13e41f3e" width=30%><img hspace="15" src="https://github.com/Costinnn/car-auction/assets/103998434/9fac4163-faef-4b71-883e-a704f2426eaa" width=30%><img hspace="15" src="https://github.com/Costinnn/car-auction/assets/103998434/e158148a-9241-49c0-a3d2-9eb8d52a9e0b" width=30%>
+#### To access more functionality of the website you can create an account and login safely with you credentials. After a successful login you'll be able to add posts to favorites or create new auctions accessing the "Sell a car" button.
+<img src="https://github.com/Costinnn/car-auction/assets/103998434/2626b324-1e4a-4f3b-9cde-5deb13e41f3e" width=30%><img hspace="15" src="https://github.com/Costinnn/car-auction/assets/103998434/3a7d1636-1f4c-4301-b443-8b849bc6644d" width=65%>
+======
 
-### After a successful log in, you can access your account page and update your profile photo, username, bio or the settings about notifications.
-<img hspace="20" src="https://github.com/Costinnn/car-auction/assets/103998434/1952a29c-f405-4652-b113-9e50827b6d33" width=30%><img hspace="20" src="https://github.com/Costinnn/car-auction/assets/103998434/95944591-480f-4bee-b571-a4d7b8f79d93" width=30%>
+#### After a successful log in, you can access your account page and update your profile photo, username, bio or the settings about notifications.
+<img src="https://github.com/Costinnn/car-auction/assets/103998434/86270630-1013-45b6-8610-ea27ee10fe4c" width=70%>.
+======
 
-### If you're logged in you can view you auctions, bidded or saved ones.
-<img src="https://github.com/Costinnn/car-auction/assets/103998434/60189381-4512-4650-9154-f56270728573" width=30%>
+#### Once you're logged you'll be able to bid on auctions that you're interested in and view high quality images delivered from CDN
+<img src="https://github.com/Costinnn/car-auction/assets/103998434/406b4355-e961-444c-b0be-21c347c7ca4d" width=48%><img hspace="15" src="https://github.com/Costinnn/car-auction/assets/103998434/1ffdbfc5-3faa-4b9c-8ba6-b18b341a1d33" width=48%>
+======
 
-### Once you're logged you'll be able to bid on auctions that you're interested in
-<img src="https://github.com/Costinnn/car-auction/assets/103998434/73b84a18-51f9-4857-a5db-0956412dbc35" width=30%>
+#### Also you can view you auctions, bidded or saved ones.
+<img src="https://github.com/Costinnn/car-auction/assets/103998434/60189381-4512-4650-9154-f56270728573" width=30%>.
+======
+
+
 
 ## How to install the app on your computer
 
@@ -76,6 +88,12 @@ NEXTAUTH_URL=http://localhost:3000
 NEXTAUTH_SECRET=
 
 NEXTAUTH_JWT_SECRET=
+
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=
+
+CLOUDINARY_API_KEY=
+
+CLOUDINARY_API_SECRET=
 
 ## Run the application
 
